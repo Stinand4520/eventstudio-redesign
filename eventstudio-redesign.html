@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventStudio — Live events, produced like broadcasts.</title>
+<meta name="description" content="Toronto-based producers of award shows, medical education broadcasts, and live experiences that never miss their cue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0b0b0c;
+    --charcoal:#151517;
+    --charcoal-2:#1d1d20;
+    --line: rgba(245,241,232,0.12);
+    --paper:#f5f1e8;
+    --paper-dim: rgba(245,241,232,0.62);
+    --paper-faint: rgba(245,241,232,0.34);
+    --amber:#f2a93b;
+    --amber-dim: rgba(242,169,59,0.5);
+    --blue:#4c8dff;
+    --red:#e4392e;
+    --ink:#141311;
+    --ink-dim: rgba(20,19,17,0.6);
+    --ease: cubic-bezier(.16,.84,.44,1);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--paper);
+    font-family:'Inter', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    overflow-x:hidden;
+    cursor: default;
+  }
+  ::selection{ background:var(--amber); color:var(--ink); }
+
+  h1,h2,h3{
+    font-family:'Bricolage Grotesque', 'Inter', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 10px 2px var(--amber-dim);
+  }
+
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ===== reveal-on-scroll ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ===== cue-light loader ===== */
+  #loader{
+    position:fixed; inset:0; z-index:999;
+    background:var(--black);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    gap:22px;
+    transition: opacity .7s var(--ease);
+  }
+  #loader.hide{ opacity:0; pointer-events:none; }
+  .cue-dot{
+    width:14px; height:14px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 24px 6px var(--amber-dim);
+    animation: pulse 1.1s ease-in-out infinite;
+  }
+  #loader.on-air .cue-dot{
+    background:var(--red);
+    box-shadow:0 0 26px 8px rgba(228,57,46,0.55);
+    animation:none;
+  }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(0.7); opacity:0.55; }
+  }
+  #loader-label{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.24em;
+    color:var(--paper-dim);
+  }
+
+  /* ===== spotlight cursor (desktop, hero only) ===== */
+  #spotlight{
+    position:absolute; inset:0;
+    pointer-events:none;
+    background: radial-gradient(circle 260px at var(--mx,50%) var(--my,30%), rgba(245,241,232,0.10), transparent 70%);
+    transition: background .12s linear;
+    z-index:2;
+  }
+
+  /* ===== nav ===== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:26px 0;
+    transition: padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(11,11,12,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+    display:flex; align-items:center; gap:9px;
+  }
+  .logo .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 10px 2px var(--amber-dim);
+  }
+  .logo img{ height:19px; width:auto; display:block; }
+  .nav-links{ display:flex; gap:38px; list-style:none; }
+  .nav-links a{
+    font-size:13px;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    color:var(--paper-dim);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .3s;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; right:100%; bottom:0; height:1px;
+    background:var(--amber);
+    transition:right .35s var(--ease);
+  }
+  .nav-links a:hover{ color:var(--paper); }
+  .nav-links a:hover::after{ right:0; }
+
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 22px;
+    border:1px solid var(--amber);
+    border-radius:2px;
+    color:var(--ink);
+    background:var(--amber);
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    will-change: transform;
+  }
+  .btn:hover{ box-shadow:0 0 0 1px var(--amber), 0 8px 30px -8px var(--amber-dim); }
+  .btn.ghost{
+    background:transparent; color:var(--paper); border-color:var(--line);
+  }
+  .btn.ghost:hover{ border-color:var(--paper-dim); box-shadow:none; }
+
+  /* ===== hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:160px 0 90px;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background-image:
+      linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.78) 55%, var(--black) 100%),
+      url('images/LIVE-EVENT.jpg');
+    background-size:cover; background-position:center 30%;
+    filter:grayscale(0.55) contrast(1.15) brightness(0.55);
+  }
+  .beam{
+    position:absolute; top:-20%; width:38vw; height:160vh;
+    background:linear-gradient(180deg, rgba(242,169,59,0.16), transparent 70%);
+    transform:rotate(18deg);
+    filter:blur(10px);
+    z-index:1;
+    animation: sweep 14s ease-in-out infinite;
+  }
+  .beam.b2{ left:55%; animation-delay:-6s; opacity:0.6; background:linear-gradient(180deg, rgba(76,141,255,0.14), transparent 70%);}
+  .beam.b1{ left:5%; }
+  @keyframes sweep{
+    0%,100%{ transform:rotate(14deg) translateX(0); }
+    50%{ transform:rotate(22deg) translateX(6vw); }
+  }
+  .hero-content{ position:relative; z-index:3; }
+  .hero h1{
+    font-size:clamp(2.6rem, 6.6vw, 6.4rem);
+    max-width:15ch;
+    margin:22px 0 30px;
+    color:var(--paper);
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--amber);
+  }
+  .hero p.sub{
+    max-width:46ch;
+    font-size:18px;
+    color:var(--paper-dim);
+    margin-bottom:38px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .scroll-cue{
+    position:absolute; right:40px; bottom:36px; z-index:3;
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.2em;
+    color:var(--paper-faint);
+    writing-mode:vertical-rl;
+    display:flex; align-items:center; gap:12px;
+  }
+  .scroll-cue::after{
+    content:''; width:1px; height:46px; background:var(--paper-faint);
+  }
+
+  /* ===== marquee ===== */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:16px 0; overflow:hidden; white-space:nowrap;
+    position:relative; z-index:3;
+    background:var(--black);
+  }
+  .marquee-track{ display:inline-flex; gap:48px; animation: scroll-x 26s linear infinite; }
+  .marquee span{
+    font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.12em;
+    color:var(--paper-faint); text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:48px;
+  }
+  .marquee span i{ font-style:normal; color:var(--amber); }
+  @keyframes scroll-x{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  /* ===== section shell ===== */
+  section{ position:relative; padding:130px 0; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:40px; margin-bottom:64px; flex-wrap:wrap;
+  }
+  .section-head h2{ font-size:clamp(2rem, 4vw, 3.2rem); max-width:14ch; }
+  .section-head p{ max-width:36ch; color:var(--paper-dim); font-size:15px; padding-bottom:6px; }
+
+  /* ===== services ===== */
+  .services{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .service{
+    background:var(--black); padding:44px 40px; position:relative;
+    transition: background .4s var(--ease);
+  }
+  .service:hover{ background:var(--charcoal); }
+  .service .num{ font-family:'Space Mono', monospace; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
+  .service h3{ font-size:26px; margin:20px 0 14px; }
+  .service p{ color:var(--paper-dim); font-size:14.5px; max-width:42ch; }
+  .service.stream h3{ color:var(--blue); }
+  .service.stream .num{ color:var(--blue); }
+
+  /* ===== reel ===== */
+  .reel-wrap{ position:relative; }
+  .reel-nav{
+    display:flex; align-items:center; gap:16px;
+    margin-top:-8px; margin-bottom:28px; flex-wrap:wrap;
+  }
+  .reel-hint{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--amber);
+  }
+  .reel-hint svg{ width:15px; height:15px; animation:hint-nudge 1.4s ease-in-out infinite; }
+  @keyframes hint-nudge{
+    0%,100%{ transform:translateX(0); }
+    50%{ transform:translateX(6px); }
+  }
+  .reel-counter{
+    font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.1em;
+    color:var(--ink); background:var(--amber);
+    padding:6px 14px; border-radius:999px;
+    box-shadow:0 4px 18px -6px var(--amber-dim);
+  }
+  .reel-counter b{ font-weight:700; }
+  .reel-viewport{ position:relative; }
+  .reel{
+    display:flex; gap:20px; overflow-x:auto; padding:6px 0 24px;
+    scrollbar-width:none; cursor:grab; user-select:none;
+    scroll-snap-type:x proximity;
+  }
+  .reel::-webkit-scrollbar{ display:none; }
+  .reel.dragging{ cursor:grabbing; }
+  .reel-item{
+    flex:0 0 auto; width:320px; height:400px; position:relative;
+    border:1px solid var(--line); overflow:hidden;
+    scroll-snap-align:start;
+  }
+  .reel-arrow{
+    position:absolute; top:50%; z-index:5;
+    width:60px; height:60px; margin-top:-36px;
+    border-radius:50%; border:2px solid var(--amber);
+    background:var(--amber); color:var(--ink); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(242,169,59,0.12);
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease), opacity .3s, background .25s, color .25s;
+    animation:arrow-pulse 2.2s ease-in-out infinite;
+  }
+  .reel-arrow.prev{ left:14px; }
+  .reel-arrow.next{ right:14px; }
+  .reel-arrow svg{ width:22px; height:22px; }
+  .reel-arrow:hover{ transform:scale(1.12); background:var(--paper); color:var(--ink); animation-play-state:paused; }
+  .reel-arrow:active{ transform:scale(0.94); }
+  .reel-arrow:disabled{ opacity:0; pointer-events:none; }
+  @keyframes arrow-pulse{
+    0%,100%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(242,169,59,0.12); }
+    50%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 12px rgba(242,169,59,0.22); }
+  }
+  @media (max-width:900px){
+    .reel-arrow{ width:48px; height:48px; margin-top:-28px; }
+    .reel-arrow svg{ width:18px; height:18px; }
+  }
+  .reel-item img{
+    width:100%; height:100%; object-fit:cover;
+    filter:contrast(1.05) saturate(1.1);
+    transition: filter .5s var(--ease), transform .6s var(--ease);
+  }
+  .reel-item::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(11,11,12,0.92) 100%),
+      linear-gradient(0deg, rgba(242,169,59,0.18), transparent 60%);
+    mix-blend-mode:normal;
+  }
+  .reel-item:hover img{ filter:contrast(1.08) saturate(1.2); transform:scale(1.04); }
+  .reel-cap{
+    position:absolute; left:20px; bottom:18px; z-index:2;
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    color:var(--paper); text-transform:uppercase;
+  }
+  .reel-cap i{ display:block; font-style:normal; color:var(--amber-dim); font-size:10px; margin-top:4px; }
+
+  /* ===== approach ===== */
+  .approach{ border-top:1px solid var(--line); }
+  .approach .wrap{ max-width:920px; }
+  .approach p.lead{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:500;
+    font-size:clamp(1.5rem, 3vw, 2.3rem);
+    line-height:1.35;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+  }
+  .approach p.lead .accent{ color:var(--amber); }
+
+  /* ===== stream callout ===== */
+  .stream-band{
+    background:var(--charcoal);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:100px 0;
+  }
+  .stream-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; }
+  .vr-logo{ height:34px; width:auto; margin-bottom:18px; }
+  .stream-grid h2{ font-size:clamp(1.8rem,3.4vw,2.8rem); margin:18px 0 20px; color:var(--paper); }
+  .stream-grid h2 span{ color:var(--blue); }
+  .stream-grid p{ color:var(--paper-dim); font-size:15px; max-width:48ch; margin-bottom:28px; }
+  .signal{
+    aspect-ratio:4/3; border:1px solid var(--line); position:relative; overflow:hidden;
+    background:var(--black);
+  }
+  .signal .bars{
+    position:absolute; inset:0; display:flex; align-items:flex-end; gap:6px; padding:30px;
+  }
+  .signal .bars i{
+    flex:1; background:linear-gradient(180deg, var(--blue), rgba(76,141,255,0.15));
+    animation: bar 1.6s ease-in-out infinite;
+  }
+  .signal .bars i:nth-child(2n){ animation-delay:-0.4s; }
+  .signal .bars i:nth-child(3n){ animation-delay:-0.9s; }
+  @keyframes bar{ 0%,100%{ height:20%; } 50%{ height:85%; } }
+  .signal .tag{
+    position:absolute; top:20px; left:20px;
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.16em;
+    color:var(--paper-dim); display:flex; align-items:center; gap:8px;
+  }
+  .signal .tag::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 8px 2px rgba(228,57,46,0.5); animation:pulse 1.4s infinite; }
+  .signal.playable{ cursor:pointer; }
+  .signal .play-cue{
+    position:absolute; inset:0; z-index:2;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(11,11,12,0.35);
+    opacity:0; transition:opacity .35s var(--ease);
+  }
+  .signal.playable:hover .play-cue{ opacity:1; }
+  .signal .play-cue .disc{
+    width:64px; height:64px; border-radius:50%;
+    background:var(--amber);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 1px var(--amber), 0 8px 30px -6px rgba(0,0,0,0.6);
+    transition:transform .35s var(--ease);
+  }
+  .signal.playable:hover .play-cue .disc{ transform:scale(1.08); }
+  .signal .play-cue .disc::after{
+    content:''; width:0; height:0;
+    border-top:11px solid transparent; border-bottom:11px solid transparent;
+    border-left:18px solid var(--ink);
+    margin-left:5px;
+  }
+
+  /* ===== video lightbox ===== */
+  #video-modal{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(11,11,12,0.92);
+    display:flex; align-items:center; justify-content:center;
+    padding:60px 24px;
+    opacity:0; pointer-events:none;
+    transition:opacity .4s var(--ease);
+  }
+  #video-modal.open{ opacity:1; pointer-events:auto; }
+  #video-modal .modal-inner{
+    position:relative; width:100%; max-width:1040px;
+    transform:translateY(16px) scale(0.98);
+    transition:transform .4s var(--ease);
+  }
+  #video-modal.open .modal-inner{ transform:translateY(0) scale(1); }
+  #video-modal video{
+    width:100%; display:block; background:var(--black);
+    border:1px solid var(--line);
+  }
+  #video-modal .modal-close{
+    position:absolute; top:-46px; right:0;
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--paper-dim);
+    background:none; border:none; cursor:pointer; padding:8px;
+    transition:color .3s;
+  }
+  #video-modal .modal-close:hover{ color:var(--paper); }
+  #video-modal .modal-close .x{
+    width:22px; height:22px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+  }
+  @media (max-width:560px){
+    #video-modal .modal-close{ top:-40px; }
+  }
+
+  /* ===== team ===== */
+  .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .person{ border:1px solid var(--line); }
+  .person .photo{ aspect-ratio:3/4; overflow:hidden; position:relative; }
+  .person .photo img{
+    width:100%; height:100%; object-fit:cover;
+    filter:grayscale(0.85) contrast(1.1) brightness(0.85);
+    transition: filter .5s var(--ease);
+  }
+  .person:hover .photo img{ filter:grayscale(0.3) contrast(1.05) brightness(0.95); }
+  .person .info{ padding:20px 22px 26px; }
+  .person .info .role{
+    font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.1em;
+    color:var(--amber); text-transform:uppercase; display:block; margin-bottom:8px;
+  }
+  .person .info h3{ font-size:19px; }
+
+  /* ===== contact — house lights up ===== */
+  .contact{
+    background:var(--paper); color:var(--ink);
+    border-top:1px solid var(--line);
+  }
+  .contact .eyebrow{ color:#a85f14; }
+  .contact .eyebrow::before{ background:#a85f14; box-shadow:0 0 10px 2px rgba(168,95,20,0.35); }
+  .contact h2{
+    color:var(--ink); font-size:clamp(2.4rem,6vw,5rem); max-width:16ch; margin:20px 0 34px;
+  }
+  .contact-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:60px; }
+  .contact-links{ display:flex; flex-direction:column; gap:18px; margin-top:10px; }
+  .contact-links a{
+    text-decoration:none; font-family:'Bricolage Grotesque', sans-serif; font-weight:600;
+    font-size:22px; color:var(--ink); border-bottom:1px solid rgba(20,19,17,0.18);
+    padding-bottom:10px; width:fit-content; transition:border-color .3s, color .3s;
+  }
+  .contact-links a:hover{ border-color:var(--ink); color:#a85f14; }
+  .contact .btn{ margin-top:32px; }
+  .contact .btn.ghost{ border-color:rgba(20,19,17,0.25); color:var(--ink); }
+  .contact .btn.ghost:hover{ border-color:var(--ink); }
+
+  form.card{
+    background:rgba(20,19,17,0.04); border:1px solid rgba(20,19,17,0.12);
+    padding:32px; display:flex; flex-direction:column; gap:16px;
+  }
+  form.card label{
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-dim); display:block; margin-bottom:6px;
+  }
+  form.card input, form.card textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(20,19,17,0.25);
+    padding:8px 2px; font-family:'Inter', sans-serif; font-size:15px; color:var(--ink);
+    outline:none; transition:border-color .3s;
+  }
+  form.card input:focus, form.card textarea:focus{ border-color:var(--ink); }
+  form.card textarea{ resize:vertical; min-height:70px; }
+
+  /* ===== footer ===== */
+  footer{ background:var(--paper); color:var(--ink); padding:50px 0 40px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  footer .logo{ color:var(--ink); }
+  footer .logo .dot{ background:#a85f14; box-shadow:0 0 8px 2px rgba(168,95,20,0.3); }
+  footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(--ink-dim); letter-spacing:0.02em; }
+
+  /* ===== broadcast HUD (timecode) ===== */
+  #hud{
+    position:fixed; left:24px; bottom:22px; z-index:90;
+    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.12em;
+    color:var(--paper-faint);
+    display:flex; align-items:center; gap:10px;
+    mix-blend-mode:difference;
+  }
+  #hud .rec{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.3s infinite; }
+
+  @media (max-width:900px){
+    .wrap{ padding:0 22px; }
+    .nav-links{ display:none; }
+    .services{ grid-template-columns:1fr; }
+    .stream-grid, .contact-grid{ grid-template-columns:1fr; }
+    .team-grid{ grid-template-columns:1fr 1fr; }
+    #hud{ display:none; }
+    #spotlight{ display:none; }
+  }
+  @media (max-width:560px){
+    .team-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:140px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.2s !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="cue-dot"></div>
+    <div id="loader-label">STANDING BY</div>
+  </div>
+
+  <div id="hud"><span class="rec"></span><span id="tc">00:00:00:00</span></div>
+
+  <header id="site-header">
+    <nav class="wrap">
+      <a href="#top" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a>
+      <ul class="nav-links">
+        <li><a href="#work">What we do</a></li>
+        <li><a href="#reel">Reel</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn magnet">Start the show</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="beam b1"></div>
+      <div class="beam b2"></div>
+      <div id="spotlight"></div>
+      <div class="wrap hero-content">
+        <div class="eyebrow">Toronto, Canada — On air since first cue</div>
+        <h1>Live events, <em>produced</em><br>like broadcasts.</h1>
+        <p class="sub">EventStudio designs and directs award shows, medical education broadcasts, and live experiences for brands who don't get a second take.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn magnet">Start the show</a>
+          <a href="#reel" class="btn ghost magnet">Watch the reel</a>
+        </div>
+      </div>
+      <div class="scroll-cue">SCROLL — CUE 01</div>
+    </section>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Live events <i>—</i> Event production <i>—</i> Live streaming <i>—</i> Medical education <i>—</i> Award shows <i>—</i> Virtually Real broadcast system <i>—</i></span>
+        <span>Live events <i>—</i> Event production <i>—</i> Live streaming <i>—</i> Medical education <i>—</i> Award shows <i>—</i> Virtually Real broadcast system <i>—</i></span>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>What we do</h2>
+          <p>Four disciplines, one crew — from the first lighting plot to the last frame of the stream.</p>
+        </div>
+        <div class="services reveal">
+          <div class="service">
+            <span class="num">01 — Live events</span>
+            <h3>Award shows &amp; galas</h3>
+            <p>Stage design, show-calling, and direction for evenings that need to feel effortless — because we've already solved every cue backstage.</p>
+          </div>
+          <div class="service">
+            <span class="num">02 — Event production</span>
+            <h3>Planning &amp; execution</h3>
+            <p>We negotiate AV, build the run of show, and manage budgets so your event lands exactly on brief — and on cost.</p>
+          </div>
+          <div class="service stream">
+            <span class="num">03 — Live streaming</span>
+            <h3>Broadcasts, not webcams</h3>
+            <p>Our Virtually Real platform gives every webcast a director, a stage manager, and a look worth watching.</p>
+          </div>
+          <div class="service">
+            <span class="num">04 — Medical education</span>
+            <h3>Clinical &amp; confidential</h3>
+            <p>Studio, webcast, and live-procedure production across orthopedics, diabetes, aesthetics, and beyond — handled with the discretion it demands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reel" class="reel-wrap">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Frames from the show floor</h2>
+          <p>A photo record of the rooms we've lit, the stages we've called, and the events we've produced.</p>
+        </div>
+        <div class="reel-nav reveal">
+          <span class="reel-hint">Drag or click to explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="reel-counter"><b id="reel-current">01</b> / <span id="reel-total">01</span></span>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="reel-viewport">
+          <button class="reel-arrow prev" id="reel-prev" aria-label="Previous photo" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="reel-arrow next" id="reel-next" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        <div class="reel reveal" id="reel-track">
+          <div class="reel-item"><img src="images/AWARD-SHOW.jpg" alt="Award show production" draggable="false"><div class="reel-cap">Award show<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/CONCERT.jpg" alt="Concert production" draggable="false"><div class="reel-cap">Concert<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/OUTDOOR-FESTIVAL.jpg" alt="Outdoor festival production" draggable="false"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/VIDEO-MAPPING.jpg" alt="Video mapping production" draggable="false"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-WEB-STREAMING.jpg" alt="Live web streaming" draggable="false"><div class="reel-cap">Live web streaming<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/CONVENTION.jpg" alt="Convention production" draggable="false"><div class="reel-cap">Convention<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-1.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/SPORTS-EVENT.jpg" alt="Sports event production" draggable="false"><div class="reel-cap">Sports event<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/CORPORATE-EDUCATION-MEETING.jpg" alt="Corporate education meeting" draggable="false"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/PLANNING-TO-EXECUTION.jpg" alt="Planning to execution" draggable="false"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/OUTDOO0R-AWARDS.jpg" alt="Outdoor awards production" draggable="false"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/SALES-MEETING.jpg" alt="Sales meeting production" draggable="false"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/AUDIENCE-PARTICIPATION.jpg" alt="Audience participation" draggable="false"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-TV-PRODUCTION.jpg" alt="Live TV production" draggable="false"><div class="reel-cap">Live TV production<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY.jpg" alt="Virtual holiday party" draggable="false"><div class="reel-cap">Virtual holiday party<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/CELEBRITY-INTERVIEW.jpg" alt="Celebrity interview" draggable="false"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-2.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-3.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/EVENTS.jpg" alt="Live event production" draggable="false"><div class="reel-cap">Live events<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/EVENT-PRODUCTION.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-STREAMING.jpg" alt="Live streaming production" draggable="false"><div class="reel-cap">Live streaming<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/MEDICAL-EDUCATION.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-1.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-2.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-3.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-4.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-5.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-6.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-7.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-8.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-9.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-10.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-4.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-5.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-6.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach">
+      <div class="wrap reveal">
+        <div class="eyebrow" style="margin-bottom:24px;">The approach</div>
+        <p class="lead">We don't supply lights, sound, or video — we supply judgment. We scope the room, negotiate the vendors, write the paperwork, and stand in the booth calling every cue, so your event looks <span class="accent">produced</span>, not just staffed.</p>
+      </div>
+    </section>
+
+    <section class="stream-band">
+      <div class="wrap stream-grid">
+        <div class="reveal">
+          <img src="vr-logo-dark.png" alt="Virtually Real — Broadcast System" class="vr-logo">
+          <div class="eyebrow" style="color:var(--blue);">Proprietary platform</div>
+          <h2>Your webcast, <span>directed</span> — not just streamed.</h2>
+          <p>Virtually Real turns a flat video call into a broadcast: a director calling shots, a stage manager keeping the room on schedule, and graphics built for the screen your audience is actually watching.</p>
+          <a href="#" class="btn magnet video-trigger">See it in action</a>
+        </div>
+        <div class="signal reveal playable video-trigger">
+          <div class="tag">On air — signal live</div>
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="play-cue"><div class="disc"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="video-modal">
+      <div class="modal-inner">
+        <button class="modal-close" id="video-modal-close" aria-label="Close video"><span>Close</span><span class="x">&times;</span></button>
+        <video id="video-modal-player" controls playsinline preload="none" poster="">
+          <source src="virtually-real.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <section id="studio">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>The studio</h2>
+          <p>A small crew who has been in the booth for every kind of show there is.</p>
+        </div>
+        <div class="team-grid reveal">
+          <div class="person">
+            <div class="photo"><img src="images/Andy-Stinon.jpg" alt="Andy Stinton"></div>
+            <div class="info"><span class="role">Producer · Director</span><h3>Andy Stinton</h3></div>
+          </div>
+          <div class="person">
+            <div class="photo"><img src="images/Denise-Carr-Rollit.jpg" alt="Denise Carr-Rollitt"></div>
+            <div class="info"><span class="role">Producer · Designer · Director</span><h3>Denise Carr-Rollitt</h3></div>
+          </div>
+          <div class="person">
+            <div class="photo"><img src="images/nancy-Sinclair.jpg" alt="Nancy Sinclair"></div>
+            <div class="info"><span class="role">Production Coordinator · Show Caller</span><h3>Nancy Sinclair</h3></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="eyebrow">Cue it up</div>
+      <h2 class="reveal">Got a show? Let's talk before the house lights go down.</h2>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-links">
+            <a href="mailto:info@eventstudio.tv">info@eventstudio.tv</a>
+            <a href="tel:4169005137">(416) 900-5137</a>
+          </div>
+          <a href="mailto:info@eventstudio.tv" class="btn ghost magnet">Email the studio</a>
+        </div>
+        <form class="card reveal" id="contactForm" action="https://formspree.io/f/xppagprw" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          </div>
+          <div>
+            <label for="brief">The brief</label>
+            <textarea id="brief" name="brief" placeholder="Tell us about the show." required></textarea>
+          </div>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a href="#top" class="logo"><span class="dot"></span><img src="eventstudio-logo.png" alt="EventStudio"></a>
+      <div class="legal">© 2026 EventStudio — DCR Graphics and Productions Inc. — All rights reserved</div>
+    </div>
+  </footer>
+
+<script>
+  // cue-light loader sequence
+  var loader = document.getElementById('loader');
+  var loaderLabel = document.getElementById('loader-label');
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      loader.classList.add('on-air');
+      loaderLabel.textContent = 'ON AIR';
+    }, 700);
+    setTimeout(function(){
+      loader.classList.add('hide');
+    }, 1150);
+  });
+
+  // nav scrolled state
+  var header = document.getElementById('site-header');
+  function onScroll(){
+    if(window.scrollY > 30){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+    updateHUD();
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  // broadcast timecode HUD
+  var tc = document.getElementById('tc');
+  function updateHUD(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var frac = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    var totalFrames = Math.floor(frac * 3600 * 30);
+    var hh = Math.floor(totalFrames / (3600*30));
+    var mm = Math.floor((totalFrames % (3600*30)) / (60*30));
+    var ss = Math.floor((totalFrames % (60*30)) / 30);
+    var ff = totalFrames % 30;
+    function pad(n){ return String(n).padStart(2,'0'); }
+    tc.textContent = pad(hh) + ':' + pad(mm) + ':' + pad(ss) + ':' + pad(ff);
+  }
+  updateHUD();
+
+  // spotlight cursor (hero only, fine pointers only)
+  var spotlight = document.getElementById('spotlight');
+  var hero = document.querySelector('.hero');
+  if(window.matchMedia('(pointer: fine)').matches){
+    hero.addEventListener('mousemove', function(e){
+      var rect = hero.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      spotlight.style.setProperty('--mx', x + '%');
+      spotlight.style.setProperty('--my', y + '%');
+    });
+  }
+
+  // magnetic buttons
+  document.querySelectorAll('.magnet').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width/2;
+      var y = e.clientY - r.top - r.height/2;
+      btn.style.transform = 'translate(' + (x*0.28) + 'px,' + (y*0.35) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){
+      btn.style.transform = 'translate(0,0)';
+    });
+  });
+
+  // scroll reveals
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // horizontal reel drag
+  var reel = document.getElementById('reel-track');
+  var isDown = false, startX, scrollLeft;
+  reel.addEventListener('mousedown', function(e){
+    isDown = true;
+    reel.classList.add('dragging');
+    startX = e.pageX - reel.offsetLeft;
+    scrollLeft = reel.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){
+    isDown = false;
+    reel.classList.remove('dragging');
+  });
+  reel.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - reel.offsetLeft;
+    var walk = (x - startX) * 1.2;
+    reel.scrollLeft = scrollLeft - walk;
+  });
+
+  // reel carousel controls
+  var reelItems = reel.querySelectorAll('.reel-item');
+  var reelPrev = document.getElementById('reel-prev');
+  var reelNext = document.getElementById('reel-next');
+  var reelCurrentEl = document.getElementById('reel-current');
+  var reelTotalEl = document.getElementById('reel-total');
+  var reelStep = reelItems.length ? (reelItems[0].getBoundingClientRect().width + 20) : 340;
+
+  function pad2(n){ return String(n).padStart(2,'0'); }
+  reelTotalEl.textContent = pad2(reelItems.length);
+
+  function currentReelIndex(){
+    var i = Math.round(reel.scrollLeft / reelStep);
+    return Math.max(0, Math.min(i, reelItems.length - 1));
+  }
+
+  function updateReelUI(){
+    var idx = currentReelIndex();
+    reelCurrentEl.textContent = pad2(idx + 1);
+    reelPrev.disabled = reel.scrollLeft <= 4;
+    reelNext.disabled = reel.scrollLeft >= (reel.scrollWidth - reel.clientWidth - 4);
+  }
+
+  reelPrev.addEventListener('click', function(){
+    reel.scrollBy({ left: -reelStep, behavior: 'smooth' });
+  });
+  reelNext.addEventListener('click', function(){
+    reel.scrollBy({ left: reelStep, behavior: 'smooth' });
+  });
+  reel.addEventListener('scroll', function(){
+    window.requestAnimationFrame(updateReelUI);
+  }, { passive:true });
+  window.addEventListener('resize', function(){
+    reelStep = reelItems.length ? (reelItems[0].getBoundingClientRect().width + 20) : reelStep;
+  });
+  updateReelUI();
+
+  // gentle autoplay — pauses the moment someone touches the reel, resumes after a pause
+  var reelReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reelAutoplayTimer = null, reelResumeTimer = null, reelInView = false;
+
+  function reelAutoplayTick(){
+    if(reel.scrollLeft >= (reel.scrollWidth - reel.clientWidth - 4)){
+      reel.scrollTo({ left:0, behavior:'smooth' });
+    } else {
+      reel.scrollBy({ left:reelStep, behavior:'smooth' });
+    }
+  }
+  function startReelAutoplay(){
+    if(reelReduceMotion || reelAutoplayTimer) return;
+    reelAutoplayTimer = setInterval(reelAutoplayTick, 3200);
+  }
+  function stopReelAutoplay(){
+    clearInterval(reelAutoplayTimer);
+    reelAutoplayTimer = null;
+  }
+  function pauseThenResume(){
+    stopReelAutoplay();
+    clearTimeout(reelResumeTimer);
+    reelResumeTimer = setTimeout(function(){ if(reelInView) startReelAutoplay(); }, 4000);
+  }
+
+  if('IntersectionObserver' in window){
+    var reelIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        reelInView = entry.isIntersecting;
+        if(reelInView){ startReelAutoplay(); } else { stopReelAutoplay(); }
+      });
+    }, { threshold:0.4 });
+    reelIO.observe(reel);
+  }
+
+  ['mousedown','touchstart','wheel'].forEach(function(evt){
+    reel.addEventListener(evt, pauseThenResume, { passive:true });
+  });
+  reelPrev.addEventListener('click', pauseThenResume);
+  reelNext.addEventListener('click', pauseThenResume);
+
+  // video lightbox
+  var videoModal = document.getElementById('video-modal');
+  var videoPlayer = document.getElementById('video-modal-player');
+  var videoCloseBtn = document.getElementById('video-modal-close');
+
+  function openVideoModal(e){
+    if(e) e.preventDefault();
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    videoPlayer.play().catch(function(){});
+  }
+  function closeVideoModal(){
+    videoModal.classList.remove('open');
+    document.body.style.overflow = '';
+    videoPlayer.pause();
+  }
+
+  document.querySelectorAll('.video-trigger').forEach(function(el){
+    el.addEventListener('click', openVideoModal);
+  });
+  videoCloseBtn.addEventListener('click', closeVideoModal);
+  videoModal.addEventListener('click', function(e){
+    if(e.target === videoModal){ closeVideoModal(); }
+  });
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && videoModal.classList.contains('open')){ closeVideoModal(); }
+  });
+</script>
+</body>
+</html>
