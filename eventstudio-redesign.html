@@ -163,7 +163,7 @@
     background:var(--amber);
     box-shadow:0 0 10px 2px var(--amber-dim);
   }
-  .logo img{ height:34px; width:auto; display:block; }
+  .logo img{ height:34px; width:auto; display:block; } .logo{ flex-shrink:0; } .logo img{ flex-shrink:0; } .btn{ flex-shrink:0; white-space:nowrap; }
   .nav-links{ display:flex; gap:38px; list-style:none; }
   .nav-links a{
     font-size:13px;
@@ -356,7 +356,7 @@
     0%,100%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(242,169,59,0.12); }
     50%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 12px rgba(242,169,59,0.22); }
   }
-  @media (max-width:900px){
+  @media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:900px){
     .reel-arrow{ width:48px; height:48px; margin-top:-28px; }
     .reel-arrow svg{ width:18px; height:18px; }
   }
@@ -555,7 +555,7 @@
   }
   #hud .rec{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.3s infinite; }
 
-  @media (max-width:900px){
+  @media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:900px){
     .wrap{ padding:0 22px; }
     .nav-links{ display:none; }
     .services{ grid-template-columns:1fr; }
