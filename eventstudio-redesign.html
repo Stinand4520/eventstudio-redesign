@@ -21,7 +21,7 @@
         {"@context":"https://schema.org","@type":"LocalBusiness","name":"EventStudio","image":"https://www.eventstudio.tv/images/LIVE-EVENT.jpg","url":"https://www.eventstudio.tv/","telephone":"+1-416-900-5137","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"},"description":"Canadian producers of award shows, medical education broadcasts, and live experiences that never miss their cue — working nationally and internationally, based in Toronto."}
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://formspree.io">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -80,7 +80,7 @@
   }
 
   a{ color:inherit; }
-  img{ display:block; max-width:100%; }
+  img{ display:block; max-width:100%; } .skip-link{ position:absolute; left:-9999px; top:0; background:var(--amber); color:var(--ink); padding:12px 20px; z-index:1000; font-family:'Space Mono', monospace; font-size:13px; text-decoration:none; } .skip-link:focus{ left:12px; top:12px; }
 
   .wrap{
     max-width:1240px;
@@ -147,7 +147,7 @@
   header.scrolled{
     padding:16px 0;
     background:rgba(11,11,12,0.86);
-    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
   nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
@@ -254,7 +254,7 @@
   .scroll-cue{
     position:absolute; right:40px; bottom:36px; z-index:3;
     font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.2em;
-    color:var(--paper-faint);
+    color:rgba(245,241,232,0.55);
     writing-mode:vertical-rl;
     display:flex; align-items:center; gap:12px;
   }
@@ -272,7 +272,7 @@
   .marquee-track{ display:inline-flex; gap:48px; animation: scroll-x 26s linear infinite; }
   .marquee span{
     font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.12em;
-    color:var(--paper-faint); text-transform:uppercase;
+    color:rgba(245,241,232,0.55); text-transform:uppercase;
     display:inline-flex; align-items:center; gap:48px;
   }
   .marquee span i{ font-style:normal; color:var(--amber); }
@@ -322,7 +322,7 @@
     padding:6px 14px; border-radius:999px;
     box-shadow:0 4px 18px -6px var(--amber-dim);
   }
-  .reel-counter b{ font-weight:700; }
+  .reel-counter b{ font-weight:700; } .reel-pause-toggle{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; background:transparent; border:1px solid var(--line); color:var(--paper-dim); padding:6px 14px; border-radius:999px; cursor:pointer; transition:border-color .3s, color .3s; } .reel-pause-toggle:hover{ border-color:var(--paper-dim); color:var(--paper); }
   .reel-viewport{ position:relative; }
   .reel{
     display:flex; gap:20px; overflow-x:auto; padding:6px 0 24px;
@@ -377,7 +377,7 @@
     font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.1em;
     color:var(--paper); text-transform:uppercase;
   }
-  .reel-cap i{ display:block; font-style:normal; color:var(--amber-dim); font-size:10px; margin-top:4px; }
+  .reel-cap i{ display:block; font-style:normal; color:rgba(242,169,59,0.75); font-size:10px; margin-top:4px; }
 
   /* ===== approach ===== */
   .approach{ border-top:1px solid var(--line); }
@@ -505,8 +505,8 @@
     background:var(--black); color:var(--paper);
     border-top:1px solid var(--line);
   }
-  .contact-bg{ position:absolute; inset:0; z-index:0; background-image: linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.82) 55%, var(--black) 100%), url('images/LIVE-EVENT.jpg'); background-size:cover; background-position:center 30%; filter:grayscale(0.55) contrast(1.15) brightness(0.55); } .contact .wrap{ position:relative; z-index:1; } .contact .eyebrow{ color:#a85f14; }
-  .contact .eyebrow::before{ background:#a85f14; box-shadow:0 0 10px 2px rgba(168,95,20,0.35); }
+  .contact-bg{ position:absolute; inset:0; z-index:0; background-image: linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.82) 55%, var(--black) 100%), url('images/LIVE-EVENT.jpg'); background-size:cover; background-position:center 30%; filter:grayscale(0.55) contrast(1.15) brightness(0.55); } .contact .wrap{ position:relative; z-index:1; } .contact .eyebrow{ color:var(--amber); }
+  .contact .eyebrow::before{ background:var(--amber); box-shadow:0 0 10px 2px var(--amber-dim); }
   .contact h2{
     color:var(--paper); font-size:clamp(2.4rem,6vw,5rem); max-width:20ch; margin:20px auto 34px; text-align:center;
   }
@@ -549,7 +549,7 @@
   #hud{
     position:fixed; left:24px; bottom:22px; z-index:90;
     font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.12em;
-    color:var(--paper-faint);
+    color:rgba(245,241,232,0.55);
     display:flex; align-items:center; gap:10px;
     mix-blend-mode:difference;
   }
@@ -574,7 +574,7 @@
   }
 </style>
 </head>
-<body>
+<body><a href="#top" class="skip-link">Skip to content</a>
 
   <div id="loader">
     <div class="cue-dot"></div>
@@ -661,7 +661,7 @@
         </div>
         <div class="reel-nav reveal">
           <span class="reel-hint">Drag or click to explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <span class="reel-counter"><b id="reel-current">01</b> / <span id="reel-total">01</span></span>
+          <span class="reel-counter"><b id="reel-current">01</b> / <span id="reel-total">01</span></span><button class="reel-pause-toggle" id="reelPauseToggle" aria-pressed="false" aria-label="Pause automatic scrolling">Pause</button>
         </div>
       </div>
       <div class="wrap">
@@ -673,41 +673,41 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         <div class="reel reveal" id="reel-track">
-          <div class="reel-item"><img src="images/AWARD-SHOW.jpg" alt="Award show production" draggable="false"><div class="reel-cap">Award show<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/CONCERT.jpg" alt="Concert production" draggable="false"><div class="reel-cap">Concert<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/OUTDOOR-FESTIVAL.jpg" alt="Outdoor festival production" draggable="false"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/VIDEO-MAPPING.jpg" alt="Video mapping production" draggable="false"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-WEB-STREAMING.jpg" alt="Live web streaming" draggable="false"><div class="reel-cap">Live web streaming<i>Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/CONVENTION.jpg" alt="Convention production" draggable="false"><div class="reel-cap">Convention<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-1.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/SPORTS-EVENT.jpg" alt="Sports event production" draggable="false"><div class="reel-cap">Sports event<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/CORPORATE-EDUCATION-MEETING.jpg" alt="Corporate education meeting" draggable="false"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/PLANNING-TO-EXECUTION.jpg" alt="Planning to execution" draggable="false"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/OUTDOO0R-AWARDS.jpg" alt="Outdoor awards production" draggable="false"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/SALES-MEETING.jpg" alt="Sales meeting production" draggable="false"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/AUDIENCE-PARTICIPATION.jpg" alt="Audience participation" draggable="false"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-TV-PRODUCTION.jpg" alt="Live TV production" draggable="false"><div class="reel-cap">Live TV production<i>Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY.jpg" alt="Virtual holiday party" draggable="false"><div class="reel-cap">Virtual holiday party<i>Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/CELEBRITY-INTERVIEW.jpg" alt="Celebrity interview" draggable="false"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-2.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-3.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/EVENTS.jpg" alt="Live event production" draggable="false"><div class="reel-cap">Live events<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/EVENT-PRODUCTION.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-STREAMING.jpg" alt="Live streaming production" draggable="false"><div class="reel-cap">Live streaming<i>Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/MEDICAL-EDUCATION.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-1.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-2.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-3.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-4.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-5.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-6.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-7.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-8.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-9.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-10.jpg" alt="Event production" draggable="false"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-4.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-5.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-6.jpg" alt="Medical education production" draggable="false"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/AWARD-SHOW.jpg" alt="Award show production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Award show<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/CONCERT.jpg" alt="Concert production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Concert<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/OUTDOOR-FESTIVAL.jpg" alt="Outdoor festival production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/VIDEO-MAPPING.jpg" alt="Video mapping production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-WEB-STREAMING.jpg" alt="Live web streaming" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live web streaming<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/CONVENTION.jpg" alt="Convention production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Convention<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-1.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/SPORTS-EVENT.jpg" alt="Sports event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sports event<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/CORPORATE-EDUCATION-MEETING.jpg" alt="Corporate education meeting" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/PLANNING-TO-EXECUTION.jpg" alt="Planning to execution" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/OUTDOO0R-AWARDS.jpg" alt="Outdoor awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/SALES-MEETING.jpg" alt="Sales meeting production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/AUDIENCE-PARTICIPATION.jpg" alt="Audience participation" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-TV-PRODUCTION.jpg" alt="Live TV production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live TV production<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY.jpg" alt="Virtual holiday party" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Virtual holiday party<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/CELEBRITY-INTERVIEW.jpg" alt="Celebrity interview" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-2.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-3.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/EVENTS.jpg" alt="Live event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live events<i>Live event</i></div></div>
+          <div class="reel-item"><img src="images/EVENT-PRODUCTION.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/LIVE-STREAMING.jpg" alt="Live streaming production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live streaming<i>Virtually Real</i></div></div>
+          <div class="reel-item"><img src="images/MEDICAL-EDUCATION.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-1.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-2.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-3.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-4.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-5.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-6.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-7.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-8.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-9.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Event-Production-10.jpg" alt="Event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-4.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-5.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><img src="images/Medical-Event-Production-6.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
         </div>
         </div>
       </div>
@@ -737,7 +737,7 @@
       </div>
     </section>
 
-    <div id="video-modal">
+    <div id="video-modal" role="dialog" aria-modal="true" aria-label="Virtually Real demo video">
       <div class="modal-inner">
         <button class="modal-close" id="video-modal-close" aria-label="Close video"><span>Close</span><span class="x">&times;</span></button>
         <video id="video-modal-player" controls playsinline preload="none" poster="">
@@ -753,15 +753,15 @@
         </div>
         <div class="team-grid reveal">
           <div class="person">
-            <div class="photo"><img src="images/Andy-Stinon.jpg" alt="Andy Stinton"></div>
+            <div class="photo"><img src="images/Andy-Stinon.jpg" alt="Andy Stinton" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Producer · Director · Former Chimney Sweep</span><h3>Andy Stinton</h3></div>
           </div>
           <div class="person">
-            <div class="photo"><img src="images/Denise-Carr-Rollit.jpg" alt="Denise Carr-Rollitt"></div>
+            <div class="photo"><img src="images/Denise-Carr-Rollit.jpg" alt="Denise Carr-Rollitt" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Producer · Designer · Chief Cook and Bottle Washer</span><h3>Denise Carr-Rollitt</h3></div>
           </div>
           <div class="person">
-            <div class="photo"><img src="images/nancy-Sinclair.jpg" alt="Nancy Sinclair"></div>
+            <div class="photo"><img src="images/nancy-Sinclair.jpg" alt="Nancy Sinclair" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Production Coordinator · Show Caller · Former Spotlight Operator</span><h3>Nancy Sinclair</h3></div>
           </div>
         </div>
@@ -942,7 +942,7 @@
   window.addEventListener('resize', function(){
     reelStep = reelItems.length ? (reelItems[0].getBoundingClientRect().width + 20) : reelStep;
   });
-  updateReelUI();
+  updateReelUI(); var reelPauseToggle=document.getElementById('reelPauseToggle'); if(reelPauseToggle){ reelPauseToggle.addEventListener('click', function(){ reelUserPaused=!reelUserPaused; if(reelUserPaused){ stopReelAutoplay(); reelPauseToggle.textContent='Play'; reelPauseToggle.setAttribute('aria-pressed','true'); } else { reelPauseToggle.textContent='Pause'; reelPauseToggle.setAttribute('aria-pressed','false'); if(reelInView){ startReelAutoplay(); } } }); }
 
   // gentle autoplay — pauses the moment someone touches the reel, resumes after a pause
   var reelReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -992,12 +992,12 @@
 
   function openVideoModal(e){
     if(e) e.preventDefault();
-    videoModal.classList.add('open');
+    window.__lastFocusedEl=document.activeElement; videoModal.classList.add('open'); setTimeout(function(){ videoCloseBtn.focus(); }, 50);
     document.body.style.overflow = 'hidden';
     videoPlayer.play().catch(function(){});
   }
   function closeVideoModal(){
-    videoModal.classList.remove('open');
+    videoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); }
     document.body.style.overflow = '';
     videoPlayer.pause();
   }
@@ -1005,7 +1005,7 @@
   document.querySelectorAll('.video-trigger').forEach(function(el){
     el.addEventListener('click', openVideoModal);
   });
-  videoCloseBtn.addEventListener('click', closeVideoModal);
+  videoCloseBtn.addEventListener('click', closeVideoModal); var contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit', function(e){ e.preventDefault(); var btn=contactForm.querySelector('button[type=submit]'); var originalText=btn.textContent; btn.textContent='Sending...'; btn.disabled=true; var data=new FormData(contactForm); fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){ if(res.ok){ contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; } else { btn.textContent=originalText; btn.disabled=false; var err=contactForm.querySelector('.form-error'); if(!err){ err=document.createElement('p'); err.className='form-error'; err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); } err.textContent='Something went wrong — please try again or email us directly.'; } }).catch(function(){ btn.textContent=originalText; btn.disabled=false; }); }); }
   videoModal.addEventListener('click', function(e){
     if(e.target === videoModal){ closeVideoModal(); }
   });
