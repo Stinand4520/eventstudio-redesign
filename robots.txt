@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eventstudio-redesign-beta.vercel.app/sitemap.xml
+Sitemap: https://www.eventstudio.tv/sitemap.xml
