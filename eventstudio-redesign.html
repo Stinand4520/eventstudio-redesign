@@ -942,7 +942,7 @@
   window.addEventListener('resize', function(){
     reelStep = reelItems.length ? (reelItems[0].getBoundingClientRect().width + 20) : reelStep;
   });
-  updateReelUI(); var reelPauseToggle=document.getElementById('reelPauseToggle'); if(reelPauseToggle){ reelPauseToggle.addEventListener('click', function(){ reelUserPaused=!reelUserPaused; if(reelUserPaused){ stopReelAutoplay(); reelPauseToggle.textContent='Play'; reelPauseToggle.setAttribute('aria-pressed','true'); } else { reelPauseToggle.textContent='Pause'; reelPauseToggle.setAttribute('aria-pressed','false'); if(reelInView){ startReelAutoplay(); } } }); }
+  updateReelUI(); var reelUserPaused=false; var reelPauseToggle=document.getElementById('reelPauseToggle'); if(reelPauseToggle){ reelPauseToggle.addEventListener('click', function(){ reelUserPaused=!reelUserPaused; if(reelUserPaused){ stopReelAutoplay(); reelPauseToggle.textContent='Play'; reelPauseToggle.setAttribute('aria-pressed','true'); } else { reelPauseToggle.textContent='Pause'; reelPauseToggle.setAttribute('aria-pressed','false'); if(reelInView){ startReelAutoplay(); } } }); }
 
   // gentle autoplay — pauses the moment someone touches the reel, resumes after a pause
   var reelReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
