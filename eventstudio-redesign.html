@@ -147,10 +147,10 @@
   header.scrolled{
     padding:16px 0;
     background:rgba(11,11,12,0.86);
-    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+     
     border-bottom:1px solid var(--line);
   }
-  nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
+  header.scrolled::before{ content:''; position:absolute; inset:0; z-index:-1; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); } nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
   .logo{
     font-family:'Bricolage Grotesque', sans-serif;
     font-weight:700;
