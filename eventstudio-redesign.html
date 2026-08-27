@@ -94,7 +94,7 @@
     transform:translateY(28px);
     transition: opacity .9s var(--ease), transform .9s var(--ease);
   }
-  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal.in{ opacity:1; transform:translateY(0); } .service:nth-child(1),.person:nth-child(1){ transition-delay:0s; } .service:nth-child(2),.person:nth-child(2){ transition-delay:0.09s; } .service:nth-child(3),.person:nth-child(3){ transition-delay:0.18s; } .service:nth-child(4){ transition-delay:0.27s; } .magnet{ transition: transform .2s var(--ease); will-change:transform; }
 
   /* ===== cue-light loader ===== */
   #loader{
@@ -201,7 +201,7 @@
   .btn.ghost{
     background:transparent; color:var(--paper); border-color:var(--line);
   }
-  .btn.ghost:hover{ border-color:var(--paper-dim); box-shadow:none; }
+  .btn.ghost:hover{ border-color:var(--paper-dim); box-shadow:none; } .btn.ghost{ position:relative; overflow:hidden; z-index:1; } .btn.ghost::before{ content:''; position:absolute; inset:0; background:var(--amber); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); z-index:-1; } .btn.ghost:hover::before{ transform:scaleX(1); } .btn.ghost:hover{ color:var(--ink); border-color:var(--amber); }
 
   /* ===== hero ===== */
   .hero{
@@ -279,7 +279,7 @@
   @keyframes scroll-x{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
   /* ===== section shell ===== */
-  section{ position:relative; padding:130px 0; }
+  section{ position:relative; padding:130px 0; } #work{ padding-top:130px; padding-bottom:40px; } #reel{ padding-top:45px; padding-bottom:90px; } .approach{ padding-top:60px; padding-bottom:60px; } .stream-band{ padding-top:70px; padding-bottom:130px; } #studio{ padding-top:40px; padding-bottom:50px; } #contact{ padding-top:50px; }
   .section-head{
     display:flex; justify-content:space-between; align-items:flex-end;
     gap:40px; margin-bottom:64px; flex-wrap:wrap;
@@ -334,7 +334,7 @@
   .reel-item{
     flex:0 0 auto; width:440px; aspect-ratio:16/9; position:relative; cursor:zoom-in;
     border:1px solid var(--line); overflow:hidden;
-    scroll-snap-align:start;
+    scroll-snap-align:start; transition:filter .4s var(--ease);
   }
   .reel-arrow{
     position:absolute; top:50%; z-index:5;
@@ -346,7 +346,7 @@
     transition:transform .25s var(--ease), box-shadow .25s var(--ease), opacity .3s, background .25s, color .25s;
     animation:arrow-pulse 2.2s ease-in-out infinite;
   }
-  .reel-arrow.prev{ left:14px; }
+  .reel-arrow.prev{ left:14px; } .reel-item:hover{ filter: drop-shadow(0 20px 34px rgba(0,0,0,.55)); }
   .reel-arrow.next{ right:14px; }
   .reel-arrow svg{ width:22px; height:22px; }
   .reel-arrow:hover{ transform:scale(1.12); background:var(--paper); color:var(--ink); animation-play-state:paused; }
@@ -628,23 +628,23 @@
           <h2>What we do</h2>
           <p>Four disciplines, one crew — from the first lighting plot to the last frame of the stream.</p>
         </div>
-        <div class="services reveal">
-          <div class="service">
+        <div class="services">
+          <div class="service reveal">
             <span class="num">01 — Live events</span>
             <h3>Award shows &amp; galas</h3>
             <p>Stage design, show-calling, and direction for evenings that need to feel effortless — because we've already solved every cue backstage.</p>
           </div>
-          <div class="service">
+          <div class="service reveal">
             <span class="num">02 — Event production</span>
             <h3>Planning &amp; execution</h3>
             <p>We negotiate AV, build the run of show, and manage budgets so your event lands exactly on brief — and on cost.</p>
           </div>
-          <div class="service stream">
+          <div class="service stream reveal">
             <span class="num">03 — Live streaming</span>
             <h3>Broadcasts, not webcams</h3>
             <p>Our Virtually Real platform gives every webcast a director, a stage manager, and a look worth watching.</p>
           </div>
-          <div class="service">
+          <div class="service reveal">
             <span class="num">04 — Medical education</span>
             <h3>Clinical &amp; confidential</h3>
             <p>Studio, webcast, and live-procedure production across orthopedics, diabetes, aesthetics, and beyond — handled with the discretion it demands.</p>
@@ -751,16 +751,16 @@
           <h2>The studio</h2>
           <p>A small crew who has been in the booth for every kind of show there is.</p>
         </div>
-        <div class="team-grid reveal">
-          <div class="person">
+        <div class="team-grid">
+          <div class="person reveal">
             <div class="photo"><img src="images/Andy-Stinon.jpg" alt="Andy Stinton" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Producer · Director · Former Chimney Sweep</span><h3>Andy Stinton</h3></div>
           </div>
-          <div class="person">
+          <div class="person reveal">
             <div class="photo"><img src="images/Denise-Carr-Rollit.jpg" alt="Denise Carr-Rollitt" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Producer · Designer · Chief Cook and Bottle Washer</span><h3>Denise Carr-Rollitt</h3></div>
           </div>
-          <div class="person">
+          <div class="person reveal">
             <div class="photo"><img src="images/nancy-Sinclair.jpg" alt="Nancy Sinclair" loading="lazy" decoding="async"></div>
             <div class="info"><span class="role">Production Coordinator · Show Caller · Former Spotlight Operator</span><h3>Nancy Sinclair</h3></div>
           </div>
