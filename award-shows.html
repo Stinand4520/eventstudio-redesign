@@ -141,6 +141,7 @@ background:rgba(11,11,12,0.86);
 border-bottom:1px solid var(--line);
 }
 header.scrolled::before{ content:''; position:absolute; inset:0; z-index:-1; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); } nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
+nav.wrap > a.btn.magnet{ padding:10px 16px; font-size:10.5px; letter-spacing:0.06em; }
 .logo{
 font-family:'Bricolage Grotesque', sans-serif;
 font-weight:700;
@@ -154,9 +155,10 @@ background:var(--amber);
 box-shadow:0 0 10px 2px var(--amber-dim);
 }
 .logo img{ height:34px; width:auto; display:block; } .logo{ flex-shrink:0; } .logo img{ flex-shrink:0; } .btn{ flex-shrink:0; white-space:nowrap; }
-.nav-links{ display:flex; gap:38px; list-style:none; }
+.nav-links{ display:flex; gap:18px; list-style:none; }
 .nav-links a{
-font-size:13px;
+white-space:nowrap;
+font-size:12px;
 letter-spacing:0.02em;
 text-decoration:none;
 color:var(--paper-dim);
@@ -345,7 +347,7 @@ footer .logo{ color:var(--ink); }
 footer .logo .dot{ background:#a85f14; box-shadow:0 0 8px 2px rgba(168,95,20,0.3); }
 footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(--ink-dim); letter-spacing:0.02em; }
 
-@media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:900px){
+@media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1300px){
 .wrap{ padding:0 22px; }
 .nav-toggle{ display:flex; } .nav-links{ display:flex; position:fixed; inset:0; z-index:99; padding-top:100px; flex-direction:column; align-items:center; justify-content:flex-start; gap:28px; background:var(--black); opacity:0; pointer-events:none; transform:translateY(-12px); transition:opacity .3s var(--ease), transform .3s var(--ease); } .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); } .nav-links a{ font-size:20px; } .nav-links .nav-cta{ display:list-item; margin-top:8px; } nav.wrap > .btn.magnet{ display:none; }
 .services{ grid-template-columns:1fr; }
@@ -375,8 +377,10 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
 <ul class="nav-links" id="mobileNav">
 <li><a href="/">Home</a></li>
-<li><a href="/live-event-production.html">Live Event Production</a></li>
-<li><a href="/award-shows.html">Award Shows &amp; Galas</a></li>
+<li><a href="/live-event-production.html">Event Production</a></li>
+<li><a href="/award-shows.html">Award Shows</a></li>
+<li><a href="/live-streaming.html">Streaming</a></li>
+<li><a href="/medical-education-production.html">Medical</a></li>
 <li><a href="#studio">Studio</a></li>
 <li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Start the show</a></li>
 </ul>
@@ -459,7 +463,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 </div>
 </section>
 
-<section id="praise" style="padding:70px 0;border-top:1px solid var(--line);"><div class="wrap"><div style="border-left:3px solid var(--amber);padding-left:28px;max-width:680px;margin:0 auto;text-align:left;"><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);">"Everyone absolutely loved the energy and craziness of the show."</p><p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:14px;">Special Olympics — World Winter Games</p></div></div></section><section id="studio">
+<section id="praise" style="padding:70px 0;border-top:1px solid var(--line);"><div class="wrap"><div style="max-width:680px;margin:0 auto;text-align:left;"><div style="border-left:3px solid var(--amber);padding-left:28px;margin-bottom:36px;"><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);">"Everyone absolutely loved the energy and craziness of the show."</p><p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:14px;">Special Olympics — World Winter Games</p></div><div style="border-left:3px solid var(--amber);padding-left:28px;"><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);">"I've worked several times with EventStudio as they created unforgettable events seemingly out of thin air. The process is a pleasure, and the result is purely professional."</p><p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:14px;">Jim Slotek, Gemini Nominated Journalist</p></div><a href="/love-letters.html" style="display:inline-block;margin-top:28px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Read more love letters →</a></div></div></section><section id="studio">
 <div class="wrap">
 <div class="section-head reveal">
 <h2>The studio</h2>
@@ -516,7 +520,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <footer>
 <div class="wrap">
 <a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo.png" alt="EventStudio"></a>
-<div class="legal">© 2026 EventStudio — DCR Graphics and Productions Inc. — All rights reserved</div>
+<div class="legal">© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/love-letters.html" style="color:var(--ink-dim);">Love Letters</a></div>
 </div>
 </footer>
 
