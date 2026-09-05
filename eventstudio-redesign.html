@@ -489,6 +489,9 @@
   .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
   .person{ border:1px solid var(--line); }
   .person .photo{ aspect-ratio:16/9; overflow:hidden; position:relative; }
+  .person{ cursor:pointer; }
+  .person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.85), transparent); color:var(--amber); font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; opacity:0; transition:opacity .3s var(--ease); }
+  .person:hover .photo::after{ opacity:1; }
   .person .photo img{
     width:100%; height:100%; object-fit:cover;
     filter:grayscale(0.85) contrast(1.1) brightness(0.85);
@@ -1015,6 +1018,26 @@
   window.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && videoModal.classList.contains('open')){ closeVideoModal(); }
   });
-var photoModal = document.getElementById('photo-modal'); var photoModalImg = document.getElementById('photo-modal-img'); var photoCloseBtn = document.getElementById('photo-modal-close'); var photoModalCaption = document.getElementById('photo-modal-caption'); function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.textContent = caption || ''; photoModal.classList.add('open'); document.body.style.overflow = 'hidden'; } function closePhotoModal(){ photoModal.classList.remove('open'); document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.textContent = ''; } reelItems.forEach(function(item){ item.addEventListener('click', function(e){ if(maxDrag > 6) return; var img = item.querySelector('img'); if(img) openPhotoModal(img.src, img.alt); }); }); photoCloseBtn.addEventListener('click', closePhotoModal); photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } }); window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } }); </script>
+var photoModal = document.getElementById('photo-modal'); var photoModalImg = document.getElementById('photo-modal-img'); var photoCloseBtn = document.getElementById('photo-modal-close'); var photoModalCaption = document.getElementById('photo-modal-caption'); function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.textContent = caption || ''; photoModal.classList.add('open'); document.body.style.overflow = 'hidden'; } function closePhotoModal(){ photoModal.classList.remove('open'); document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.textContent = ''; } reelItems.forEach(function(item){ item.addEventListener('click', function(e){ if(maxDrag > 6) return; var img = item.querySelector('img'); if(img) openPhotoModal(img.src, img.alt); }); }); photoCloseBtn.addEventListener('click', closePhotoModal); photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } }); window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } }); 
+    var teamBios = {
+      'Andy Stinton': "Andy Stinton went from chimney sweep and grocery bagger to record-label promo, radio host, cabaret emcee — including for royalty — then brought that showbiz instinct to Canada. He now produces award-winning live events and TV, from Toronto’s New Year’s Eve fireworks to major facial aesthetic broadcasts and video production for Dr. Maurício de Maio and the MD Codes program.",
+      'Denise Carr-Rollitt': "Denise Carr-Rollitt is a multimedia event producer who turns client messages into campaigns and graphics that hold an audience’s attention. She has stage-managed major shows for Allergan Canada, Imperial Oil, Canadian Music Week, and Stryker Medical across North America.",
+      'Nancy Sinclair': "Nancy Sinclair has spent 20 years coordinating live events — scripts, running orders, and every moving part between client and crew. She has produced major award shows, including 33 bands and 45 presenters over three days, and is the gold standard in event coordination."
+    };
+    document.querySelectorAll('.person').forEach(function(item){
+      item.addEventListener('click', function(){
+        var img = item.querySelector('img');
+        var nameEl = item.querySelector('h3');
+        var name = nameEl ? nameEl.textContent : '';
+        var bio = teamBios[name];
+        if(img && bio){
+          photoModalImg.src = img.src;
+          photoModalCaption.innerHTML = '<strong>' + name + '</strong><br><br>' + bio;
+          photoModal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+    </script>
 </body>
 </html>
