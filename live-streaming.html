@@ -298,8 +298,11 @@ color:var(--paper);
 
 /* ===== team ===== */
 .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+/* ===== photo lightbox ===== */ #photo-modal{ position:fixed; inset:0; z-index:200; background:rgba(11,11,12,0.92); display:flex; align-items:center; justify-content:center; padding:60px 24px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); } #photo-modal.open{ opacity:1; pointer-events:auto; } #photo-modal .modal-inner{ position:relative; width:100%; max-width:1040px; transform:translateY(16px) scale(0.98); transition:transform .4s var(--ease); } #photo-modal.open .modal-inner{ transform:translateY(0) scale(1); } #photo-modal img{ width:100%; display:block; background:var(--black); border:1px solid var(--line); } #photo-modal .photo-modal-caption{ margin-top:14px; font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--paper-dim); text-align:center; } #photo-modal .modal-close{ position:absolute; top:-46px; right:0; display:flex; align-items:center; gap:10px; font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper-dim); background:none; border:none; cursor:pointer; padding:8px; transition:color .3s; } #photo-modal .modal-close:hover{ color:var(--paper); } #photo-modal .modal-close .x{ width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px; } @media (max-width:560px){ #photo-modal .modal-close{ top:-40px; } }
 .person{ border:1px solid var(--line); }
 .person .photo{ aspect-ratio:16/9; overflow:hidden; position:relative; }
+.person{ cursor:pointer; }
+.person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.95), transparent); color:var(--amber); font-family:'Space Mono', monospace; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:12px 14px; opacity:1; }
 .person .photo img{
 width:100%; height:100%; object-fit:cover;
 filter:grayscale(0.85) contrast(1.1) brightness(0.85);
@@ -471,6 +474,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 </div>
 </section>
 
+<div id="photo-modal"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
 <section id="studio">
 <div class="wrap">
 <div class="section-head reveal">
@@ -527,7 +531,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 
 <footer>
 <div class="wrap">
-<a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo.png" alt="EventStudio"></a>
+<a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a>
 <div class="legal">© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/love-letters.html" style="color:var(--ink-dim);">Love Letters</a></div>
 </div>
 </footer>
@@ -613,6 +617,32 @@ err.textContent='Something went wrong — please try again or email us directly.
 }).catch(function(){ btn.textContent=originalText; btn.disabled=false; });
 });
 }
+
+var photoModal = document.getElementById('photo-modal');
+var photoModalImg = document.getElementById('photo-modal-img');
+var photoCloseBtn = document.getElementById('photo-modal-close');
+var photoModalCaption = document.getElementById('photo-modal-caption');
+function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.innerHTML = caption || ''; photoModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closePhotoModal(){ photoModal.classList.remove('open'); document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.innerHTML = ''; }
+photoCloseBtn.addEventListener('click', closePhotoModal);
+photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } });
+window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } });
+var teamBios = {
+  'Andy Stinton': "Andy Stinton went from chimney sweep and grocery bagger to record-label promo, radio host, cabaret emcee \u2014 including for royalty \u2014 then brought that showbiz instinct to Canada. He now produces award-winning live events and TV, from Toronto\u2019s New Year\u2019s Eve fireworks to major facial aesthetic broadcasts and video production for Dr. Maur\u00edcio de Maio and the MD Codes program.",
+  'Denise Carr-Rollitt': "Denise Carr-Rollitt is a multimedia event producer who turns client messages into campaigns and graphics that hold an audience\u2019s attention. She has stage-managed major shows for Allergan Canada, Imperial Oil, Canadian Music Week, and Stryker Medical across North America.",
+  'Nancy Sinclair': "Nancy Sinclair has spent 20 years coordinating live events \u2014 scripts, running orders, and every moving part between client and crew. She has produced major award shows, including 33 bands and 45 presenters over three days, and is the gold standard in event coordination."
+};
+document.querySelectorAll('.person').forEach(function(item){
+  item.addEventListener('click', function(){
+    var img = item.querySelector('img');
+    var nameEl = item.querySelector('h3');
+    var name = nameEl ? nameEl.textContent : '';
+    var bio = teamBios[name];
+    if(img && bio){
+      openPhotoModal(img.src, '<strong>' + name + '</strong><br><br>' + bio);
+    }
+  });
+});
 </script>
 </body>
 </html>
