@@ -460,7 +460,7 @@ Request your spec <span class="arrow">&rarr;</span>
 <h2 class="section-title">Four steps.</h2>
 <div class="steps">
 <div class="step"><div class="n">01</div><div class="t">Date, venue, room, short agenda.</div></div>
-<div class="step"><div class="n">02</div><div class="t">Spec + three quotes in about a week.</div></div>
+<div class="step"><div class="n">02</div><div class="t">Spec + three quotes.</div></div>
 <div class="step"><div class="n">03</div><div class="t">Required vs. optional, marked on the page.</div></div>
 <div class="step"><div class="n">04</div><div class="t">You pick the supplier. Done.</div></div>
 </div>
@@ -479,7 +479,7 @@ Request your spec <span class="arrow">&rarr;</span>
 </section>
 
 <section class="final-cta" id="spec-form">
-<h2>Get your spec this week.</h2>
+<h2>Get your spec.</h2>
 <p class="lede">Send the four things below — we'll come back with the spec and three quotes.</p>
 
 <form id="specForm" action="https://formspree.io/f/xppagprw" method="POST">
@@ -515,7 +515,7 @@ Request your spec <span class="arrow">&rarr;</span>
 <button type="submit" class="cta-btn" style="align-self:flex-start;">
 Request your spec <span class="arrow">&rarr;</span>
 </button>
-<p class="form-trust">We reply within one business day. Your details stay with us — no mailing list, no sharing.</p>
+<p class="form-trust">Your details stay with us — no mailing list, no sharing.</p>
 </form>
 </section>
 
@@ -538,7 +538,7 @@ var data = new FormData(specForm);
 fetch(specForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
 .then(function (res) {
 if (res.ok) {
-specForm.innerHTML = '<p style="font-size:20px;">Thanks — we will be in touch within one business day.</p>';
+specForm.innerHTML = '<p style="font-size:20px;">Thanks — we will be in touch.</p>';
 } else {
 btn.innerHTML = originalHTML;
 btn.disabled = false;
