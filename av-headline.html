@@ -3,567 +3,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AV Headline | EventStudio</title>
+<title>AV Compare | EventStudio</title>
+<meta name="description" content="One AV spec, three reputable suppliers, like-for-like quotes. You contract the winner directly. Fee from $500 CAD. We are never paid by the AV house.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b0b0c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EventStudio">
+<meta property="og:title" content="AV Compare — make event AV cost-effective">
+<meta property="og:description" content="Three quotes. One spec. Only the gear you need.">
+<meta property="og:url" content="https://www.eventstudio.tv/av-headline.html">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://formspree.io">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
---bg: #0b0b0c;
---surface: #16181c;
---surface-2: #1d2025;
---ink: #f4f1ea;
---ink-dim: #9aa1ab;
---ink-faint: #6b7178;
---line: rgba(244,241,234,0.11);
---line-strong: rgba(244,241,234,0.2);
---blue: #00aeef;
---blue-dim: #3b7fa0;
---amber: #f2a93b;
---cut: #c1544f;
-
---font-display: 'Fraunces', ui-serif, Georgia, serif;
---font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
---font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+/* Tokens, type and components mirror the main site (eventstudio-redesign.html) */
+:root{
+  --black:#0b0b0c;
+  --charcoal:#151517;
+  --charcoal-2:#1d1d20;
+  --line:rgba(245,241,232,0.12);
+  --line-strong:rgba(245,241,232,0.3);
+  --paper:#f5f1e8;
+  --paper-dim:rgba(245,241,232,0.62);
+  --paper-faint:rgba(245,241,232,0.34);
+  --amber:#f2a93b;
+  --amber-dim:rgba(242,169,59,0.5);
+  --blue:#4c8dff;
+  --red:#e4392e;
+  --ink:#141311;
+  --ease:cubic-bezier(.16,.84,.44,1);
 }
-
-* { box-sizing: border-box; }
-
-body {
-background: var(--bg);
-color: var(--ink);
-font-family: var(--font-body);
-font-size: 16px;
-line-height: 1.55;
-padding: 0 20px;
--webkit-font-smoothing: antialiased;
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--paper);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-
-::selection { background: var(--amber); color: #1a1200; }
-
-a { color: inherit; }
-
-.wrap {
-max-width: 720px;
-margin: 0 auto;
+::selection{background:var(--amber);color:var(--ink);}
+a{color:inherit;}
+img{display:block;max-width:100%;}
+h1,h2,h3{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  line-height:1.02;
+  text-wrap:balance;
 }
+h1 em,h2 em{font-style:normal;color:var(--amber);}
 
-.wrap-wide {
-max-width: 800px;
-margin: 0 auto;
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:12px 20px;z-index:1000;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none;}
+.skip-link:focus{left:12px;top:12px;}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--amber);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;flex:none;
+  background:var(--amber);box-shadow:0 0 10px 2px var(--amber-dim);
 }
 
 /* ---------- header ---------- */
-header.site {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 12px;
-padding-block: 22px;
-border-bottom: 1px solid var(--line);
+header.site{border-bottom:1px solid var(--line);}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px;}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;min-height:44px;}
+.logo .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px 2px var(--amber-dim);}
+.logo img{height:26px;width:auto;}
+.product-tag{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;
+  color:var(--paper-dim);border:1px solid var(--line-strong);
+  padding:6px 10px;border-radius:2px;white-space:nowrap;
 }
+@media (max-width:480px){ .logo img{height:20px;} }
+@media (max-width:360px){ .wrap{padding:0 18px;} .logo img{height:17px;} .product-tag{font-size:10px;letter-spacing:0.08em;padding:5px 7px;} }
 
-.wordmark {
-font-family: var(--font-mono);
-font-weight: 600;
-font-size: 14px;
-letter-spacing: 0.06em;
-}
-.wordmark .studio { color: var(--blue); }
-
-.product-tag {
-font-family: var(--font-mono);
-font-size: 11px;
-letter-spacing: 0.14em;
-color: var(--ink-dim);
-border: 1px solid var(--line-strong);
-padding: 5px 9px;
-border-radius: 3px;
-white-space: nowrap;
-}
-
-/* ---------- generic section rhythm ---------- */
-section {
-padding-block: 56px;
-border-bottom: 1px solid var(--line);
-}
-section:last-of-type { border-bottom: none; }
-
-.eyebrow {
-font-family: var(--font-mono);
-font-size: 12px;
-letter-spacing: 0.16em;
-text-transform: uppercase;
-color: var(--blue);
-margin: 0 0 14px;
-}
-
-h2.section-title {
-font-family: var(--font-display);
-font-weight: 600;
-font-size: clamp(24px, 4vw, 30px);
-text-wrap: balance;
-margin: 0 0 20px;
-color: var(--ink);
-}
-
-p { margin: 0 0 16px; max-width: 62ch; }
-p:last-child { margin-bottom: 0; }
-.lede { color: var(--ink-dim); font-size: 17px; }
+/* ---------- sections ---------- */
+section{padding:64px 0;border-bottom:1px solid var(--line);}
+main section:last-child{border-bottom:none;}
+p{max-width:62ch;margin-bottom:16px;}
+p:last-child{margin-bottom:0;}
+.lede{color:var(--paper-dim);font-size:17px;}
+h2.section-title{font-size:clamp(28px,4.6vw,40px);margin-bottom:24px;}
 
 /* ---------- hero ---------- */
-.hero { padding-top: 48px; padding-bottom: 52px; }
-
-h1 {
-font-family: var(--font-display);
-font-weight: 600;
-font-size: clamp(34px, 6.4vw, 54px);
-line-height: 1.04;
-letter-spacing: -0.01em;
-text-wrap: balance;
-margin: 0 0 18px;
+.hero{padding-top:56px;padding-bottom:64px;}
+.hero h1{font-size:clamp(40px,8vw,72px);margin-bottom:20px;max-width:14ch;}
+.tagline{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:500;
+  font-size:clamp(19px,2.8vw,23px);letter-spacing:-0.01em;line-height:1.3;
+  color:var(--amber);margin-bottom:24px;
 }
+.hero-copy{max-width:56ch;color:var(--paper-dim);font-size:17px;margin-bottom:32px;}
+.hero-copy strong{color:var(--paper);font-weight:600;}
+.cta-sub{margin-top:16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.02em;color:var(--paper-dim);}
 
-.tagline {
-font-family: var(--font-display);
-font-style: italic;
-font-weight: 500;
-font-size: clamp(18px, 2.6vw, 21px);
-color: var(--amber);
-margin: 0 0 26px;
-text-wrap: balance;
+/* ---------- button (main-site .btn) ---------- */
+.btn{
+  font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:13px 24px;
+  border:1px solid var(--amber);border-radius:2px;
+  color:var(--ink);background:var(--amber);cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
 }
-
-.hero-copy { max-width: 56ch; color: var(--ink-dim); font-size: 17px; margin-bottom: 30px; }
-.hero-copy strong { color: var(--ink); font-weight: 600; }
-
-.cta-btn {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-background: var(--amber);
-color: #1a1200;
-font-family: var(--font-body);
-font-weight: 700;
-font-size: 15px;
-padding: 14px 22px;
-border-radius: 3px;
-text-decoration: none;
-border: 1px solid var(--amber);
-transition: transform 0.15s ease, background 0.15s ease;
-cursor: pointer;
-}
-.cta-btn:hover { background: #ffbe57; }
-.cta-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.cta-btn .arrow { transition: transform 0.15s ease; }
-.cta-btn:hover .arrow { transform: translateX(3px); }
-.cta-btn:disabled { opacity: 0.6; cursor: default; }
-
-.cta-sub {
-margin-top: 14px;
-font-family: var(--font-mono);
-font-size: 12.5px;
-color: var(--ink-faint);
-letter-spacing: 0.02em;
-}
+button.btn{-webkit-appearance:none;appearance:none;}
+.btn:hover{box-shadow:0 0 0 1px var(--amber),0 8px 30px -8px var(--amber-dim);transform:translateY(-1px);}
+.btn:active{transform:translateY(1px);box-shadow:none;}
+.btn:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
+.btn .arrow{transition:transform .25s var(--ease);}
+.btn:hover .arrow{transform:translateX(3px);}
+.btn:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none;}
 
 /* ---------- offer ---------- */
-.offer-statement {
-font-family: var(--font-display);
-font-style: italic;
-font-weight: 500;
-font-size: clamp(19px, 2.8vw, 23px);
-color: var(--ink);
-margin: 0 0 28px;
-text-wrap: balance;
-}
+.terms{list-style:none;margin:0 0 28px;border-top:1px solid var(--line);}
+.terms li{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;}
+.num{font-family:'Space Mono',monospace;font-size:12px;color:var(--amber);padding-top:3px;flex-shrink:0;width:1.8em;}
+.keep-diff{color:var(--paper-dim);border-left:2px solid var(--amber);padding-left:16px;}
+.keep-diff strong{color:var(--paper);font-weight:600;}
 
-.terms {
-list-style: none;
-margin: 0 0 26px;
-padding: 0;
-border-top: 1px solid var(--line);
-}
-.terms li {
-display: flex;
-gap: 14px;
-align-items: flex-start;
-padding: 14px 0;
-border-bottom: 1px solid var(--line);
-font-size: 15.5px;
-}
-.terms .num {
-font-family: var(--font-mono);
-font-size: 12px;
-color: var(--blue);
-padding-top: 3px;
-flex-shrink: 0;
-width: 1.6em;
-}
-
-.keep-diff {
-color: var(--ink-dim);
-border-left: 2px solid var(--amber);
-padding-left: 16px;
-}
-.keep-diff strong { color: var(--ink); font-weight: 600; }
-
-/* ---------- why / tickets ---------- */
-.pull {
-font-family: var(--font-display);
-font-size: clamp(21px, 3.2vw, 26px);
-font-weight: 600;
-line-height: 1.2;
-text-wrap: balance;
-margin: 0 0 24px;
-color: var(--ink);
-}
-
-.tickets {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 12px;
-margin: 30px 0 8px;
-}
-@media (max-width: 560px) {
-.tickets { grid-template-columns: 1fr; }
-}
-.ticket {
-border: 1px solid var(--line-strong);
-border-radius: 4px;
-padding: 16px 14px;
-background: var(--surface);
-position: relative;
-}
-.ticket.selected {
-border-color: var(--amber);
-background: var(--surface-2);
-}
-.ticket .house {
-font-family: var(--font-mono);
-font-size: 11px;
-letter-spacing: 0.08em;
-color: var(--ink-faint);
-text-transform: uppercase;
-margin-bottom: 10px;
-}
-.ticket .price {
-font-family: var(--font-mono);
-font-variant-numeric: tabular-nums;
-font-size: 21px;
-font-weight: 600;
-color: var(--ink);
-}
-.ticket.selected .price { color: var(--amber); }
-.ticket .mark {
-margin-top: 10px;
-font-family: var(--font-mono);
-font-size: 10.5px;
-letter-spacing: 0.08em;
-color: var(--amber);
-}
-.tickets-cap {
-font-family: var(--font-mono);
-font-size: 11px;
-color: var(--ink-faint);
-}
+/* ---------- why it costs less ---------- */
+.pull{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4vw,36px);letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;margin-bottom:24px;max-width:22ch;}
 
 /* ---------- how it works ---------- */
-.steps { margin-top: 8px; }
-.step {
-display: grid;
-grid-template-columns: 52px 1fr;
-gap: 18px;
-position: relative;
-padding-bottom: 30px;
-}
-.step:last-child { padding-bottom: 0; }
-.step::before {
-content: "";
-position: absolute;
-left: 20px;
-top: 40px;
-bottom: 4px;
-width: 1px;
-background: var(--line-strong);
-}
-.step:last-child::before { display: none; }
-.step .n {
-font-family: var(--font-mono);
-font-size: 15px;
-color: var(--blue);
-background: var(--surface);
-border: 1px solid var(--line-strong);
-border-radius: 50%;
-width: 40px;
-height: 40px;
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 1;
-}
-.step .t {
-padding-top: 8px;
-font-size: 16px;
-color: var(--ink);
-}
+.step{display:grid;grid-template-columns:52px 1fr;gap:18px;position:relative;padding-bottom:28px;}
+.step:last-child{padding-bottom:0;}
+.step::before{content:'';position:absolute;left:20px;top:44px;bottom:4px;width:1px;background:var(--line-strong);}
+.step:last-child::before{display:none;}
+.step .n{font-family:'Space Mono',monospace;font-size:14px;color:var(--amber);background:var(--charcoal);border:1px solid var(--line-strong);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
+.step .t{padding-top:9px;font-size:17px;}
 
-/* ---------- who it's for ---------- */
-.who-figure {
-font-family: var(--font-display);
-font-size: clamp(48px, 9vw, 74px);
-font-weight: 600;
-color: var(--blue);
-line-height: 1;
-margin-bottom: 6px;
-}
-.who-figure span { font-size: 0.36em; font-family: var(--font-mono); color: var(--ink-faint); font-weight: 500; margin-left: 8px; }
-.who-text { color: var(--ink-dim); font-size: 17px; max-width: 52ch; }
+/* ---------- who ---------- */
+.who-figure{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(52px,10vw,84px);letter-spacing:-0.03em;color:var(--amber);line-height:1;margin-bottom:10px;}
+.who-figure span{font-family:'Space Mono',monospace;font-weight:400;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--paper-dim);margin-left:10px;vertical-align:middle;}
+.who-text{color:var(--paper-dim);font-size:17px;max-width:52ch;}
 
-/* ---------- why eventstudio (cross-link) ---------- */
-.why-eventstudio .lede {
-margin-bottom: 22px;
-font-size: 20px;
-color: var(--ink);
-font-weight: 500;
-line-height: 1.5;
-}
-.text-link {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-color: var(--blue);
-font-weight: 600;
-font-size: 15px;
-text-decoration: none;
-border-bottom: 1px solid var(--blue-dim);
-padding-bottom: 3px;
-}
-.text-link:hover { color: var(--amber); border-color: var(--amber); }
-.text-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.text-link .arrow { transition: transform 0.15s ease; }
-.text-link:hover .arrow { transform: translateX(3px); }
+/* ---------- why eventstudio ---------- */
+.why-eventstudio .lede{font-size:19px;color:var(--paper);line-height:1.55;}
 
-/* ---------- final cta / form ---------- */
-.final-cta { text-align: left; padding-bottom: 64px; }
-.final-cta h2 {
-font-family: var(--font-display);
-font-weight: 600;
-font-size: clamp(28px, 5vw, 38px);
-text-wrap: balance;
-margin: 0 0 14px;
+/* ---------- form (main-site form.card) ---------- */
+.final-cta{padding-bottom:72px;}
+.final-cta h2{font-size:clamp(34px,6vw,52px);margin-bottom:14px;}
+.final-cta .lede{margin-bottom:28px;}
+form.card{
+  background:var(--charcoal);border:1px solid rgba(245,241,232,0.18);
+  padding:32px;display:grid;gap:22px;max-width:560px;position:relative;
 }
-.final-cta .lede { margin-bottom: 28px; }
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media (max-width:520px){ .row2{grid-template-columns:1fr;} form.card{padding:24px 20px;} }
+form.card label{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;
+}
+form.card input,form.card textarea{
+  width:100%;min-height:48px;background:transparent;border:none;border-bottom:1px solid var(--line-strong);
+  border-radius:0;padding:10px 2px;font-family:'Inter',sans-serif;font-size:16px;color:var(--paper);
+  outline:none;transition:border-color .3s;
+}
+form.card input::placeholder,form.card textarea::placeholder{color:var(--paper-faint);}
+form.card input:focus,form.card textarea:focus{border-color:var(--amber);}
+form.card input:focus-visible,form.card textarea:focus-visible{box-shadow:0 1px 0 0 var(--amber);}
+form.card textarea{resize:vertical;min-height:96px;}
+form.card .btn{justify-self:start;}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.form-status{font-size:14px;color:#ff8a80;min-height:0;}
+.form-status:empty{display:none;}
+.form-trust{font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;letter-spacing:0.02em;color:var(--paper-dim);max-width:44ch;}
+.form-done{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.25;outline:none;}
+.form-done span{display:block;margin-top:10px;font-family:'Inter',sans-serif;font-weight:400;font-size:16px;color:var(--paper-dim);}
 
-#specForm {
-display: grid;
-gap: 14px;
-max-width: 480px;
-}
-#specForm .row2 {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 14px;
-}
-@media (max-width: 480px) {
-#specForm .row2 { grid-template-columns: 1fr; }
-}
-#specForm label {
-display: block;
-font-family: var(--font-mono);
-font-size: 11px;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(--ink-faint);
-margin-bottom: 6px;
-}
-#specForm input,
-#specForm textarea {
-width: 100%;
-background: var(--surface);
-border: 1px solid var(--line-strong);
-border-radius: 3px;
-color: var(--ink);
-font-family: var(--font-body);
-font-size: 15px;
-padding: 11px 12px;
-}
-#specForm input::placeholder,
-#specForm textarea::placeholder { color: var(--ink-faint); }
-#specForm input:focus,
-#specForm textarea:focus { outline: 2px solid var(--blue-dim); outline-offset: 1px; }
-#specForm textarea { min-height: 90px; resize: vertical; }
-#specForm .form-trust {
-margin-top: 2px;
-font-family: var(--font-mono);
-font-size: 11.5px;
-color: var(--ink-faint);
-max-width: none;
-}
-#specForm .form-error { color: var(--cut); font-size: 13px; margin-top: 4px; }
+.after-form{margin-top:36px;}
+.text-link{display:inline-flex;align-items:center;gap:8px;color:var(--paper);font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid var(--line-strong);padding:12px 0 8px;transition:color .3s,border-color .3s;}
+.text-link:hover{color:var(--amber);border-color:var(--amber);}
+.text-link:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
+.text-link .arrow{transition:transform .25s var(--ease);}
+.text-link:hover .arrow{transform:translateX(3px);}
 
-footer {
-padding-block: 26px 40px;
-font-family: var(--font-mono);
-font-size: 11px;
-color: var(--ink-faint);
-display: flex;
-flex-wrap: wrap;
-gap: 8px 16px;
-justify-content: space-between;
+/* ---------- footer (main-site style) ---------- */
+footer{border-top:1px solid var(--line);padding:40px 0 48px;}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 24px;}
+footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.02em;color:var(--paper-dim);line-height:1.6;}
+
+/* ---------- reveal-on-scroll (main-site motion) ---------- */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.js .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+  .js .reveal{opacity:1;transform:none;}
 }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="wrap">
 <header class="site">
-<div class="wordmark">EVENT<span class="studio">STUDIO</span></div>
-<div class="product-tag">AV COMPARE</div>
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="EventStudio home"><span class="dot" aria-hidden="true"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio" width="208" height="26"></a>
+    <div class="product-tag">AV COMPARE</div>
+  </div>
 </header>
-</div>
 
+<main id="main">
 <div class="wrap">
+
 <section class="hero">
-<p class="eyebrow">An EventStudio service</p>
-<h1>Make event&nbsp;AV cost&#8209;effective.</h1>
-<p class="tagline">Three quotes. One spec. Only the gear you need.</p>
-<p class="hero-copy">AV gets expensive when the package is built for a bigger show than the one you're running. <strong>EventStudio writes the spec, shops it three ways, and keeps the list to what the room actually needs</strong> — so the same meeting costs less to light, mic, and project.</p>
-
-<a class="cta-btn" href="#spec-form">
-Request your spec <span class="arrow">&rarr;</span>
-</a>
-<p class="cta-sub">Date, venue, room, short agenda — that's all we need to start.</p>
+  <p class="eyebrow">An EventStudio service</p>
+  <h1>Make event&nbsp;AV <em>cost&#8209;effective.</em></h1>
+  <p class="tagline">Three quotes. One spec. Only the gear you need.</p>
+  <p class="hero-copy">AV gets expensive when the package is built for a bigger show than the one you're running. <strong>EventStudio writes the spec, shops it three ways, and keeps the list to what the room actually needs</strong> — so the same meeting costs less to light, mic, and project.</p>
+  <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  <p class="cta-sub">Date, venue, room, headcount, short agenda — that's all we need to start.</p>
 </section>
 
-<section class="offer">
-<p class="eyebrow">The offer</p>
-<h2 class="section-title">We don't rent the gear.<br>We make the rental cost&#8209;effective.</h2>
-<ul class="terms">
-<li><span class="num">01</span><span>Same spec to three reputable AV houses.</span></li>
-<li><span class="num">02</span><span>Side-by-side quotes, so you're comparing like for like.</span></li>
-<li><span class="num">03</span><span>Labour, screens, and add-ons the agenda doesn't require get dropped from the spec before it's quoted.</span></li>
-<li><span class="num">04</span><span>You contract the winner directly and pay them for their services — no EventStudio markup in between.</span></li>
-</ul>
-<p class="keep-diff"><strong>Our fee starts at $500 CAD</strong>, scaled to the size of the meeting — billed separately, direct to you. We are never paid by the AV house you choose, so the comparison stays honest.</p>
+<section class="offer reveal">
+  <p class="eyebrow">The offer</p>
+  <h2 class="section-title">We don't rent the gear.<br>We make the rental <em>cost&#8209;effective.</em></h2>
+  <ul class="terms">
+    <li><span class="num">01</span><span>Same spec to three reputable AV houses.</span></li>
+    <li><span class="num">02</span><span>Side-by-side quotes, so you're comparing like for like.</span></li>
+    <li><span class="num">03</span><span>Labour, screens, and add-ons the agenda doesn't require get dropped from the spec before it's quoted.</span></li>
+    <li><span class="num">04</span><span>You contract the winner directly and pay them for their services — no EventStudio markup in between.</span></li>
+  </ul>
+  <p class="keep-diff"><strong>Our fee starts at $500 CAD</strong>, scaled to the size of the meeting — billed separately, direct to you. We are never paid by the AV house you choose, so the comparison stays honest.</p>
 </section>
 
-<section class="why">
-<p class="eyebrow">Why it costs less</p>
-<p class="pull">A single quote is a starting point, not a market.</p>
-<p class="lede">We define what the meeting needs — and nothing more — then send that same list to three reputable AV companies. You're not paying for spare screens, extra crew, or a package built for a bigger show. Three prices on one spec. You pick.</p>
-
+<section class="why reveal">
+  <p class="eyebrow">Why it costs less</p>
+  <p class="pull">A single quote is a starting point, not a market.</p>
+  <p class="lede">We define what the meeting needs — and nothing more — then send that same list to three reputable AV companies. You're not paying for spare screens, extra crew, or a package built for a bigger show. Three prices on one spec. You pick.</p>
 </section>
 
-<section class="how">
-<p class="eyebrow">How it works</p>
-<h2 class="section-title">Four steps.</h2>
-<div class="steps">
-<div class="step"><div class="n">01</div><div class="t">Date, venue, room, short agenda.</div></div>
-<div class="step"><div class="n">02</div><div class="t">Spec + three quotes.</div></div>
-<div class="step"><div class="n">03</div><div class="t">Required vs. optional, marked on the page.</div></div>
-<div class="step"><div class="n">04</div><div class="t">You pick the supplier. Done.</div></div>
-</div>
+<section class="how reveal">
+  <p class="eyebrow">How it works</p>
+  <h2 class="section-title">Four steps.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Date, venue, room, headcount, short agenda.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Spec + three quotes.</div></div>
+    <div class="step"><div class="n">03</div><div class="t">Required vs. optional, marked on the page.</div></div>
+    <div class="step"><div class="n">04</div><div class="t">You pick the supplier. Done.</div></div>
+  </div>
 </section>
 
-<section class="who">
-<p class="eyebrow">Who it's for</p>
-<div class="who-figure">5&ndash;5000 <span>in the room</span></div>
-<p class="who-text">Meeting planners who want AV that works and a number finance will accept.</p>
+<section class="who reveal">
+  <p class="eyebrow">Who it's for</p>
+  <div class="who-figure">5&ndash;5000<span>in the room</span></div>
+  <p class="who-text">Meeting planners who want AV that works and a number finance will accept.</p>
 </section>
 
-<section class="why-eventstudio">
-<p class="eyebrow">Why EventStudio</p>
-<p class="lede">AV Compare is EventStudio's cost-control service, not our whole business. The same team behind it has produced award shows, run large corporate events, directed live streams, produced medical education broadcasts, and staged the Canadian Music Week conference — including Toronto's New Year's Eve fireworks broadcast. We're not paid by the AV house you choose, so the comparison stays honest.</p>
-<a class="text-link" href="https://www.eventstudio.tv/">See how we produce the rest of the show <span class="arrow">&rarr;</span></a>
+<section class="why-eventstudio reveal">
+  <p class="eyebrow">Why EventStudio</p>
+  <p class="lede">AV Compare is EventStudio's cost-control service, not our whole business. The same team behind it has produced award shows, run large corporate events, directed live streams, produced medical education broadcasts, staged the Canadian Music Week conference, and produced Toronto's New Year's Eve fireworks broadcast. We're not paid by the AV house you choose, so the comparison stays honest.</p>
 </section>
 
 <section class="final-cta" id="spec-form">
-<h2>Get your spec.</h2>
-<p class="lede">Send the four things below — we'll come back with the spec and three quotes.</p>
+  <p class="eyebrow">Get started</p>
+  <h2>Get your <em>spec.</em></h2>
+  <p class="lede">Tell us about the meeting — we'll come back with the spec and three quotes.</p>
 
-<form id="specForm" action="https://formspree.io/f/xppagprw" method="POST">
-<input type="hidden" name="_subject" value="AV Headline — Spec request">
-<div class="row2">
-<div>
-<label for="avh-name">Name</label>
-<input id="avh-name" name="name" type="text" placeholder="Your name" required>
-</div>
-<div>
-<label for="avh-email">Email</label>
-<input id="avh-email" name="email" type="email" placeholder="you@company.com" required>
-</div>
-</div>
-<div class="row2">
-<div>
-<label for="avh-date">Date</label>
-<input id="avh-date" name="date" type="text" placeholder="Event date" required>
-</div>
-<div>
-<label for="avh-venue">Venue</label>
-<input id="avh-venue" name="venue" type="text" placeholder="Venue" required>
-</div>
-</div>
-<div>
-<label for="avh-room">Room</label>
-<input id="avh-room" name="room" type="text" placeholder="Room / space" required>
-</div>
-<div>
-<label for="avh-agenda">Short agenda</label>
-<textarea id="avh-agenda" name="agenda" placeholder="What's happening, roughly when." required></textarea>
-</div>
-<button type="submit" class="cta-btn" style="align-self:flex-start;">
-Request your spec <span class="arrow">&rarr;</span>
-</button>
-<p class="form-trust">Your details stay with us — no mailing list, no sharing.</p>
-</form>
+  <form id="specForm" class="card" action="https://formspree.io/f/xppagprw" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="AV Compare — Spec request">
+    <div class="hp" aria-hidden="true"><label for="avh-gotcha">Leave this empty</label><input id="avh-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+    <div class="row2">
+      <div>
+        <label for="avh-name">Name</label>
+        <input id="avh-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="avh-email">Email</label>
+        <input id="avh-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" inputmode="email" required>
+      </div>
+    </div>
+    <div class="row2">
+      <div>
+        <label for="avh-date">Date</label>
+        <input id="avh-date" name="date" type="text" placeholder="Event date" required>
+      </div>
+      <div>
+        <label for="avh-size">People in the room</label>
+        <input id="avh-size" name="attendees" type="number" inputmode="numeric" min="1" placeholder="e.g. 150" required>
+      </div>
+    </div>
+    <div class="row2">
+      <div>
+        <label for="avh-venue">Venue</label>
+        <input id="avh-venue" name="venue" type="text" placeholder="Venue" required>
+      </div>
+      <div>
+        <label for="avh-room">Room</label>
+        <input id="avh-room" name="room" type="text" placeholder="Room / space" required>
+      </div>
+    </div>
+    <div>
+      <label for="avh-agenda">Short agenda</label>
+      <textarea id="avh-agenda" name="agenda" placeholder="What's happening, roughly when." required></textarea>
+    </div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+    <button type="submit" class="btn">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></button>
+    <p class="form-trust">Your details stay with us — no mailing list, no sharing.</p>
+  </form>
+
+  <p class="after-form"><a class="text-link" href="/">See how we produce the rest of the show <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
 </section>
 
-<footer>
-<span>AV Headline is an Eventstudio Ltd. service</span>
-<span>Oakville, Ontario</span>
-</footer>
 </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="EventStudio home"><span class="dot" aria-hidden="true"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio" width="208" height="26" loading="lazy"></a>
+    <div class="legal">AV Compare is an Eventstudio Ltd service &nbsp;·&nbsp; Oakville, Ontario<br>© 2026 EventStudio — Eventstudio Ltd</div>
+  </div>
+</footer>
 
 <script>
-var specForm = document.getElementById('specForm');
-if (specForm) {
-specForm.addEventListener('submit', function (e) {
-e.preventDefault();
-var btn = specForm.querySelector('button[type=submit]');
-var originalHTML = btn.innerHTML;
-btn.textContent = 'Sending...';
-btn.disabled = true;
-var data = new FormData(specForm);
-fetch(specForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-.then(function (res) {
-if (res.ok) {
-specForm.innerHTML = '<p style="font-size:20px;">Thanks — we will be in touch.</p>';
-} else {
-btn.innerHTML = originalHTML;
-btn.disabled = false;
-var err = specForm.querySelector('.form-error');
-if (!err) {
-err = document.createElement('p');
-err.className = 'form-error';
-specForm.appendChild(err);
-}
-err.textContent = 'Something went wrong — please try again or email andy@eventstudio.tv directly.';
-}
-})
-.catch(function () {
-btn.innerHTML = originalHTML;
-btn.disabled = false;
-});
-});
-}
+(function () {
+  // Reveal-on-scroll, same motion as the main site
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Spec request form
+  var form = document.getElementById('specForm');
+  if (!form) return;
+  var status = form.querySelector('.form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.textContent = '';
+    var bad = form.querySelector(':invalid');
+    if (bad) {
+      status.textContent = 'Please fill in ' + (bad.labels && bad.labels[0] ? bad.labels[0].textContent.toLowerCase() : 'every field') + '.';
+      bad.focus();
+      return;
+    }
+    var btn = form.querySelector('button[type=submit]');
+    var original = btn.innerHTML;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    function fail() {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      status.textContent = 'That didn’t send. Please try again, or email andy@eventstudio.tv.';
+    }
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) return fail();
+        if (window.va) window.va('event', { name: 'spec_request' });
+        form.innerHTML = '<p class="form-done" tabindex="-1">Thanks — your request is in.<span>We’ll be in touch by email about your spec and quotes.</span></p>';
+        form.querySelector('.form-done').focus();
+      })
+      .catch(fail);
+  });
+})();
 </script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
