@@ -372,6 +372,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
       .then(function (res) {
         if (!res.ok) return fail();
         if (window.va) window.va('event', { name: 'spec_request' });
+        if (window.avt) window.avt('spec_request', { attendees: parseInt(form.attendees && form.attendees.value, 10) || null });
         form.innerHTML = '<p class="form-done" tabindex="-1">Thanks — your request is in.<span>We’ll be in touch by email about your spec and quotes.</span></p>';
         form.querySelector('.form-done').focus();
       })
@@ -380,6 +381,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 })();
 </script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/av-track.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
