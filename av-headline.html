@@ -366,7 +366,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
     function fail() {
       btn.innerHTML = original;
       btn.disabled = false;
-      status.textContent = 'That didn’t send. Please try again, or email andy@eventstudio.tv.';
+      status.textContent = 'That didn’t send. Please try again, or email admin@eventstudio.tv.';
     }
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (res) {
