@@ -356,7 +356,7 @@
     var m = maps[id];
     if (!m) {
       m = maps[id] = { map: L.map(id, { scrollWheelZoom: false }).setView([43.65, -79.38], 8), layer: null };
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '&copy; OpenStreetMap contributors &copy; CARTO' }).addTo(m.map);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors', className: 'darktiles' }).addTo(m.map);
     }
     if (m.layer) m.layer.remove();
     m.layer = L.layerGroup().addTo(m.map);
