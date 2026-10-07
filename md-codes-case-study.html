@@ -623,7 +623,7 @@ btn.textContent='Sending...';
 btn.disabled=true;
 var data=new FormData(contactForm);
 fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){
-if(res.ok){
+if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'});
 contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>';
 } else {
 btn.textContent=originalText; btn.disabled=false;
@@ -661,6 +661,7 @@ document.querySelectorAll('.person').forEach(function(item){
   });
 });
 </script>
+  <script defer src="/av-track.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>

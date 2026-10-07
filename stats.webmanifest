@@ -1,0 +1,14 @@
+{
+  "name": "EventStudio Stats",
+  "short_name": "ES Stats",
+  "description": "Geofence campaigns and website analytics for eventstudio.tv",
+  "start_url": "/stats.html",
+  "scope": "/stats.html",
+  "display": "standalone",
+  "background_color": "#0b0b0c",
+  "theme_color": "#0b0b0c",
+  "icons": [
+    { "src": "/images/stats-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/stats-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

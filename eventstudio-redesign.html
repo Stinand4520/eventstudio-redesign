@@ -1011,7 +1011,7 @@
   document.querySelectorAll('.video-trigger').forEach(function(el){
     el.addEventListener('click', openVideoModal);
   });
-  videoCloseBtn.addEventListener('click', closeVideoModal); var contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit', function(e){ e.preventDefault(); var btn=contactForm.querySelector('button[type=submit]'); var originalText=btn.textContent; btn.textContent='Sending...'; btn.disabled=true; var data=new FormData(contactForm); fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){ if(res.ok){ contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; } else { btn.textContent=originalText; btn.disabled=false; var err=contactForm.querySelector('.form-error'); if(!err){ err=document.createElement('p'); err.className='form-error'; err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); } err.textContent='Something went wrong — please try again or email us directly.'; } }).catch(function(){ btn.textContent=originalText; btn.disabled=false; }); }); }
+  videoCloseBtn.addEventListener('click', closeVideoModal); var contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit', function(e){ e.preventDefault(); var btn=contactForm.querySelector('button[type=submit]'); var originalText=btn.textContent; btn.textContent='Sending...'; btn.disabled=true; var data=new FormData(contactForm); fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){ if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'}); contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; } else { btn.textContent=originalText; btn.disabled=false; var err=contactForm.querySelector('.form-error'); if(!err){ err=document.createElement('p'); err.className='form-error'; err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); } err.textContent='Something went wrong — please try again or email us directly.'; } }).catch(function(){ btn.textContent=originalText; btn.disabled=false; }); }); }
   videoModal.addEventListener('click', function(e){
     if(e.target === videoModal){ closeVideoModal(); }
   });
@@ -1039,6 +1039,7 @@ var photoModal = document.getElementById('photo-modal'); var photoModalImg = doc
       });
     });
     </script>
+  <script defer src="/av-track.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>

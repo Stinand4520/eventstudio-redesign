@@ -1,4 +1,4 @@
-/* EventStudio — AV Compare page analytics (first-party, anonymous).
+/* EventStudio — site analytics for eventstudio.tv (first-party, anonymous, no cookies).
    Records: visit + ad tag (utm_*), device/screen, scroll depth, sections reached,
    engaged time, clicks, form start / errors / submissions. No names, emails or IPs. */
 (function () {
@@ -12,20 +12,27 @@
 
   function rid() { return Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4); }
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function sstore(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) { return null; } }
 
   // Anonymous visitor id (random, first-party, no personal info) + visit counter
   var vid = store('avt_v'); var isNew = !vid;
   if (!vid) { vid = rid(); store('avt_v', vid); }
   var visits = (parseInt(store('avt_n'), 10) || 0) + 1; store('avt_n', String(visits));
   var first = store('avt_f'); if (!first) { first = String(Date.now()); store('avt_f', first); }
-  var sid = rid();
+  var sid = rid();                                            // one id per page view
+  // Visit (session) id: shared by every page opened in this tab; a new visit starts after 30 min idle
+  var ssRec = null; try { ssRec = JSON.parse(sstore('avt_ss') || 'null'); } catch (e) {}
+  var newSession = !ssRec || Date.now() - ssRec.t > 30 * 60000;
+  if (newSession) ssRec = { id: rid(), t: Date.now(), n: 0 };
+  ssRec.n += 1; ssRec.t = Date.now(); sstore('avt_ss', JSON.stringify(ssRec));
   var t0 = Date.now();
 
   var q = {}, sp = new URLSearchParams(location.search);
   sp.forEach(function (v, k) { if (Object.keys(q).length < 15) q[k.slice(0, 40)] = v.slice(0, 120); });
   // Remember the ad tag for return visits that arrive without one
   var tag = { src: q.utm_source || '', med: q.utm_medium || '', cmp: q.utm_campaign || '', cnt: q.utm_content || '', trm: q.utm_term || '' };
-  if (tag.src || tag.cnt) store('avt_tag', JSON.stringify(tag));
+  if (tag.src || tag.cnt) { store('avt_tag', JSON.stringify(tag)); sstore('avt_stag', JSON.stringify(tag)); }
+  var sessTag = null; try { sessTag = JSON.parse(sstore('avt_stag') || 'null'); } catch (e) {}
   var firstTag = null; try { firstTag = JSON.parse(store('avt_tag') || 'null'); } catch (e) {}
 
   var queue = [];
@@ -45,7 +52,8 @@
   var ref = '';
   try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
   ev('visit', {
-    q: q, tag: tag, firstTag: firstTag, ref: ref, path: location.pathname,
+    q: q, tag: tag, firstTag: firstTag, sessTag: sessTag, ref: ref, path: location.pathname, hash: location.hash.slice(0, 40),
+    ss: ssRec.id, pvn: ssRec.n, newSession: newSession,
     newV: isNew, n: visits, firstSeen: +first,
     lang: nav.language || '', tz: (Intl.DateTimeFormat().resolvedOptions().timeZone || ''),
     sw: screen.width, sh: screen.height, vw: innerWidth, vh: innerHeight, dpr: devicePixelRatio || 1,
@@ -110,21 +118,22 @@
 
   // Form: first interaction, which fields get touched, validation errors (no field values are sent)
   document.addEventListener('DOMContentLoaded', function () {
-    var f = document.getElementById('specForm'); if (!f) return;
+    var f = document.getElementById('specForm') || document.getElementById('contactForm'); if (!f) return;
+    var fid = f.id;
     var started = false, touched = [];
     f.addEventListener('focusin', function (e) {
       var n = e.target.name; if (!n || n.charAt(0) === '_') return;
-      if (!started) { started = true; ev('form_start', { field: n, at: Date.now() - t0 }); }
+      if (!started) { started = true; ev('form_start', { field: n, form: fid, at: Date.now() - t0 }); }
       if (touched.indexOf(n) === -1) touched.push(n);
     });
     f.addEventListener('submit', function () {
       var bad = f.querySelector(':invalid');
-      if (bad) ev('form_error', { field: bad.name || '' });
-      else ev('form_submit', { fields: touched.length });
+      if (bad) ev('form_error', { field: bad.name || '', form: fid });
+      else ev('form_submit', { fields: touched.length, form: fid });
     }, true);
   });
 
-  // Public hook: the page calls avt('spec_request', {...}) when the form is accepted
+  // Public hook: pages call avt('spec_request', {...}) or avt('enquiry', {...}) when a form send succeeds
   window.avt = function (name, props) { ev(name, props); flush(); };
 
   function leave() {
