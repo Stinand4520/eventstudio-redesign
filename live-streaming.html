@@ -644,6 +644,30 @@ document.querySelectorAll('.person').forEach(function(item){
   });
 });
 </script>
+<script>
+// Ad visitors (link ending in #reel) land on the reel and it starts playing, muted, with a tap-for-sound button.
+(function(){
+  if (location.hash !== '#reel' && !/[?&]play=reel/.test(location.search)) return;
+  var sec = document.getElementById('reel'), v = sec && sec.querySelector('video');
+  if (!v) return;
+  v.muted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+  var box = v.parentNode; box.style.position = 'relative';
+  var b = document.createElement('button');
+  b.type = 'button'; b.textContent = '\u{1F50A} Tap for sound';
+  b.setAttribute('style', 'position:absolute;right:16px;bottom:16px;z-index:2;font:700 13px/1 "Space Mono",monospace;letter-spacing:.06em;text-transform:uppercase;padding:12px 16px;border:0;border-radius:2px;background:var(--amber,#f2a93b);color:var(--ink,#141311);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45)');
+  b.addEventListener('click', function(){ v.muted = false; if (v.paused) v.play(); b.remove(); });
+  v.addEventListener('volumechange', function(){ if (!v.muted) b.remove(); });
+  function go(){
+    sec.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+    sec.scrollIntoView({ block: 'start' });
+    box.appendChild(b);
+    var p = v.play(); if (p && p.catch) p.catch(function(){});
+  }
+  // start once the page's "on air" intro has finished (about 1.2 s after load)
+  if (document.readyState === 'complete') setTimeout(go, 1200);
+  else window.addEventListener('load', function(){ setTimeout(go, 1200); });
+})();
+</script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
