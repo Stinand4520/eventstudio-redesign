@@ -1,8 +1,8 @@
-// Receives batched events from /av-track.js and stores them per Toronto calendar day.
+// Receives batched events from /av-track.js (every page of eventstudio.tv) and stores them per Toronto calendar day.
 const { pipeline, dayKey, parseUA, readBody } = require('../lib/avstore');
 
 const ALLOWED = (process.env.AV_ALLOWED_HOSTS || 'eventstudio.tv,www.eventstudio.tv').split(',').map(s => s.trim());
-const TYPES = ['visit', 'scroll', 'section', 'click', 'form_start', 'form_error', 'form_submit', 'spec_request', 'leave', 'hidden'];
+const TYPES = ['visit', 'scroll', 'section', 'click', 'form_start', 'form_error', 'form_submit', 'spec_request', 'enquiry', 'leave', 'hidden'];
 const BOT = /bot|crawl|spider|slurp|preview|headless|lighthouse|pingdom|monitor|facebookexternalhit|curl|wget|python/i;
 
 function hostOf(u) { try { return new URL(u).hostname; } catch (e) { return ''; } }
