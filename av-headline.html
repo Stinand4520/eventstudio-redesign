@@ -157,6 +157,23 @@ button.btn{-webkit-appearance:none;appearance:none;}
 /* ---------- why eventstudio ---------- */
 .why-eventstudio .lede{font-size:19px;color:var(--paper);line-height:1.55;}
 
+/* ---------- other services ---------- */
+.services h2.section-title{max-width:22ch;}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 24px;}
+@media (max-width:520px){.svc-grid{grid-template-columns:1fr;}}
+.svc{display:block;text-decoration:none;background:var(--charcoal);border:1px solid var(--line);padding:22px 20px;border-radius:2px;transition:border-color .3s,transform .25s var(--ease);}
+.svc:hover{border-color:var(--amber);transform:translateY(-2px);}
+.svc:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
+.svc h3{font-size:21px;margin-bottom:8px;line-height:1.1;}
+.svc p{color:var(--paper-dim);font-size:15px;margin-bottom:12px;}
+.svc .go{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);}
+.svc-proof{color:var(--paper-dim);font-size:15px;}
+.svc-note{font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:var(--paper-dim);max-width:56ch;margin-top:12px;}
+.interest{border:none;padding:0;margin:0;}
+.interest legend{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;padding:0;}
+.interest label.chk{display:flex;align-items:center;gap:12px;text-transform:none;letter-spacing:0;font-family:'Inter',sans-serif;font-size:15px;color:var(--paper);min-height:44px;margin:0;cursor:pointer;}
+.interest input[type=checkbox]{width:20px;min-height:20px;height:20px;accent-color:var(--amber);flex:none;padding:0;}
+
 /* ---------- form (main-site form.card) ---------- */
 .final-cta{padding-bottom:72px;}
 .final-cta h2{font-size:clamp(34px,6vw,52px);margin-bottom:14px;}
@@ -262,6 +279,19 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
   </div>
 </section>
 
+<section class="services reveal">
+<p class="eyebrow">The rest of EventStudio</p>
+<h2 class="section-title">AV Compare gets you a better price. Our production team gets you a better <em>show.</em></h2>
+<div class="svc-grid">
+<a class="svc" href="/live-event-production.html"><h3>Live event production</h3><p>Corporate events and conferences, produced start to finish.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/award-shows.html"><h3>Award shows</h3><p>Galas and ceremonies with the pacing of TV.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/live-streaming.html"><h3>Live streaming</h3><p>Directed webcasts on our own Virtually Real platform.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/medical-education-production.html"><h3>Medical education</h3><p>Broadcast-quality production for medical education.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+</div>
+<p class="svc-proof">The same team staged the Canadian Music Week conference and produced Toronto's New Year's Eve fireworks broadcast.</p>
+<p class="svc-note">Using AV Compare carries no obligation to hire EventStudio for anything else.</p>
+</section>
+
 <section class="who reveal">
   <p class="eyebrow">Who it's for</p>
   <div class="who-figure">5&ndash;5000<span>in the room</span></div>
@@ -315,7 +345,14 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
       <label for="avh-agenda">Short agenda</label>
       <textarea id="avh-agenda" name="agenda" placeholder="What's happening, roughly when." required></textarea>
     </div>
-    <p class="form-status" role="status" aria-live="polite"></p>
+    <fieldset class="interest">
+<legend>Also interested in (optional)</legend>
+<label class="chk"><input type="checkbox" name="interest" value="Live event production"> Live event production</label>
+<label class="chk"><input type="checkbox" name="interest" value="Award shows"> Award shows</label>
+<label class="chk"><input type="checkbox" name="interest" value="Live streaming"> Live streaming</label>
+<label class="chk"><input type="checkbox" name="interest" value="Medical education"> Medical education</label>
+</fieldset>
+<p class="form-status" role="status" aria-live="polite"></p>
     <button type="submit" class="btn">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></button>
     <p class="form-trust">Your details stay with us — no mailing list, no sharing.</p>
   </form>
@@ -372,7 +409,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
       .then(function (res) {
         if (!res.ok) return fail();
         if (window.va) window.va('event', { name: 'spec_request' });
-        if (window.avt) window.avt('spec_request', { attendees: parseInt(form.attendees && form.attendees.value, 10) || null });
+        if (window.avt) window.avt('spec_request', { attendees: parseInt(form.attendees && form.attendees.value, 10) || null, interests: Array.prototype.map.call(form.querySelectorAll('input[name=interest]:checked'), function (i) { return i.value; }).join(', ') });
         // Chameleon Digital Media conversion pixel: fires only on a successful quote request.
         // subid = which ad brought the visitor (from the tracking link), when known.
         try {
