@@ -411,18 +411,9 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
         if (!res.ok) return fail();
         if (window.va) window.va('event', { name: 'spec_request' });
         if (window.avt) window.avt('spec_request', { attendees: parseInt(form.attendees && form.attendees.value, 10) || null, interests: Array.prototype.map.call(form.querySelectorAll('input[name=interest]:checked'), function (i) { return i.value; }).join(', ') });
-        // Chameleon Digital Media conversion pixel: fires only on a successful quote request.
-        // subid = which ad brought the visitor (from the tracking link), when known.
-        try {
-          var cdmAd = ''; try { cdmAd = (JSON.parse(localStorage.getItem('avt_tag') || '{}').cnt) || ''; } catch (e) {}
-          var cdm = document.createElement('img');
-          cdm.src = 'https://trk.osdrtb.net/u?c=ee3af0cd-5b43-487a-9a57-94187ea722aa&ev=spec_request&subid=' + encodeURIComponent(cdmAd) + '&osrnd=' + Math.round(new Date().getTime());
-          cdm.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-          cdm.setAttribute('width', '1'); cdm.setAttribute('height', '1'); cdm.setAttribute('style', 'display:none'); cdm.setAttribute('alt', '');
-          document.body.appendChild(cdm);
-        } catch (e) {}
         form.innerHTML = '<p class="form-done" tabindex="-1">Thanks — your request is in.<span>We’ll be in touch by email about your spec and quotes.</span></p>';
         form.querySelector('.form-done').focus();
+        setTimeout(function(){ window.location.href='/av-compare-thank-you.html'; }, 400);
       })
       .catch(fail);
   });
