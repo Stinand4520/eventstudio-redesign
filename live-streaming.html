@@ -607,12 +607,8 @@ btn.disabled=true;
 var data=new FormData(contactForm);
 fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){
 if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'});
-try{var cdmAd='';try{cdmAd=(JSON.parse(localStorage.getItem('avt_tag')||'{}').cnt)||'';}catch(e){}
-var cdm=document.createElement('img');
-cdm.src='https://trk.osdrtb.net/u?c=ee3af0cd-5b43-487a-9a57-94187ea722aa&ev=enquiry&subid='+encodeURIComponent(cdmAd)+'&osrnd='+Math.round(new Date().getTime());
-cdm.setAttribute('referrerpolicy','no-referrer-when-downgrade');cdm.setAttribute('width','1');cdm.setAttribute('height','1');cdm.setAttribute('style','display:none');cdm.setAttribute('alt','');
-document.body.appendChild(cdm);}catch(e){}
 contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>';
+setTimeout(function(){ window.location.href='/live-streaming-thank-you.html'; }, 400);
 } else {
 btn.textContent=originalText; btn.disabled=false;
 var err=contactForm.querySelector('.form-error');
