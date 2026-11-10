@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>AV Compare</title>
+<meta name="description" content="Send us the AV quote you were handed. We price the same equipment list from independent AV houses so you can see what the hotel's service charges are costing you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one dark column echoing the social tiles, amber diagonal bands behind the hero, mono labels, one price comparison as the centrepiece. Single dark theme by choice. */
+:root {
+  --bg: #0b0b0c;
+  --panel: #151517;
+  --line: #2a2a2e;
+  --text: #f4f1ea;
+  --muted: #a9a6a0;
+  --amber: #f2a93b;
+  --blue: #00aeef;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.mono { font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); margin-right: 10px; vertical-align: 1px; }
+
+/* top bar */
+header.top { position: relative; z-index: 2; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; padding-bottom: 22px; }
+.logo { font-weight: 700; font-size: 28px; letter-spacing: .06em; text-decoration: none; line-height: 1; }
+.logo b { color: var(--blue); font-weight: 700; }
+.btn {
+  display: inline-block; background: var(--amber); color: #1a1205; text-decoration: none;
+  font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 4px; border: 0; cursor: pointer;
+  font-family: var(--display);
+}
+.btn:hover { background: #f7b95c; }
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.btn.small { padding: 10px 16px; font-size: 14px; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; }
+.hero::before, .hero::after {
+  content: ""; position: absolute; top: -20%; bottom: -20%; transform: skewX(-18deg); z-index: 0; pointer-events: none;
+}
+.hero::before { right: 22%; width: 22%; background: linear-gradient(180deg, rgba(242,169,59,.16), rgba(242,169,59,0)); }
+.hero::after  { right: 6%;  width: 9%;  background: linear-gradient(180deg, rgba(0,174,239,.12), rgba(0,174,239,0)); }
+.hero .wrap { position: relative; z-index: 1; padding-top: 28px; padding-bottom: 72px; }
+.eyebrow { color: var(--amber); margin: 0 0 22px; }
+h1 {
+  font-size: clamp(38px, 6.4vw, 72px); line-height: 1.04; letter-spacing: -.02em; font-weight: 700;
+  margin: 0 0 22px; max-width: 14em; text-wrap: balance;
+}
+h1 .hl { color: var(--amber); }
+.lede { color: var(--muted); max-width: 36em; margin: 0 0 34px; font-size: 20px; }
+.lede strong { color: var(--text); font-weight: 600; }
+
+.compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; max-width: 760px; }
+.price-card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid #55555b; padding: 22px 24px; }
+.price-card.win { border-top-color: var(--amber); }
+.price-card .label { color: var(--muted); margin: 0 0 14px; }
+.price-card.win .label { color: var(--amber); }
+.price-card .num { font-size: clamp(34px, 5vw, 52px); font-weight: 700; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.price-card.lose .num { color: var(--muted); text-decoration: line-through; text-decoration-color: #d64545; text-decoration-thickness: 3px; }
+.price-card .sub { color: var(--muted); font-size: 15px; margin: 12px 0 0; }
+.vs { width: 40px; height: 40px; border: 1px solid var(--amber); border-radius: 50%; display: grid; place-items: center; color: var(--amber); font-family: var(--mono); font-size: 12px; text-transform: uppercase; }
+.badge { display: inline-block; background: var(--amber); color: #1a1205; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 5px 9px; margin-top: 14px; font-weight: 500; }
+.fine { color: var(--muted); font-size: 14px; margin: 18px 0 0; max-width: 44em; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 38px; }
+.cta-row .note { color: var(--muted); font-size: 15px; }
+
+/* sections */
+section.block { border-top: 1px solid var(--line); padding: 76px 0; }
+h2 { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 16px; text-wrap: balance; max-width: 18em; }
+.sec-intro { color: var(--muted); max-width: 38em; margin: 0 0 36px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+
+/* invoice */
+.invoice { background: var(--panel); border: 1px solid var(--line); font-size: 17px; }
+.invoice .head { padding: 12px 18px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.invoice ul { list-style: none; margin: 0; padding: 4px 18px; }
+.invoice li { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid #202023; }
+.invoice li span:last-child { color: #66656a; }
+.invoice .hidden { background: rgba(242,169,59,.12); border-left: 3px solid var(--amber); margin: 6px -18px 0; padding: 14px 18px; border-bottom: 0; align-items: center; gap: 12px; }
+.invoice .hidden span:first-child { font-weight: 600; }
+.invoice .hidden span:last-child { color: var(--amber); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; text-align: right; }
+.invoice .totals { padding: 14px 18px 18px; display: grid; gap: 10px; }
+.invoice .totals div { display: flex; justify-content: space-between; align-items: baseline; color: var(--muted); font-size: 15px; }
+.invoice .totals .a { font-size: 24px; font-weight: 700; color: var(--muted); text-decoration: line-through; text-decoration-color: #d64545; text-decoration-thickness: 2px; font-variant-numeric: tabular-nums; }
+.invoice .totals .b { font-size: 24px; font-weight: 700; color: var(--amber); font-variant-numeric: tabular-nums; }
+.story p { margin: 0 0 16px; color: var(--muted); }
+.cs-h { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); font-weight: 500; margin: 26px 0 8px; }
+.glance { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 44px 0 0; }
+.glance div { background: var(--panel); border: 1px solid var(--line); padding: 18px 20px; }
+.glance dt { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.glance dd { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.glance .amber dd { color: var(--amber); }
+.split > dl, .split > p { grid-column: 1 / -1; margin-left: 0; margin-right: 0; }
+.split > dl { margin-top: 0; }
+.split > p.fine { margin-top: -24px; }
+@media (max-width: 820px) { .glance { grid-template-columns: 1fr 1fr; } }
+.story p strong { color: var(--text); font-weight: 600; }
+
+/* steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+.steps li { background: var(--panel); border: 1px solid var(--line); padding: 22px 20px; counter-increment: s; }
+.steps li::before { content: "0" counter(s); display: block; font-family: var(--mono); color: var(--amber); font-size: 13px; letter-spacing: .08em; margin-bottom: 14px; }
+.steps h3 { font-size: 20px; margin: 0 0 8px; line-height: 1.2; }
+.steps p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* fee */
+.fee { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fee > div { background: var(--panel); border: 1px solid var(--line); padding: 26px 24px; }
+.fee .big { font-size: 40px; font-weight: 700; letter-spacing: -.02em; color: var(--amber); margin: 6px 0 8px; line-height: 1.05; }
+.fee p { margin: 0; color: var(--muted); font-size: 16px; }
+.fee h3 { margin: 0; font-size: 18px; }
+
+/* faq */
+details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary { cursor: pointer; font-weight: 600; font-size: 19px; padding: 16px 28px 16px 0; list-style: none; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 26px; color: var(--amber); font-weight: 400; }
+details[open] summary::after { content: "\2212"; }
+details p { margin: 0 0 18px; color: var(--muted); max-width: 42em; }
+
+/* form */
+.formwrap { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--amber); padding: 32px; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+form .full { grid-column: 1 / -1; }
+label { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+input, select, textarea {
+  width: 100%; background: #0e0e10; color: var(--text); border: 1px solid #3a3a40; border-radius: 4px;
+  padding: 13px 14px; font: inherit; font-size: 17px;
+}
+textarea { min-height: 96px; resize: vertical; }
+.form-status { color: var(--muted); font-size: 15px; margin: 0; min-height: 1.5em; }
+.form-status.ok { color: var(--amber); }
+
+footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+
+@media (max-width: 820px) {
+  .split, .fee { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .hero::before { right: 10%; width: 28%; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .compare { grid-template-columns: 1fr; }
+  .vs { margin: 0 auto; }
+  .steps { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .formwrap { padding: 22px 18px; }
+  header.top .btn.small { display: none; }
+  section.block { padding: 56px 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="https://eventstudio.tv" aria-label="EventStudio home">EVENT<b>STUDIO</b></a>
+    <a class="btn small" href="#start">Compare your AV quote</a>
+  </div>
+</header>
+<!-- Ads say "Full story: link in bio". Add #case-study to that link to land on the story directly. -->
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow mono"><span class="dot"></span>Case study &nbsp;&middot;&nbsp; AV Compare</p>
+    <h1 id="headline">The TVs were innocent.<br>The money was hiding<br><span class="hl">in the service charges.</span></h1>
+    <p class="lede">Got an AV quote from your hotel? <strong>Send it to us.</strong> We price the same equipment list from independent AV houses, mark what your agenda actually needs, and you keep the difference.</p>
+
+    <div class="compare" role="group" aria-label="Price comparison for the same equipment list">
+      <div class="price-card lose">
+        <p class="label mono">Hotel in-house AV</p>
+        <div class="num">$18,300</div>
+        <p class="sub">before tax</p>
+      </div>
+      <div class="vs" aria-hidden="true">vs</div>
+      <div class="price-card win">
+        <p class="label mono">Independent + our fee</p>
+        <div class="num">$10,000</div>
+        <p class="sub">includes our $500 fee</p>
+        <span class="badge">&asymp; 45% less</span>
+      </div>
+    </div>
+    <p class="fine">Four TVs, three wireless mics, four speakers, uplighting and a podium. Downtown Toronto. Details anonymised; prices before tax.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="#start">Compare your AV quote</a>
+      <span class="note">Fees start at $500 CAD. No markup on equipment.</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="case-study">
+  <div class="wrap split">
+    <div class="story">
+      <p class="mono" style="color:var(--amber);margin:0 0 18px"><span class="dot"></span>Case study &nbsp;&middot;&nbsp; Downtown Toronto hotel</p>
+      <h2>I put the kettle on and read it again. It hadn't improved.</h2>
+      <h3 class="cs-h">The quote</h3>
+      <p>A downtown Toronto hotel sent over its in-house AV quote. The equipment list looked ordinary: four TVs, three wireless microphones, four speakers, some uplighting and a podium. The total was <strong>$18,300 before tax</strong>.</p>
+      <h3 class="cs-h">The catch</h3>
+      <p><strong>The gear was not the expensive part.</strong> Service charges, labour and house fees sat underneath the equipment lines and made up most of the gap. The TVs were innocent.</p>
+      <h3 class="cs-h">The comparison</h3>
+      <p>We took the same equipment list to independent AV houses and priced it again. The result came in at <strong>$10,000 before tax, including our $500 fee</strong>. That is $8,300 less, or about 45%, for four TVs, three wireless mics, four speakers, uplighting and a podium in downtown Toronto.</p>
+      <h3 class="cs-h">What to take from it</h3>
+      <p>Read your quote from the bottom up. Ask what the service charges, labour and house fees are made of, then get the same equipment list priced by someone else. The price changes when a different supplier quotes it.</p>
+    </div>
+
+    <div class="invoice" role="img" aria-label="Hotel AV quote, anonymised. Equipment lines are shown without prices. A highlighted line reads service charges, labour and house fees, where the money hid. Hotel total $18,300 before tax; independent AV plus our $500 fee $10,000.">
+      <div class="head mono">Hotel AV quote &nbsp;&middot;&nbsp; Downtown Toronto &nbsp;&middot;&nbsp; Anonymised</div>
+      <ul>
+        <li><span>4 &times; TVs</span><span>&mdash;</span></li>
+        <li><span>3 &times; wireless microphones</span><span>&mdash;</span></li>
+        <li><span>4 &times; speakers</span><span>&mdash;</span></li>
+        <li><span>Uplighting</span><span>&mdash;</span></li>
+        <li><span>Podium</span><span>&mdash;</span></li>
+        <li class="hidden"><span>Service charges / labour / house fees</span><span>Where the money hid</span></li>
+      </ul>
+      <div class="totals">
+        <div><span>Hotel total (before tax)</span><span class="a">$18,300</span></div>
+        <div><span>Independent AV + our $500 fee</span><span class="b">$10,000</span></div>
+      </div>
+    </div>
+
+    <dl class="glance" aria-label="Case study at a glance">
+      <div><dt>Hotel in-house AV</dt><dd>$18,300</dd></div>
+      <div><dt>Independent + our fee</dt><dd>$10,000</dd></div>
+      <div class="amber"><dt>Difference</dt><dd>$8,300</dd></div>
+      <div class="amber"><dt>Less than the hotel</dt><dd>&asymp; 45%</dd></div>
+    </dl>
+    <p class="fine">Same equipment list in both quotes. Prices before tax. Venue and client anonymised. The independent quote was about $9,500; $10,000 adds our standard $500 fee.</p>
+    <p><a class="btn" href="av-compare-case-study-detailed.pdf">Read the full case study (PDF)</a></p>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>How AV Compare works</h2>
+    <p class="sec-intro">Built for meeting planners with 50 to 500 people in the room. You send the basics. We do the chasing.</p>
+    <ol class="steps">
+      <li><h3>You send the basics</h3><p>Date, venue, room and a short agenda. If you already have a hotel quote, send that too.</p></li>
+      <li><h3>We write the spec and get three quotes</h3><p>One equipment list, priced by three AV houses against the same spec. You get it in about a week.</p></li>
+      <li><h3>We mark what you need</h3><p>Required items and optional extras are labelled, so nothing is in the price because it was always in the price.</p></li>
+      <li><h3>You pick the supplier</h3><p>You contract the winner directly. They invoice you. You keep the price difference.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="fee">
+  <div class="wrap">
+    <h2>One flat fee. Nothing from the AV house.</h2>
+    <p class="sec-intro">You pay EventStudio a flat fee. The AV house you choose bills you separately and we receive nothing from them, which is why we can tell you which quote is best.</p>
+    <div class="fee">
+      <div>
+        <h3 class="mono" style="color:var(--amber);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase">Our fee</h3>
+        <div class="big">From $500 CAD</div>
+        <p>Scales with the size of your meeting. Paid by you to EventStudio.</p>
+      </div>
+      <div>
+        <h3 class="mono" style="color:var(--amber);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase">Equipment</h3>
+        <div class="big">No markup</div>
+        <p>You contract and pay the AV house directly at their price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <h2>Questions planners ask</h2>
+    <div style="margin-top:28px">
+      <details>
+        <summary>Is the $10,000 a promise for my event?</summary>
+        <p>No. It is one real comparison on one event, anonymised. Your number depends on your room, your agenda and your date. That is what the comparison is for.</p>
+      </details>
+      <details>
+        <summary>Do you take a commission from the AV houses?</summary>
+        <p>No. You pay us a flat fee and we receive nothing from the AV house you choose.</p>
+      </details>
+      <details>
+        <summary>Who do I sign with?</summary>
+        <p>The AV house you pick. You contract with them directly and they bill you directly.</p>
+      </details>
+      <details>
+        <summary>Will the quotes be like for like?</summary>
+        <p>That is the point of writing one spec first. Every house prices the same list, and we mark which items your agenda requires and which are optional.</p>
+      </details>
+      <details>
+        <summary>My hotel only lets me use its own AV. Can this still help?</summary>
+        <p>Some venues have their own rules for outside suppliers. Check yours before you commit, and send us the hotel quote either way. Seeing the numbers side by side is useful even if you stay in-house.</p>
+      </details>
+      <details>
+        <summary>What do I need to send?</summary>
+        <p>Event date, venue, how many people, and a short agenda. A quote you have already received helps a lot, but you do not need one.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="start">
+  <div class="wrap">
+    <div class="formwrap">
+      <p class="eyebrow mono" style="margin-bottom:14px"><span class="dot"></span>Start here</p>
+      <h2 style="margin-bottom:8px">Send us the quote you were handed.</h2>
+      <p class="sec-intro" style="margin-bottom:0">Tell us the date, venue and room size. We reply with next steps, and you can send the hotel quote then.</p>
+
+      <form id="lead" action="https://formspree.io/f/xppagprw" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="AV Compare: social ad request">
+        <input type="hidden" name="source" id="f-source" value="direct">
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="f-gotcha">Leave this empty</label><input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <div><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="f-date">Event date</label><input id="f-date" name="date" type="text" placeholder="e.g. Nov 22, 2026"></div>
+        <div><label for="f-venue">Venue and city</label><input id="f-venue" name="venue" type="text"></div>
+        <div><label for="f-size">People in the room</label>
+          <select id="f-size" name="size">
+            <option value="">Choose one</option>
+            <option>Under 50</option>
+            <option>50 to 150</option>
+            <option>150 to 300</option>
+            <option>300 to 500</option>
+            <option>Over 500</option>
+          </select>
+        </div>
+        <div><label for="f-have">What do you have so far?</label>
+          <select id="f-have" name="have">
+            <option value="">Choose one</option>
+            <option>A hotel in-house AV quote</option>
+            <option>A quote from an AV company</option>
+            <option>Nothing yet</option>
+          </select>
+        </div>
+        <div class="full"><label for="f-note">Anything else we should know (optional)</label><textarea id="f-note" name="note"></textarea></div>
+        <div class="full" style="display:flex;flex-wrap:wrap;gap:18px;align-items:center">
+          <button class="btn" type="submit">Compare my AV quote</button>
+          <p class="form-status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--text)">EventStudio</strong> (Eventstudio Ltd)<br>
+      3034 Creekshore Common, Oakville, Ontario L6M 0Y6, Canada
+    </div>
+    <div>
+      <a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a><br>
+      <a href="https://eventstudio.tv">eventstudio.tv</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // 1. Match the headline to the ad the visitor clicked: ?ad=split | invoice | kettle | 45
+  var H = {
+    split:   'The TVs were innocent.<br>The money was hiding<br><span class="hl">in the service charges.</span>',
+    invoice: 'I put the kettle on<br>and read it again.<br><span class="hl">It hadn’t improved.</span>',
+    kettle:  'The quote arrived.<br>So did the cold muffin.<br><span class="hl">Only one improved with a kettle.</span>',
+    '45':    '<span class="hl">45% less.</span><br>Same gear.'
+  };
+  var params = new URLSearchParams(window.location.search);
+    var ad = (params.get('ad') || '').toLowerCase();
+  var uc = (params.get('utm_content') || '').toLowerCase();
+  if (!H[ad]) { ad = /split/.test(uc) ? 'split' : /invoice/.test(uc) ? 'invoice' : /kettle/.test(uc) ? 'kettle' : /45/.test(uc) ? '45' : ad; }
+  if (H[ad]) { document.getElementById('headline').innerHTML = H[ad]; }
+
+  // 2. Carry ad + UTM source into the lead so you know which ad produced it
+  var src = [];
+  ['ad', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+    var v = params.get(k); if (v) src.push(k + '=' + v);
+  });
+
+  // 3. Form posts to the same Formspree endpoint as av-headline.html, then goes to the thank-you page
+  var form = document.getElementById('lead');
+  var status = document.getElementById('status');
+  document.getElementById('f-source').value = src.join(' | ') || 'direct';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    if (!f.name.value.trim() || !/\S+@\S+\.\S+/.test(f.email.value)) {
+      status.className = 'form-status';
+      status.textContent = 'Add your name and a valid email so we can reply.';
+      return;
+    }
+    status.className = 'form-status';
+    status.textContent = 'Sending...';
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) throw new Error('bad status');
+        if (window.va) window.va('event', { name: 'spec_request' });
+        window.location.href = '/av-compare-thank-you.html';
+      })
+      .catch(function () {
+        status.className = 'form-status';
+        status.textContent = 'That did not send. Please email admin@eventstudio.tv with your date, venue and quote.';
+      });
+  });
+})();
+</script>
+<script defer src="/av-track.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
