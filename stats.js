@@ -80,7 +80,7 @@
     });
   }
   $('signout').addEventListener('click', function () { try { localStorage.removeItem('avk'); } catch (e) {} KEY = ''; $('app').classList.add('hide'); $('login').classList.remove('hide'); $('err').textContent = ''; });
-  setInterval(function () { if (KEY && !document.hidden && !$('app').classList.contains('hide')) load(); }, 5 * 60000);
+  // Auto-refresh off (saves database bandwidth): use the Refresh button. setInterval(function () { if (KEY && !document.hidden && !$('app').classList.contains('hide')) load(); }, 5 * 60000);
   $('range').addEventListener('change', function () { var c = $('range').value === 'custom'; $('from').classList.toggle('hide', !c); $('to').classList.toggle('hide', !c); if (!c) load(); });
   $('from').addEventListener('change', load); $('to').addEventListener('change', load);
   $('reload').addEventListener('click', function () { load(); });
