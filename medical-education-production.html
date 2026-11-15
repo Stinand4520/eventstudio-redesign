@@ -22,9 +22,17 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://www.eventstudio.tv/medical-education-production.html#service","name":"Medical Education Production","serviceType":"Medical Education Production","provider":{"@id":"https://www.eventstudio.tv/#organization"},"areaServed":{"@type":"Country","name":"Canada"},"description":"Studio, webcast, and live-procedure production for medical education — orthopedics, diabetes, and aesthetics — handled with clinical confidentiality standards.","url":"https://www.eventstudio.tv/medical-education-production.html"},{"@type":"WebPage","@id":"https://www.eventstudio.tv/medical-education-production.html#webpage","url":"https://www.eventstudio.tv/medical-education-production.html","name":"Medical Education Production — Studio, Webcast & Live Procedure | EventStudio","isPartOf":{"@id":"https://www.eventstudio.tv/#website"},"about":{"@id":"https://www.eventstudio.tv/medical-education-production.html#service"},"inLanguage":"en-CA"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.eventstudio.tv/"},{"@type":"ListItem","position":2,"name":"Medical Education Production","item":"https://www.eventstudio.tv/medical-education-production.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you review or approve the medical content?","acceptedAnswer":{"@type":"Answer","text":"No. We produce the broadcast — studio, camera, direction, and confidentiality handling. Content review and clinical/regulatory approval stay with your medical and compliance teams."}},{"@type":"Question","name":"Can you produce a live surgical or procedure broadcast?","acceptedAnswer":{"@type":"Answer","text":"Yes — we've produced live-procedure broadcasts for facial aesthetics training, coordinated closely with the clinical team's own protocol and timing."}},{"@type":"Question","name":"How is confidentiality handled?","acceptedAnswer":{"@type":"Answer","text":"Closed feeds, controlled access lists, and a crew experienced with pharma and clinical confidentiality requirements — specifics are scoped per project with your compliance team."}}]}]}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://formspree.io">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://formspree.io">
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/space-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+</style>
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 :root{
 --black:#0b0b0c;
@@ -211,7 +219,7 @@ isolation:isolate;
 position:absolute; inset:0; z-index:0;
 background-image:
 linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.78) 55%, var(--black) 100%),
-url('images/MEDICAL-EDUCATION.jpg');
+url('images/MEDICAL-EDUCATION-1600.webp');
 background-size:cover; background-position:center 30%;
 filter:grayscale(0.55) contrast(1.15) brightness(0.55);
 }
@@ -323,7 +331,7 @@ color:var(--amber); text-transform:uppercase; display:block; margin-bottom:8px;
 background:var(--black); color:var(--paper);
 border-top:1px solid var(--line);
 }
-.contact-bg{ position:absolute; inset:0; z-index:0; background-image: linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.82) 55%, var(--black) 100%), url('images/LIVE-EVENT.jpg'); background-size:cover; background-position:center 30%; filter:grayscale(0.55) contrast(1.15) brightness(0.55); } .contact .wrap{ position:relative; z-index:1; } .contact .eyebrow{ color:var(--amber); }
+.contact-bg{ position:absolute; inset:0; z-index:0; background-image: linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.82) 55%, var(--black) 100%), url('images/LIVE-EVENT-1600.webp'); background-size:cover; background-position:center 30%; filter:grayscale(0.55) contrast(1.15) brightness(0.55); } .contact .wrap{ position:relative; z-index:1; } .contact .eyebrow{ color:var(--amber); }
 .contact .eyebrow::before{ background:var(--amber); box-shadow:0 0 10px 2px var(--amber-dim); }
 .contact h2{
 color:var(--paper); font-size:clamp(2.4rem,6vw,5rem); max-width:20ch; margin:20px auto 34px; text-align:center;
@@ -367,6 +375,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:12px; color:var(--
 .wrap{ padding:0 22px; }
 .nav-toggle{ display:flex; } .nav-links{ display:flex; position:fixed; inset:0; z-index:99; padding-top:100px; flex-direction:column; align-items:center; justify-content:flex-start; gap:28px; background:var(--black); opacity:0; pointer-events:none; transform:translateY(-12px); transition:opacity .3s var(--ease), transform .3s var(--ease); } .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); } .nav-links a{ font-size:20px; } .nav-links .nav-cta{ display:list-item; margin-top:8px; } nav.wrap > .btn.magnet{ display:none; }
 .nav-links .nav-contact{ display:list-item; font-family:'Space Mono',monospace; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
+.nav-links{ visibility:hidden; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s; } .nav-links.open{ visibility:visible; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s; }
 }
 @media (max-width:900px){
 .services{ grid-template-columns:1fr; }
@@ -384,7 +393,20 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:12px; color:var(--
 }
 html{ overflow-x:clip; }
 .nav-contact{ display:none; }
+
+/* ---- week-1 additions: keyboard access, forms ---- */
+#video-modal, #photo-modal{ visibility:hidden; transition:opacity .4s var(--ease), visibility 0s linear .4s; }
+#video-modal.open, #photo-modal.open{ visibility:visible; transition:opacity .4s var(--ease), visibility 0s; }
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:focus-visible, .btn:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+form.card input:focus-visible, form.card textarea:focus-visible, form.card select:focus-visible{ outline:2px solid var(--amber) !important; outline-offset:2px; }
+form.card select{ width:100%; background:transparent; color:var(--paper); border:none; border-bottom:1px solid var(--line); padding:12px 0; font:inherit; font-size:16px; border-radius:0; }
+form.card select option{ background:#0b0b0c; color:#f5f1e8; }
+form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:0; }
+.hp-field{ position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
+.form-status{ font-size:13px; margin-top:8px; color:var(--paper); }
+.reel-item[role="button"], .person[role="button"]{ cursor:pointer; }
 </style>
+<link rel="preload" as="image" href="/images/MEDICAL-EDUCATION-1600.webp" type="image/webp" fetchpriority="high">
 </head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
@@ -501,7 +523,7 @@ html{ overflow-x:clip; }
 </div>
 </section>
 
-<div id="photo-modal"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
+<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
 <section id="studio">
 <div class="wrap">
 <div class="section-head reveal">
@@ -542,17 +564,30 @@ html{ overflow-x:clip; }
 <form class="card reveal" id="contactForm" action="https://formspree.io/f/xppagprw" method="POST">
 <div>
 <label for="name">Name</label>
-<input id="name" name="name" type="text" placeholder="Your name" required>
+<input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
 </div>
 <div>
 <label for="email">Email</label>
-<input id="email" name="email" type="email" placeholder="you@company.com" required>
+<input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" required>
 </div>
 <div>
 <label for="brief">The brief</label>
 <textarea id="brief" name="brief" placeholder="Tell us about the show." required></textarea>
 </div>
-<button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day.</p>
+<div class="hp-field" aria-hidden="true"><label for="company_website">Leave this field empty</label><input id="company_website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+          <div>
+            <label for="event_type">Event type <span class="opt">(optional)</span></label>
+            <select id="event_type" name="event_type"><option value="">Select one</option><option>Award show</option><option>Corporate event or conference</option><option>Live streaming / hybrid</option><option>Medical education broadcast</option><option>Other</option></select>
+          </div>
+          <div>
+            <label for="event_date">Event date or timing <span class="opt">(optional)</span></label>
+            <input id="event_date" name="event_date" type="text" placeholder="e.g. March 2027" autocomplete="off">
+          </div>
+          <div>
+            <label for="event_city">City <span class="opt">(optional)</span></label>
+            <input id="event_city" name="event_city" type="text" placeholder="Where is the event?" autocomplete="address-level2">
+          </div>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day.</p>
 </form>
 </div>
 </div>
@@ -633,14 +668,14 @@ btn.disabled=true;
 var data=new FormData(contactForm);
 fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){
 if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'});
-contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch shortly.</p>';
+contactForm.innerHTML='<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; var tk=document.getElementById('form-thanks'); if(tk){ tk.focus(); }
 } else {
 btn.textContent=originalText; btn.disabled=false;
 var err=contactForm.querySelector('.form-error');
-if(!err){ err=document.createElement('p'); err.className='form-error'; err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); }
+if(!err){ err=document.createElement('p'); err.className='form-error'; err.setAttribute('role','alert'); err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); }
 err.textContent='Something went wrong — please try again or email us directly at admin@eventstudio.tv.';
 }
-}).catch(function(){ btn.textContent=originalText; btn.disabled=false; });
+}).catch(function(){ btn.textContent=originalText; btn.disabled=false; var err=contactForm.querySelector('.form-error'); if(!err){ err=document.createElement('p'); err.className='form-error'; err.setAttribute('role','alert'); err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); } err.textContent='We could not send that — please check your connection and try again, or email us directly at admin@eventstudio.tv.'; });
 });
 }
 
@@ -648,8 +683,8 @@ var photoModal = document.getElementById('photo-modal');
 var photoModalImg = document.getElementById('photo-modal-img');
 var photoCloseBtn = document.getElementById('photo-modal-close');
 var photoModalCaption = document.getElementById('photo-modal-caption');
-function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.innerHTML = caption || ''; photoModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closePhotoModal(){ photoModal.classList.remove('open'); document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.innerHTML = ''; }
+function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.innerHTML = caption || ''; window.__lastFocusedEl=document.activeElement; photoModal.classList.add('open'); setTimeout(function(){ photoCloseBtn.focus(); }, 50); document.body.style.overflow = 'hidden'; }
+function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.innerHTML = ''; }
 photoCloseBtn.addEventListener('click', closePhotoModal);
 photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } });
 window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } });
@@ -669,6 +704,14 @@ document.querySelectorAll('.person').forEach(function(item){
     }
   });
 });
+
+(function(){
+  function label(el){ var img=el.querySelector('img'), h=el.querySelector('h3'); return h? ('About '+h.textContent) : ('View photo: '+(img&&img.alt?img.alt:'')); }
+  document.querySelectorAll('.reel-item, .person').forEach(function(el){
+    el.setAttribute('tabindex','0'); el.setAttribute('role','button'); el.setAttribute('aria-label', label(el));
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); el.click(); } });
+  });
+})();
 </script>
   <script defer src="/av-track.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
