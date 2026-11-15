@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
+<script>try{ if(sessionStorage.getItem('es_loader')==='1'){ document.documentElement.className+=' no-loader'; } }catch(e){}</script>
+<noscript><style>#loader{ display:none !important; } .reveal{ opacity:1 !important; transform:none !important; }</style></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Case Studies | EventStudio</title>
@@ -102,9 +104,10 @@ background:var(--black);
 display:flex; align-items:center; justify-content:center;
 flex-direction:column;
 gap:22px;
-transition: opacity .7s var(--ease);
-}
-#loader.hide{ opacity:0; pointer-events:none; }
+transition: opacity .4s var(--ease);
+  }
+  .no-loader #loader{ display:none; }
+  #loader.hide{ opacity:0; pointer-events:none; }
 .cue-dot{
 width:14px; height:14px; border-radius:50%;
 background:var(--amber);
@@ -269,7 +272,7 @@ transition: background .4s var(--ease);
 .client-row:hover{ background:var(--charcoal); }
 .client-row .name{ font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:17px; color:var(--paper); }
 .client-row .type{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-dim); text-align:right; white-space:nowrap; }
-@media (max-width:700px){ .client-grid{ grid-template-columns:1fr; } .client-row{ flex-direction:column; align-items:flex-start; gap:6px; } }
+@media (max-width:700px){ .client-grid{ grid-template-columns:1fr; } .services.cols-3{ grid-template-columns:1fr; } .client-row .type{ white-space:normal; text-align:left; } .client-row{ flex-direction:column; align-items:flex-start; gap:6px; } }
 
 /* ===== approach ===== */
 .approach{ border-top:1px solid var(--line); }
@@ -354,11 +357,14 @@ footer{ background:var(--black); color:var(--paper); padding:50px 0 40px; }
 footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
 footer .logo{ color:var(--ink); }
 footer .logo .dot{ background:#a85f14; box-shadow:0 0 8px 2px rgba(168,95,20,0.3); }
-footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(--ink-dim); letter-spacing:0.02em; }
+footer .legal{ font-family:'Space Mono', monospace; font-size:12px; color:var(--paper-dim); letter-spacing:0.02em; }
 
-@media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1300px){
+@media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1180px){
 .wrap{ padding:0 22px; }
 .nav-toggle{ display:flex; } .nav-links{ display:flex; position:fixed; inset:0; z-index:99; padding-top:100px; flex-direction:column; align-items:center; justify-content:flex-start; gap:28px; background:var(--black); opacity:0; pointer-events:none; transform:translateY(-12px); transition:opacity .3s var(--ease), transform .3s var(--ease); } .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); } .nav-links a{ font-size:20px; } .nav-links .nav-cta{ display:list-item; margin-top:8px; } nav.wrap > .btn.magnet{ display:none; }
+.nav-links .nav-contact{ display:list-item; font-family:'Space Mono',monospace; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
+}
+@media (max-width:900px){
 .services{ grid-template-columns:1fr; }
 .client-grid{ grid-template-columns:1fr; }
 .contact-grid{ grid-template-columns:1fr; }
@@ -372,6 +378,8 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 @media (prefers-reduced-motion: reduce){
 *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.2s !important; scroll-behavior:auto !important; }
 }
+html{ overflow-x:clip; }
+.nav-contact{ display:none; }
 </style>
 <style>
 .person{ cursor:pointer; }
@@ -417,7 +425,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <li><a href="/case-studies.html">Case Studies</a></li>
 <li><a href="#studio">Studio</a></li>
 <li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Start the show</a></li>
-</ul>
+<li class="nav-contact"><a href="tel:+14169005137">(416) 900-5137</a></li><li class="nav-contact"><a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a></li></ul>
 <a href="#contact" class="btn magnet">Start the show</a>
 </nav>
 </header>
@@ -482,7 +490,9 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <div class="contact-grid">
 <div class="reveal contact-col"><div class="contact-brand"><img src="eventstudio-logo-white.png" alt="EventStudio" class="contact-brand-logo"><p class="contact-brand-tag"><span class="accent-blue">Based in Canada.</span><br>Booked everywhere else.</p></div>
 <div class="contact-links">
-<a href="tel:4169005137">(416) 900-5137</a>
+<a href="tel:+14169005137">(416) 900-5137</a>
+<a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a>
+<span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
 </div>
 </div>
 <form class="card reveal" id="contactForm" action="https://formspree.io/f/xppagprw" method="POST">
@@ -498,7 +508,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <label for="brief">The brief</label>
 <textarea id="brief" name="brief" placeholder="Tell us about the show." required></textarea>
 </div>
-<button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day. Your details stay with us — no mailing list, no sharing.</p>
+<button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day.</p>
 </form>
 </div>
 </div>
@@ -507,7 +517,7 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 <footer>
 <div class="wrap">
 <a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo.png" alt="EventStudio"></a>
-<div class="legal">© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/love-letters.html" style="color:var(--ink-dim);">Love Letters</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+<div class="legal"><span class="footer-contact" style="display:block;margin-bottom:8px;"><a href="tel:+14169005137" style="color:var(--paper-dim);">(416) 900-5137</a> &nbsp;·&nbsp; <a href="mailto:admin@eventstudio.tv" style="color:var(--paper-dim);">admin@eventstudio.tv</a> &nbsp;·&nbsp; Oakville, Ontario</span>© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/love-letters.html" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Love Letters</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
 </div>
 </footer>
 
@@ -515,15 +525,12 @@ footer .legal{ font-family:'Space Mono', monospace; font-size:11.5px; color:var(
 // cue-light loader sequence
 var loader = document.getElementById('loader');
 var loaderLabel = document.getElementById('loader-label');
-window.addEventListener('load', function(){
-setTimeout(function(){
-loader.classList.add('on-air');
-loaderLabel.textContent = 'ON AIR';
-}, 700);
-setTimeout(function(){
-loader.classList.add('hide');
-}, 1150);
-});
+var seenLoader=false; try{ seenLoader = sessionStorage.getItem('es_loader')==='1'; sessionStorage.setItem('es_loader','1'); }catch(e){}
+  if(seenLoader){ loader.classList.add('hide'); }
+  else{
+    setTimeout(function(){ loader.classList.add('on-air'); loaderLabel.textContent = 'ON AIR'; }, 250);
+    setTimeout(function(){ loader.classList.add('hide'); }, 600);
+  }
 
 // nav scrolled state
 var header = document.getElementById('site-header');
@@ -539,7 +546,7 @@ function openNav(){ navToggle.classList.add('open'); mobileNav.classList.add('op
 navToggle.addEventListener('click', function(){ if(mobileNav.classList.contains('open')){ closeNav(); } else { openNav(); } });
 mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); });
 window.addEventListener('keydown', function(e){ if(e.key==='Escape' && mobileNav.classList.contains('open')){ closeNav(); } });
-window.addEventListener('resize', function(){ if(window.innerWidth>900){ closeNav(); } });
+window.addEventListener('resize', function(){ if(window.innerWidth>1180){ closeNav(); } });
 
 // magnetic buttons
 document.querySelectorAll('.magnet').forEach(function(btn){
@@ -587,7 +594,7 @@ contactForm.innerHTML='<p style="font-size:20px;">Thanks — we will be in touch
 btn.textContent=originalText; btn.disabled=false;
 var err=contactForm.querySelector('.form-error');
 if(!err){ err=document.createElement('p'); err.className='form-error'; err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); }
-err.textContent='Something went wrong — please try again or email us directly.';
+err.textContent='Something went wrong — please try again or email us directly at admin@eventstudio.tv.';
 }
 }).catch(function(){ btn.textContent=originalText; btn.disabled=false; });
 });
