@@ -549,8 +549,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <label for="brief">The brief</label>
 <textarea id="brief" name="brief" placeholder="Tell us about the show." required></textarea>
 </div>
-<div class="hp-field" aria-hidden="true"><label for="company_website">Leave this field empty</label><input id="company_website" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
-          <div>
+<div>
             <label for="event_type">Event type <span class="opt">(optional)</span></label>
             <select id="event_type" name="event_type"><option value="">Select one</option><option>Award show</option><option>Corporate event or conference</option><option>Live streaming / hybrid</option><option>Medical education broadcast</option><option>Other</option></select>
           </div>
@@ -645,6 +644,7 @@ fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'applic
 if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'});
 contactForm.innerHTML='<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; var tk=document.getElementById('form-thanks'); if(tk){ tk.focus(); }
 } else {
+contactForm.submit(); return;
 btn.textContent=originalText; btn.disabled=false;
 var err=contactForm.querySelector('.form-error');
 if(!err){ err=document.createElement('p'); err.className='form-error'; err.setAttribute('role','alert'); err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); }
