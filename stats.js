@@ -88,7 +88,7 @@
     b.addEventListener('click', function () {
       TAB = b.getAttribute('data-tab');
       document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.toggle('on', x === b); });
-      $('tab-geo').classList.toggle('hide', TAB !== 'geo'); $('tab-site').classList.toggle('hide', TAB !== 'site');
+      $('tab-geo').classList.toggle('hide', TAB !== 'geo'); $('tab-site').classList.toggle('hide', TAB !== 'site'); $('tab-social').classList.toggle('hide', TAB !== 'social');
       render();
     });
   });
@@ -101,14 +101,18 @@
     if (tag) {
       var src = (tag.src || '').toLowerCase(), med = (tag.med || '').toLowerCase();
       if (/geofence|geo/.test(src) || med === 'display') return { kind: 'geo', label: 'Geofence ad · ' + campName(tag.cmp) };
-      if (/paid_social|social/.test(med) || /instagram|facebook|linkedin/.test(src)) return { kind: 'social', label: (src ? src.charAt(0).toUpperCase() + src.slice(1) : 'Social') + ' ad' };
+      var plat = /instagram/.test(src) ? 'Instagram' : /facebook|^fb$/.test(src) ? 'Facebook' : /linkedin/.test(src) ? 'LinkedIn' : '';
+      if (/paid|cpc|ppc/.test(med)) return { kind: 'social', label: (plat || 'Social') + ' ad', plat: plat || 'Social' };
+      if (plat) return { kind: 'social', label: plat + (med === 'bio' ? ' (bio link)' : ' (post)'), plat: plat };
+      if (/social/.test(med)) return { kind: 'social', label: (tag.src || 'Social') + ' (post)', plat: 'Other social' };
       return { kind: 'tagged', label: (tag.src || 'Tagged link') + (tag.cmp ? ' · ' + tag.cmp : '') };
     }
     if (!ref) return { kind: 'direct', label: 'Direct / typed / email' };
     if (/google\./.test(ref)) return { kind: 'search', label: 'Google search' };
     if (/bing\.|duckduckgo|yahoo\./.test(ref)) return { kind: 'search', label: 'Other search' };
-    if (/linkedin/.test(ref)) return { kind: 'social', label: 'LinkedIn' };
-    if (/facebook|instagram/.test(ref)) return { kind: 'social', label: 'Facebook / Instagram' };
+    if (/linkedin|lnkd\.in/.test(ref)) return { kind: 'social', label: 'LinkedIn', plat: 'LinkedIn' };
+    if (/instagram/.test(ref)) return { kind: 'social', label: 'Instagram', plat: 'Instagram' };
+    if (/facebook|fb\.com/.test(ref)) return { kind: 'social', label: 'Facebook', plat: 'Facebook' };
     return { kind: 'referral', label: ref };
   }
   function build() {
@@ -163,7 +167,32 @@
   function imprOf(camp, cnt, f) { return IMPR[ikey(camp, cnt, f)] || 0; }
 
   // ---------- Render ----------
-  function render() { if (!RAW) return; if (TAB === 'geo') renderGeo(); else renderSite(); renderLog(); }
+  function render() { if (!RAW) return; if (TAB === 'geo') renderGeo(); else if (TAB === 'social') renderSocial(); else renderSite(); renderLog(); }
+
+  // ---------- Social tab: visits from Facebook, Instagram, LinkedIn (organic posts, bio links, referrals) ----------
+  function renderSocial() {
+    var G = SESS.filter(function (s) { return s.src.kind === 'social'; });
+    LAST = G;
+    var visitors = {}; G.forEach(function (s) { visitors[s.vid] = 1; });
+    var starts = G.filter(function (s) { return s.formStart || s.lead; }).length, leads = G.filter(function (s) { return s.lead; }).length;
+    var plats = count(G, function (s) { return s.src.plat || 'Other social'; });
+    $('socKpis').innerHTML =
+      kpi('Social visits', n(G.length), n(Object.keys(visitors).length) + ' different people', true) +
+      kpi('Facebook', n(plats.Facebook || 0), 'visits') +
+      kpi('Instagram', n(plats.Instagram || 0), 'visits') +
+      kpi('Avg. time reading', ft(avg(G.filter(function (s) { return s.engaged; }), function (s) { return s.engaged; })), 'per visit') +
+      kpi('Started a form', n(starts), 'of social visits') +
+      kpi('Leads', n(leads), fp(pct(leads, G.length)) + ' of social visits');
+    bars('socSources', count(G, function (s) { return s.src.label; }), { limit: 10 });
+    bars('socLanding', count(G, function (s) { return s.landing; }), { limit: 8 });
+    bars('socCities', count(G, function (s) { return s.c.city ? s.c.city + (s.c.region ? ', ' + s.c.region : '') : 'Unknown'; }), { limit: 8 });
+    bars('socDevice', count(G, function (s) { return s.c.device || 'Unknown'; }));
+    var dk = dayKeys(G);
+    chart('socDaily', 'bar', dk, ['Facebook', 'Instagram', 'LinkedIn', 'Other social'].map(function (p, i) {
+      return { label: p, data: dk.map(function (d) { return G.filter(function (s) { return s.day === d && (s.src.plat || 'Other social') === p; }).length; }),
+        backgroundColor: ['#00aeef', '#c58cff', '#f2a93b', '#5fd39a'][i], borderRadius: 2, stack: 'a' };
+    }), true);
+  }
 
   function renderGeo() {
     var geoAll = SESS.filter(function (s) { return s.isGeo; });
@@ -323,7 +352,7 @@
 
   function renderLog() {
     var L = LAST.slice(0, 300);
-    $('logNote').textContent = (TAB === 'geo' ? 'Visits from geofence ads' : 'All visits') + ', newest first, up to 300 (Export CSV for all).';
+    $('logNote').textContent = (TAB === 'geo' ? 'Visits from geofence ads' : TAB === 'social' ? 'Visits from social media' : 'All visits') + ', newest first, up to 300 (Export CSV for all).';
     $('log').innerHTML = '<thead><tr><th>When (Toronto)</th><th>Result</th><th>Where</th><th>Device</th><th>Came from</th><th>Ad</th><th>Pages</th><th>Reading</th></tr></thead><tbody>' +
       (L.map(function (s) {
         var path = []; s.pages.forEach(function (x) { if (path[path.length - 1] !== x) path.push(x); });
@@ -389,7 +418,7 @@
     }));
     var a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([rows.join('\n')], { type: 'text/csv' }));
-    a.download = 'eventstudio-' + (TAB === 'geo' ? 'geofence' : 'site') + '-visits-' + todayStr(0) + '.csv'; document.body.appendChild(a); a.click(); a.remove();
+    a.download = 'eventstudio-' + (TAB === 'geo' ? 'geofence' : TAB === 'social' ? 'social' : 'site') + '-visits-' + todayStr(0) + '.csv'; document.body.appendChild(a); a.click(); a.remove();
   });
 
   // ---------- Exclude own visits ----------
