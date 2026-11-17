@@ -11,7 +11,7 @@
     '/medical-education-production': 'Medical education', '/not-an-av-company': 'Not an AV company', '/love-letters': 'Love letters',
     '/case-studies': 'Case studies', '/md-codes-case-study': 'MD Codes case study' };
   function pageName(p) { p = (p || '/').replace(/\.html$/, '').replace(/\/$/, '') || '/'; return PAGES[p] || p; }
-  var CAMPS = { 'av-compare': 'AV Compare', 'live-streaming': 'Webcast', 'award-shows': 'Award shows', 'live-events': 'Live events' };
+  var CAMPS = { 'av-compare': 'AV Compare', 'live-streaming': 'Broadcast', 'award-shows': 'Award shows', 'live-events': 'Live events' };
   function campName(c) { return CAMPS[c] || c || 'Unknown'; }
   var SIZES = ['desktop_970x250', 'desktop_728x90', 'desktop_300x600', 'desktop_300x250', 'desktop_160x600', 'mobile_320x50', 'mobile_300x250', 'mobile_728x90'];
   var FMT = ['gif', 'html5', 'static'];
