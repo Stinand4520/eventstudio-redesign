@@ -672,5 +672,21 @@ document.querySelectorAll('.person').forEach(function(item){
   <script defer src="/av-track.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+<!-- sticky quote button -->
+<style>
+.es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#f2a93b;color:#141311;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
+.es-quote:hover,.es-quote:focus-visible{transform:translateY(-2px);background:#f5f1e8;outline:none}
+.es-quote.es-hide{opacity:0;visibility:hidden;pointer-events:none}
+@media (max-width:640px){.es-quote{left:12px;right:12px;bottom:12px;justify-content:center;padding:14px 18px;font-size:12px}body{padding-bottom:72px}}
+</style>
+<a class="es-quote" id="esQuote" href="#contact">Talk to us about your event <span aria-hidden="true">&rarr;</span></a>
+<script>
+(function(){
+var b=document.getElementById('esQuote'),t=document.querySelector('#contact');
+if(!b)return;
+b.addEventListener('click',function(){try{if(window.avt)window.avt('click',{what:'quote_button'});}catch(e){}});
+if(t&&'IntersectionObserver' in window){new IntersectionObserver(function(e){b.classList.toggle('es-hide',e[0].isIntersecting);},{threshold:0.15}).observe(t);}
+})();
+</script>
 </body>
 </html>
