@@ -100,6 +100,7 @@
   function classify(tag, ref) {
     if (tag) {
       var src = (tag.src || '').toLowerCase(), med = (tag.med || '').toLowerCase();
+      if (src === 'google' && med === 'gbp') return { kind: 'social', label: 'Google profile', plat: 'Google profile' };
       if (/geofence|geo/.test(src) || med === 'display') return { kind: 'geo', label: 'Geofence ad · ' + campName(tag.cmp) };
       var plat = /instagram/.test(src) ? 'Instagram' : /facebook|^fb$/.test(src) ? 'Facebook' : /linkedin/.test(src) ? 'LinkedIn' : '';
       if (/paid|cpc|ppc/.test(med)) return { kind: 'social', label: (plat || 'Social') + ' ad', plat: plat || 'Social' };
@@ -180,6 +181,7 @@
       kpi('Social visits', n(G.length), n(Object.keys(visitors).length) + ' different people', true) +
       kpi('Facebook', n(plats.Facebook || 0), 'visits') +
       kpi('Instagram', n(plats.Instagram || 0), 'visits') +
+      kpi('Google profile', n(plats['Google profile'] || 0), 'visits') +
       kpi('Avg. time reading', ft(avg(G.filter(function (s) { return s.engaged; }), function (s) { return s.engaged; })), 'per visit') +
       kpi('Started a form', n(starts), 'of social visits') +
       kpi('Leads', n(leads), fp(pct(leads, G.length)) + ' of social visits');
@@ -188,9 +190,9 @@
     bars('socCities', count(G, function (s) { return s.c.city ? s.c.city + (s.c.region ? ', ' + s.c.region : '') : 'Unknown'; }), { limit: 8 });
     bars('socDevice', count(G, function (s) { return s.c.device || 'Unknown'; }));
     var dk = dayKeys(G);
-    chart('socDaily', 'bar', dk, ['Facebook', 'Instagram', 'LinkedIn', 'Other social'].map(function (p, i) {
+    chart('socDaily', 'bar', dk, ['Facebook', 'Instagram', 'LinkedIn', 'Google profile', 'Other social'].map(function (p, i) {
       return { label: p, data: dk.map(function (d) { return G.filter(function (s) { return s.day === d && (s.src.plat || 'Other social') === p; }).length; }),
-        backgroundColor: ['#00aeef', '#c58cff', '#f2a93b', '#5fd39a'][i], borderRadius: 2, stack: 'a' };
+        backgroundColor: ['#00aeef', '#c58cff', '#f2a93b', '#ea6a5e', '#5fd39a'][i], borderRadius: 2, stack: 'a' };
     }), true);
   }
 
