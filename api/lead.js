@@ -1,10 +1,10 @@
 // Receives the Name / Email / Company lead forms from the four landing pages,
 // emails the details to admin@eventstudio.tv, and tells the page where to redirect (that campaign's thank-you page).
 //
-// Environment variables (Vercel project settings):
-//   RESEND_API_KEY   required. API key from resend.com (eventstudio.tv must be a verified sending domain there)
-//   LEAD_FROM        optional. Default: "EventStudio Website <leads@eventstudio.tv>"
-//   LEAD_TO          optional. Default: admin@eventstudio.tv
+// How the email is sent (set in Vercel project settings, all optional):
+//   Default: our server passes the lead to the existing Formspree form (FORMSPREE_URL), which emails admin@eventstudio.tv.
+//   LEAD_PROVIDER=resend  switches to Resend instead; then RESEND_API_KEY is required (eventstudio.tv must be a verified domain there).
+//   LEAD_FROM / LEAD_TO   Resend only. Defaults: "EventStudio Website <leads@eventstudio.tv>" and admin@eventstudio.tv
 //   AV_ALLOWED_HOSTS optional. Same list /api/av-collect uses
 const { pipeline, readBody } = require('../lib/avstore');
 
@@ -12,6 +12,7 @@ const ALLOWED = (process.env.AV_ALLOWED_HOSTS || 'eventstudio.tv,www.eventstudio
 // Preview builds also accept their own address so the forms can be tested before going live. Production stays strict.
 if (process.env.VERCEL_ENV !== 'production') [process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL].forEach(h => { if (h) ALLOWED.push(h); });
 const TO = process.env.LEAD_TO || 'admin@eventstudio.tv';
+const FORMSPREE_URL = process.env.FORMSPREE_URL || 'https://formspree.io/f/xppagprw';
 const FROM = process.env.LEAD_FROM || 'EventStudio Website <leads@eventstudio.tv>';
 
 // campaign key (sent by the page) -> label for the email + thank-you page. Anything else is rejected, so this can't be used as an open redirect.
@@ -69,6 +70,18 @@ module.exports = async (req, res) => {
   try { await pipeline([['RPUSH', 'av:leads', JSON.stringify({ ts: Date.now(), ...lead })]]); } catch (e) { console.error('lead backup failed:', e.message); }
 
   // 2. Email it.
+  const subject = 'New enquiry: ' + camp.label + ' – ' + lead.name + (lead.company ? ' (' + lead.company + ')' : '');
+  if (process.env.LEAD_PROVIDER !== 'resend') {
+    try {
+      const r = await fetch(FORMSPREE_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', Origin: 'https://www.eventstudio.tv', Referer: 'https://www.eventstudio.tv/' + (lead.page || '').replace(/^\//, '') },
+        body: JSON.stringify({ _subject: subject, _replyto: lead.email, name: lead.name, email: lead.email, company: lead.company, form: lead.campaign, page: lead.page, source: lead.source, referrer: lead.referrer,
+          ad: lead.ad, utm_source: lead.utm_source, utm_medium: lead.utm_medium, utm_campaign: lead.utm_campaign, utm_content: lead.utm_content, utm_term: lead.utm_term, received: when })
+      });
+      if (!r.ok) { const why = (await r.text()).slice(0, 300); console.error('lead email (formspree) failed', r.status, why); return done(req, res, 502, { ok: false, error: 'mail-failed', detail: r.status + ' ' + why }); }
+    } catch (e) { console.error('lead email (formspree) error', e.message); return done(req, res, 502, { ok: false, error: 'mail-failed' }); }
+    return done(req, res, 200, { ok: true, redirect: camp.thanks }, camp.thanks);
+  }
   const key = process.env.RESEND_API_KEY;
   if (!key) { console.error('lead not emailed: RESEND_API_KEY is not set'); return done(req, res, 503, { ok: false, error: 'mail-not-configured' }); }
   const rows = [['Name', lead.name], ['Email', lead.email], ['Company', lead.company || '(not given)'], ['Form', lead.campaign], ['Page', lead.page],
@@ -80,7 +93,7 @@ module.exports = async (req, res) => {
   try {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST', headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: FROM, to: [TO], reply_to: lead.email, subject: 'New enquiry: ' + camp.label + ' – ' + lead.name + (lead.company ? ' (' + lead.company + ')' : ''), text, html })
+      body: JSON.stringify({ from: FROM, to: [TO], reply_to: lead.email, subject, text, html })
     });
     if (!r.ok) { const why = (await r.text()).slice(0, 300); console.error('lead email failed', r.status, why); return done(req, res, 502, { ok: false, error: 'mail-failed', detail: r.status + ' ' + why }); }
   } catch (e) { console.error('lead email error', e.message); return done(req, res, 502, { ok: false, error: 'mail-failed' }); }
