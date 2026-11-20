@@ -9,6 +9,8 @@
 const { pipeline, readBody } = require('../lib/avstore');
 
 const ALLOWED = (process.env.AV_ALLOWED_HOSTS || 'eventstudio.tv,www.eventstudio.tv').split(',').map(s => s.trim());
+// Preview builds also accept their own address so the forms can be tested before going live. Production stays strict.
+if (process.env.VERCEL_ENV !== 'production') [process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL].forEach(h => { if (h) ALLOWED.push(h); });
 const TO = process.env.LEAD_TO || 'admin@eventstudio.tv';
 const FROM = process.env.LEAD_FROM || 'EventStudio Website <leads@eventstudio.tv>';
 
