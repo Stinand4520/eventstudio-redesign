@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
@@ -17,17 +18,7 @@
     { "source": "/", "has": [{ "type": "query", "key": "s" }], "destination": "/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/eventstudio-redesign.html" },
-    { "source": "/live-event-production", "destination": "/live-event-production.html" },
-    { "source": "/award-shows", "destination": "/award-shows.html" },
-    { "source": "/medical-education-production", "destination": "/medical-education-production.html" },
-    { "source": "/live-streaming", "destination": "/live-streaming.html" },
-    { "source": "/not-an-av-company", "destination": "/not-an-av-company.html" },
-    { "source": "/love-letters", "destination": "/love-letters.html" },
-    { "source": "/case-studies", "destination": "/case-studies.html" },
-    { "source": "/md-codes-case-study", "destination": "/md-codes-case-study.html" },
-    { "source": "/av-headline", "destination": "/av-headline.html" },
-    { "source": "/av-compare-associations", "destination": "/av-compare-associations.html" }
+    { "source": "/", "destination": "/eventstudio-redesign" }
   ],
   "headers": [
     { "source": "/stats(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }, { "key": "Cache-Control", "value": "no-store" }] },
