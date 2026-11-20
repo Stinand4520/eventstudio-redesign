@@ -82,7 +82,7 @@ module.exports = async (req, res) => {
       method: 'POST', headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
       body: JSON.stringify({ from: FROM, to: [TO], reply_to: lead.email, subject: 'New enquiry: ' + camp.label + ' – ' + lead.name + (lead.company ? ' (' + lead.company + ')' : ''), text, html })
     });
-    if (!r.ok) { console.error('lead email failed', r.status, (await r.text()).slice(0, 300)); return done(req, res, 502, { ok: false, error: 'mail-failed' }); }
+    if (!r.ok) { const why = (await r.text()).slice(0, 300); console.error('lead email failed', r.status, why); return done(req, res, 502, { ok: false, error: 'mail-failed', detail: r.status + ' ' + why }); }
   } catch (e) { console.error('lead email error', e.message); return done(req, res, 502, { ok: false, error: 'mail-failed' }); }
 
   return done(req, res, 200, { ok: true, redirect: camp.thanks }, camp.thanks);
