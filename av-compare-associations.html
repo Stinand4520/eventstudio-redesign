@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="EventStudio">
 <meta property="og:title" content="AV Compare for Associations">
 <meta property="og:description" content="One spec. Three quotes. A number your board can defend.">
-<meta property="og:url" content="https://www.eventstudio.tv/av-compare-associations.html">
+<meta property="og:url" content="https://www.eventstudio.tv/av-compare-associations">
 <style>
   :root{
     --blue:#00aeef; --amber:#f2a93b; --bg:#0b0b0c; --panel:#141416; --line:#26262a;
@@ -146,7 +146,7 @@
         <div class="card"><h3>Education events</h3><p>Conferences, workshops and professional development days that run on time and look professional.</p></div>
         <div class="card"><h3>Awards shows</h3><p>Galas and ceremonies with the pacing of TV, honouring your members and leaders.</p></div>
       </div>
-      <p class="note" style="margin-top:18px">Our production services: <a href="https://www.eventstudio.tv/live-event-production.html">Live event production</a> &middot; <a href="https://www.eventstudio.tv/award-shows.html">Award shows</a> &middot; <a href="https://www.eventstudio.tv/live-streaming.html">Live streaming</a> &middot; <a href="https://www.eventstudio.tv/case-studies.html">Case studies</a></p>
+      <p class="note" style="margin-top:18px">Our production services: <a href="https://www.eventstudio.tv/live-event-production">Live event production</a> &middot; <a href="https://www.eventstudio.tv/award-shows">Award shows</a> &middot; <a href="https://www.eventstudio.tv/live-streaming">Live streaming</a> &middot; <a href="https://www.eventstudio.tv/case-studies">Case studies</a></p>
     </div>
   </section>
 
@@ -155,7 +155,7 @@
       <h2>Get your <em>spec.</em></h2>
       <p class="lead">Tell us about the meeting and we&rsquo;ll come back with the spec and three quotes.</p>
 
-      <form id="specForm" novalidate>
+      <form id="specForm" action="/api/lead" method="POST" data-lead="associations" novalidate>
         <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <input type="hidden" name="source" value="associations-oct2026">
         <input type="hidden" name="utm_source" value="">
@@ -168,34 +168,11 @@
           <div><label for="name">Name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
           <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
         </div>
-        <div class="row">
-          <div><label for="org">Association</label><input id="org" name="association" type="text" autocomplete="organization"></div>
-          <div><label for="date">Event date</label><input id="date" name="date" type="date"></div>
-        </div>
-        <div class="row">
-          <div><label for="people">People in the room</label><input id="people" name="people" type="text" inputmode="numeric"></div>
-          <div><label for="venue">Venue</label><input id="venue" name="venue" type="text"></div>
-        </div>
-        <div><label for="room">Room</label><input id="room" name="room" type="text"></div>
-        <div><label for="agenda">Short agenda</label><textarea id="agenda" name="agenda"></textarea></div>
-
-        <fieldset>
-          <legend>Also interested in (optional)</legend>
-          <div class="checks">
-            <label><input type="checkbox" name="interest" value="Live event production"> Live event production</label>
-            <label><input type="checkbox" name="interest" value="Award shows"> Award shows</label>
-            <label><input type="checkbox" name="interest" value="Live streaming"> Live streaming</label>
-            <label><input type="checkbox" name="interest" value="Medical education"> Medical education</label>
-          </div>
-        </fieldset>
+        <div><label for="org">Company</label><input id="org" name="company" type="text" autocomplete="organization"></div>
 
         <div><button class="btn" type="submit" data-track="form_submit_click">Request your spec &rarr;</button></div>
         <p class="note" id="err" style="display:none;color:#ff8a80">Please add your name and a valid email.</p>
       </form>
-
-      <div id="thanks" role="status">
-        <strong>Thank you.</strong> Your email app should have opened with your details ready to send. If it didn&rsquo;t, write to <a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a> and we&rsquo;ll take it from there.
-      </div>
     </div>
   </section>
 </main>
@@ -208,14 +185,13 @@
   </div>
 </footer>
 
+<script defer src="/lead-form.js"></script>
 <script>
 /* ---------- Association campaign tracking ----------
    This page is its own URL so its traffic is separate from av-headline.html.
    Set TRACKER_URL to your Vercel stats endpoint to log events.
-   Set FORM_ENDPOINT to a form handler (POST) if you have one;
-   otherwise the form falls back to opening an email to admin@eventstudio.tv. */
+   The form itself is sent by /lead-form.js to /api/lead. */
 var TRACKER_URL  = "";   // e.g. "https://your-stats-app.vercel.app/api/event"
-var FORM_ENDPOINT = "";  // optional
 var PAGE = "av-compare-associations";
 
 var params = new URLSearchParams(location.search);
@@ -267,59 +243,8 @@ document.getElementById("specForm").addEventListener("focusin", function(){
   if(!started){ started = true; track("form_start"); }
 });
 
-/* fill hidden fields */
-(function(){
-  var f = document.getElementById("specForm");
-  Object.keys(utm).forEach(function(k){ f.elements[k].value = utm[k]; });
-  f.elements["referrer"].value = document.referrer || "";
-})();
-
-/* submit */
-document.getElementById("specForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  var f = e.target;
-  if(f.elements["website"].value){ return; } /* honeypot */
-  var name = f.elements["name"].value.trim(), email = f.elements["email"].value.trim();
-  var ok = name && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
-  document.getElementById("err").style.display = ok ? "none" : "block";
-  if(!ok){ return; }
-
-  var interests = Array.prototype.map.call(f.querySelectorAll("input[name=interest]:checked"), function(c){return c.value;}).join(", ");
-  var data = {
-    name:name, email:email, association:f.elements["association"].value, date:f.elements["date"].value,
-    people:f.elements["people"].value, venue:f.elements["venue"].value, room:f.elements["room"].value,
-    agenda:f.elements["agenda"].value, interests:interests, source:"associations-oct2026"
-  };
-  Object.assign(data, utm);
-  track("form_submit", {has_date: !!data.date, people: data.people});
-
-  function finish(){
-    f.style.display = "none";
-    document.getElementById("thanks").style.display = "block";
-  }
-
-  if(FORM_ENDPOINT){
-    fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data)})
-      .then(finish).catch(function(){ mailFallback(data); finish(); });
-  }else{
-    mailFallback(data); finish();
-  }
-});
-
-function mailFallback(d){
-  var body = [
-    "AV Compare request (Associations campaign)",
-    "",
-    "Name: " + d.name, "Email: " + d.email, "Association: " + d.association,
-    "Event date: " + d.date, "People in the room: " + d.people,
-    "Venue: " + d.venue, "Room: " + d.room, "",
-    "Short agenda:", d.agenda, "",
-    "Also interested in: " + d.interests,
-    "Source: " + d.source
-  ].join("\n");
-  location.href = "mailto:admin@eventstudio.tv?subject=" + encodeURIComponent("AV Compare request \u2013 " + (d.association || d.name)) +
-                  "&body=" + encodeURIComponent(body);
-}
+/* lead-form.js fills the UTM + source fields and sends the form to /api/lead; record the conversion here */
+document.getElementById("specForm").addEventListener("lead:sent", function(){ track("form_submit"); });
 </script>
 </body>
 </html>

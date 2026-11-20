@@ -6,19 +6,18 @@
 <title>AV Compare | EventStudio</title>
 <meta name="description" content="One AV spec, three reputable suppliers, like-for-like quotes. You contract the winner directly. Fee from $500 CAD. We recommend the best fit for your meeting, whoever that is.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.eventstudio.tv/av-headline.html">
+<link rel="canonical" href="https://www.eventstudio.tv/av-headline">
 <meta name="theme-color" content="#0b0b0c">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EventStudio">
 <meta property="og:title" content="AV Compare — make event AV cost-effective">
 <meta property="og:description" content="Three quotes. One spec. Only the gear you need.">
-<meta property="og:url" content="https://www.eventstudio.tv/av-headline.html">
+<meta property="og:url" content="https://www.eventstudio.tv/av-headline">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://formspree.io">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Tokens, type and components mirror the main site (eventstudio-redesign.html) */
@@ -285,10 +284,10 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <p class="eyebrow">The rest of EventStudio</p>
 <h2 class="section-title">AV Compare gets you a better price. Our production team gets you a better <em>show.</em></h2>
 <div class="svc-grid">
-<a class="svc" href="/live-event-production.html"><h3>Live event production</h3><p>Corporate events and conferences, produced start to finish.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
-<a class="svc" href="/award-shows.html"><h3>Award shows</h3><p>Galas and ceremonies with the pacing of TV.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
-<a class="svc" href="/live-streaming.html"><h3>Live streaming</h3><p>Directed broadcasts on our own Virtually Real platform.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
-<a class="svc" href="/medical-education-production.html"><h3>Medical education</h3><p>Broadcast-quality production for medical education.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/live-event-production"><h3>Live event production</h3><p>Corporate events and conferences, produced start to finish.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/award-shows"><h3>Award shows</h3><p>Galas and ceremonies with the pacing of TV.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/live-streaming"><h3>Live streaming</h3><p>Directed broadcasts on our own Virtually Real platform.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
+<a class="svc" href="/medical-education-production"><h3>Medical education</h3><p>Broadcast-quality production for medical education.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
 </div>
 <p class="svc-proof">The same team staged the Canadian Music Week conference and produced Toronto's New Year's Eve fireworks broadcast.</p>
 <p class="svc-note">Using AV Compare carries no obligation to hire EventStudio for anything else.</p>
@@ -310,9 +309,8 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
   <h2>Get your <em>spec.</em></h2>
   <p class="lede">Tell us about the meeting — we'll come back with the spec and three quotes.</p>
 
-  <form id="specForm" class="card" action="https://formspree.io/f/xppagprw" method="POST" novalidate>
-    <input type="hidden" name="_subject" value="AV Compare — Spec request">
-    <div class="hp" aria-hidden="true"><label for="avh-gotcha">Leave this empty</label><input id="avh-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+  <form id="specForm" class="card" action="/api/lead" method="POST" data-lead="av-compare" novalidate>
+        <div class="hp" aria-hidden="true"><label for="avh-gotcha">Leave this empty</label><input id="avh-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
     <div class="row2">
       <div>
         <label for="avh-name">Name</label>
@@ -323,38 +321,11 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
         <input id="avh-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" inputmode="email" required>
       </div>
     </div>
-    <div class="row2">
-      <div>
-        <label for="avh-date">Date</label>
-        <input id="avh-date" name="date" type="text" placeholder="Event date" required>
-      </div>
-      <div>
-        <label for="avh-size">People in the room</label>
-        <input id="avh-size" name="attendees" type="number" inputmode="numeric" min="1" placeholder="e.g. 150" required>
-      </div>
-    </div>
-    <div class="row2">
-      <div>
-        <label for="avh-venue">Venue</label>
-        <input id="avh-venue" name="venue" type="text" placeholder="Venue" required>
-      </div>
-      <div>
-        <label for="avh-room">Room</label>
-        <input id="avh-room" name="room" type="text" placeholder="Room / space" required>
-      </div>
-    </div>
     <div>
-      <label for="avh-agenda">Short agenda</label>
-      <textarea id="avh-agenda" name="agenda" placeholder="What's happening, roughly when." required></textarea>
+      <label for="avh-company">Company</label>
+      <input id="avh-company" name="company" type="text" placeholder="Your company" autocomplete="organization" required>
     </div>
-    <fieldset class="interest">
-<legend>Also interested in (optional)</legend>
-<label class="chk"><input type="checkbox" name="interest" value="Live event production"> Live event production</label>
-<label class="chk"><input type="checkbox" name="interest" value="Award shows"> Award shows</label>
-<label class="chk"><input type="checkbox" name="interest" value="Live streaming"> Live streaming</label>
-<label class="chk"><input type="checkbox" name="interest" value="Medical education"> Medical education</label>
-</fieldset>
-<p class="form-status" role="status" aria-live="polite"></p>
+    <p class="form-status" role="status" aria-live="polite"></p>
     <button type="submit" class="btn">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></button>
   </form>
 
@@ -384,43 +355,18 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Spec request form
+  // Spec request form: lead-form.js sends it to /api/lead; record the conversion here
   var form = document.getElementById('specForm');
   if (!form) return;
-  var status = form.querySelector('.form-status');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    status.textContent = '';
-    var bad = form.querySelector(':invalid');
-    if (bad) {
-      status.textContent = 'Please fill in ' + (bad.labels && bad.labels[0] ? bad.labels[0].textContent.toLowerCase() : 'every field') + '.';
-      bad.focus();
-      return;
-    }
-    var btn = form.querySelector('button[type=submit]');
-    var original = btn.innerHTML;
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    function fail() {
-      btn.innerHTML = original;
-      btn.disabled = false;
-      status.textContent = 'That didn’t send. Please try again, or email admin@eventstudio.tv.';
-    }
-    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-      .then(function (res) {
-        if (!res.ok) return fail();
-        if (window.va) window.va('event', { name: 'spec_request' });
-        if (window.avt) window.avt('spec_request', { attendees: parseInt(form.attendees && form.attendees.value, 10) || null, interests: Array.prototype.map.call(form.querySelectorAll('input[name=interest]:checked'), function (i) { return i.value; }).join(', ') });
-        form.innerHTML = '<p class="form-done" tabindex="-1">Thanks — your request is in.<span>We’ll be in touch by email about your spec and quotes.</span></p>';
-        form.querySelector('.form-done').focus();
-        setTimeout(function(){ window.location.href='/av-compare-thank-you.html'; }, 400);
-      })
-      .catch(fail);
+  form.addEventListener('lead:sent', function () {
+    if (window.va) window.va('event', { name: 'spec_request' });
+    if (window.avt) window.avt('spec_request', {});
   });
 })();
 </script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/av-track.js"></script>
+<script defer src="/lead-form.js"></script>
 <!-- begin pixel code: Chameleon Digital Media retargeting -->
 <script type='text/javascript'>var pixel = document.createElement('img');pixel.src = 'https://px.xfer123.com/1x1.png?ospid=ab80eda4709f4060b86f3c72d4d2ea73&osrnd=' + Math.round(new Date().getTime());pixel.setAttribute('height', '1');pixel.setAttribute('width', '1');pixel.setAttribute('style', 'display:none');pixel.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');document.addEventListener('DOMContentLoaded', function() { document.body.appendChild(pixel); }, false);</script>
 <!-- end pixel code -->
