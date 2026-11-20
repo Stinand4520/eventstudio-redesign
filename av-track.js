@@ -136,6 +136,17 @@
   // Public hook: pages call avt('spec_request', {...}) or avt('enquiry', {...}) when a form send succeeds
   window.avt = function (name, props) { ev(name, props); flush(); };
 
+  // Tidy the address bar: once the visit and ad tag are recorded (and remembered in storage for
+  // the form), remove the ad/utm tags from the visible URL. Other parameters and the #hash stay.
+  setTimeout(function () {
+    try {
+      var drop = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'ad'];
+      var u = new URL(location.href), changed = false;
+      drop.forEach(function (k) { if (u.searchParams.has(k)) { u.searchParams.delete(k); changed = true; } });
+      if (changed && history.replaceState) history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+    } catch (e) {}
+  }, 3000);
+
   function leave() {
     ev('leave', { engagedMs: engaged, totalMs: Date.now() - t0, maxScroll: maxScroll, sections: seen.length });
     flush(true);
