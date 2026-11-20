@@ -22,7 +22,6 @@
 <script type="application/ld+json">
         {"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://www.eventstudio.tv/#organization","name":"EventStudio","legalName":"Eventstudio Ltd","foundingDate":"1996","email":"admin@eventstudio.tv","url":"https://www.eventstudio.tv/","logo":"https://www.eventstudio.tv/eventstudio-logo-v2.png","image":"https://www.eventstudio.tv/images/LIVE-EVENT.jpg","description":"Canadian producers of award shows, medical education broadcasts, and live experiences that never miss their cue — working nationally and internationally.","telephone":"+1-416-900-5137","address":{"@type":"PostalAddress","addressLocality":"Oakville","addressRegion":"ON","addressCountry":"CA"},"areaServed":[{"@type":"Country","name":"Canada"},{"@type":"AdministrativeArea","name":"International — production travel and remote direction available"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Award Show & Gala Production"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Event Production — Planning & Execution"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Virtually Real — Live Streaming & Broadcast Production"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Medical Education Production"}}]},{"@type":"WebSite","@id":"https://www.eventstudio.tv/#website","url":"https://www.eventstudio.tv/","name":"EventStudio","publisher":{"@id":"https://www.eventstudio.tv/#organization"},"inLanguage":"en-CA"},{"@type":"WebPage","@id":"https://www.eventstudio.tv/#webpage","url":"https://www.eventstudio.tv/","name":"EventStudio — Live events, produced like broadcasts.","isPartOf":{"@id":"https://www.eventstudio.tv/#website"},"about":{"@id":"https://www.eventstudio.tv/#organization"},"inLanguage":"en-CA"},{"@type":"Person","@id":"https://www.eventstudio.tv/#andy-stinton","name":"Andy Stinton","jobTitle":"Producer & Director","worksFor":{"@id":"https://www.eventstudio.tv/#organization"},"image":"https://www.eventstudio.tv/images/Andy-Stinon.jpg"},{"@type":"Person","@id":"https://www.eventstudio.tv/#denise-carr-rollitt","name":"Denise Carr-Rollitt","jobTitle":"Producer & Designer","worksFor":{"@id":"https://www.eventstudio.tv/#organization"},"image":"https://www.eventstudio.tv/images/Denise-Carr-Rollit.jpg"},{"@type":"Person","@id":"https://www.eventstudio.tv/#nancy-sinclair","name":"Nancy Sinclair","jobTitle":"Production Coordinator & Stage Manager","worksFor":{"@id":"https://www.eventstudio.tv/#organization"},"image":"https://www.eventstudio.tv/images/nancy-Sinclair.jpg"}]}
   </script>
-<link rel="preconnect" href="https://formspree.io">
 <style>
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
@@ -819,7 +818,9 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
           </div>
           </div>
-        <form class="card reveal" id="contactForm" action="https://formspree.io/f/xppagprw" method="POST">
+        <form class="card reveal" id="contactForm" action="/api/lead" method="POST" data-lead="home">
+<div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
           <div>
             <label for="name">Name</label>
             <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
@@ -1041,7 +1042,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
   document.querySelectorAll('.video-trigger').forEach(function(el){
     el.addEventListener('click', openVideoModal);
   });
-  videoCloseBtn.addEventListener('click', closeVideoModal); var contactForm=document.getElementById('contactForm'); if(contactForm){ var formStatus=contactForm.querySelector('.form-status'); function showFormError(msg){ if(formStatus){ formStatus.setAttribute('role','alert'); formStatus.textContent=msg; } } contactForm.addEventListener('submit', function(e){ e.preventDefault(); var btn=contactForm.querySelector('button[type=submit]'); var originalText=btn.textContent; btn.textContent='Sending...'; btn.disabled=true; if(formStatus){ formStatus.removeAttribute('role'); formStatus.textContent=''; } var data=new FormData(contactForm); fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){ if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'}); contactForm.innerHTML='<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; var t=document.getElementById('form-thanks'); if(t){ t.focus(); } } else { contactForm.submit(); } }).catch(function(){ btn.textContent=originalText; btn.disabled=false; showFormError('We could not send that — please check your connection and try again, or email us directly at admin@eventstudio.tv.'); }); }); }
+  videoCloseBtn.addEventListener('click', closeVideoModal); var contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); }
   videoModal.addEventListener('click', function(e){
     if(e.target === videoModal){ closeVideoModal(); }
   });
@@ -1080,7 +1081,8 @@ var photoModal = document.getElementById('photo-modal'); var photoModalImg = doc
 <!-- begin pixel code: Chameleon Digital Media retargeting -->
   <script type='text/javascript'>var pixel = document.createElement('img');pixel.src = 'https://px.xfer123.com/1x1.png?ospid=ab80eda4709f4060b86f3c72d4d2ea73&osrnd=' + Math.round(new Date().getTime());pixel.setAttribute('height', '1');pixel.setAttribute('width', '1');pixel.setAttribute('style', 'display:none');pixel.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');document.addEventListener('DOMContentLoaded', function() { document.body.appendChild(pixel); }, false);</script>
   <!-- end pixel code -->
-  <script defer src="/av-track.js"></script>
+  <script defer src="/lead-form.js"></script>
+<script defer src="/av-track.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 <!-- sticky quote button -->

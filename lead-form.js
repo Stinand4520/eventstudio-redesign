@@ -16,8 +16,10 @@
   var saved = {}; try { saved = JSON.parse(sessionStorage.getItem('avt_stag') || localStorage.getItem('avt_tag') || '{}') || {}; } catch (e) {}
   var fallback = { utm_source: saved.src, utm_medium: saved.med, utm_campaign: saved.cmp, utm_content: saved.cnt, utm_term: saved.trm };
   var pairs = [];
+  // Use the tags in this link; fall back to the remembered ones only when the link carries none (never mix the two)
+  var linkHasTags = ['ad', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].some(function (k) { return qs.get(k); });
   ['ad', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
-    var v = qs.get(k) || fallback[k] || '';
+    var v = linkHasTags ? (qs.get(k) || '') : (fallback[k] || '');
     field(k).value = v;
     if (v) pairs.push(k + '=' + v);
   });
@@ -56,6 +58,11 @@
         if (!r.ok || !r.j.ok) return fail(r.j && r.j.error && r.j.error.indexOf(' ') > 0 ? r.j.error : '');
         // Let the page record its conversion events (Vercel, av-track, GA4) before we leave
         try { form.dispatchEvent(new CustomEvent('lead:sent', { bubbles: true, detail: { campaign: campaign } })); } catch (err) {}
+        if (!r.j.redirect) {   // no thank-you page for this form: say thanks right here
+          form.innerHTML = '<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>';
+          var tk = document.getElementById('form-thanks'); if (tk) tk.focus();
+          return;
+        }
         setTimeout(function () { location.href = r.j.redirect; }, 400);
       })
       .catch(function () { fail(); });

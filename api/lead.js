@@ -20,7 +20,15 @@ const CAMPAIGNS = {
   'av-compare':   { label: 'AV Compare',                      thanks: '/av-compare-thank-you' },
   'award-shows':  { label: 'Award shows',                     thanks: '/award-shows-thank-you' },
   'live-streaming': { label: 'Live streaming',                thanks: '/live-streaming-thank-you' },
-  'associations': { label: 'AV Compare (Associations email)', thanks: '/av-compare-associations-thank-you' }
+  'associations': { label: 'AV Compare (Associations email)', thanks: '/av-compare-associations-thank-you' },
+  // Contact forms that show "thanks" on the page itself (no thank-you page, so no redirect)
+  'home':                 { label: 'Home page contact form',       thanks: null },
+  'case-studies':         { label: 'Case studies contact form',    thanks: null },
+  'live-event-production': { label: 'Live event production contact form', thanks: null },
+  'love-letters':         { label: 'Love letters contact form',    thanks: null },
+  'medical-education':    { label: 'Medical education contact form', thanks: null },
+  'not-an-av-company':    { label: 'Not an AV company contact form', thanks: null },
+  'md-codes-case-study':  { label: 'MD Codes case study contact form', thanks: null }
 };
 const TAGS = ['ad', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
@@ -37,11 +45,11 @@ function parse(raw, type) {
 function done(req, res, status, body, redirect) {
   const wantsJson = /json/i.test(req.headers.accept || '') || /json/i.test(req.headers['content-type'] || '');
   res.setHeader('Cache-Control', 'no-store');
-  if (wantsJson || !redirect || status >= 400) {
+  if (wantsJson || status >= 400) {
     res.statusCode = status; res.setHeader('Content-Type', 'application/json');
     return res.end(JSON.stringify(body));
   }
-  res.statusCode = 303; res.setHeader('Location', redirect); res.end();   // plain form post (no JavaScript): go straight to the thank-you page
+  res.statusCode = 303; res.setHeader('Location', redirect || '/'); res.end();   // plain form post (no JavaScript): go straight to the thank-you page
 }
 
 module.exports = async (req, res) => {

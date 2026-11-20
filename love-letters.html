@@ -22,7 +22,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://www.eventstudio.tv/love-letters#webpage", "url": "https://www.eventstudio.tv/love-letters", "name": "Love Letters — What Clients Say | EventStudio", "isPartOf": {"@id": "https://www.eventstudio.tv/#website"}, "inLanguage": "en-CA"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.eventstudio.tv/"}, {"@type": "ListItem", "position": 2, "name": "Love Letters", "item": "https://www.eventstudio.tv/love-letters"}]}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "Andy Stinton was the AV professional for two of my conferences, and he was outstanding both times. Beyond handling the technical side, Andy stepped in as our 'Voice of God' — the behind-the-scenes voice making announcements and keeping the event moving. What I appreciated most was the confidence he gave me as a host: prepared, professional, calm, completely drama-free. Andy was genuinely one of the best people we hired for the entire event.", "author": {"@type": "Person", "name": "Erwin Szeto"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "I worked with EventStudio for 25 years — they threw themselves into every event with passionate creativity. Their attention to detail and the way they worked with the crew and our clients were outstanding.", "author": {"@type": "Person", "name": "Ralph Strachan"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "I have worked with Andy Stinton for years. At every event, whether the audience is a few hundred or a few thousand, there is no one I trust more to light the stage, to create and project the content, or to make the speakers feel at ease. He is the best of the best.", "author": {"@type": "Person", "name": "Tony Chapman, Branding Expert, Radio and TV Personality"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "I've worked several times with EventStudio as they created unforgettable events seemingly out of thin air. The process is a pleasure, and the result is purely professional.", "author": {"@type": "Person", "name": "Jim Slotek, Gemini Nominated Journalist"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "Hands Across the Nations has worked with Andy several times to promote our charity. During COVID, Andy produced an amazing one-hour virtual gala that brought our community together and helped us reach our fundraising goal. We are incredibly grateful for his creativity, professionalism, and support.", "author": {"@type": "Person", "name": "Greg Madeley"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "...the ultimate live event 'Dream Team.'", "author": {"@type": "Organization", "name": "Atlas Van Lines (Canada)"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "As the Director of the show, we expect professionalism and the ability to adapt and improvise in high-pressure environments. And you always deliver.", "author": {"@type": "Organization", "name": "Retail Council of Canada"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "Your work was a key deliverable in contributing successfully to our Conference.", "author": {"@type": "Organization", "name": "Bell Canada"}}, {"@type": "Review", "itemReviewed": {"@id": "https://www.eventstudio.tv/#organization"}, "reviewBody": "Everyone absolutely loved the energy and craziness of the show.", "author": {"@type": "Organization", "name": "Special Olympics"}}]}
 </script>
-<link rel="preconnect" href="https://formspree.io">
 <style>
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-opsz-normal.woff2) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
@@ -541,7 +540,9 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
 </div>
 </div>
-<form class="card reveal" id="contactForm" action="https://formspree.io/f/xppagprw" method="POST">
+<form class="card reveal" id="contactForm" action="/api/lead" method="POST" data-lead="love-letters">
+<div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
 <div>
 <label for="name">Name</label>
 <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
@@ -623,29 +624,9 @@ revealEls.forEach(function(el){ io.observe(el); });
 revealEls.forEach(function(el){ el.classList.add('in'); });
 }
 
-// contact form
+// contact form: lead-form.js sends it to /api/lead
 var contactForm=document.getElementById('contactForm');
-if(contactForm){
-contactForm.addEventListener('submit', function(e){
-e.preventDefault();
-var btn=contactForm.querySelector('button[type=submit]');
-var originalText=btn.textContent;
-btn.textContent='Sending...';
-btn.disabled=true;
-var data=new FormData(contactForm);
-fetch(contactForm.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } }).then(function(res){
-if(res.ok){ if(window.avt)window.avt('enquiry',{form:'contact'});
-contactForm.innerHTML='<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>'; var tk=document.getElementById('form-thanks'); if(tk){ tk.focus(); }
-} else {
-contactForm.submit(); return;
-btn.textContent=originalText; btn.disabled=false;
-var err=contactForm.querySelector('.form-error');
-if(!err){ err=document.createElement('p'); err.className='form-error'; err.setAttribute('role','alert'); err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); }
-err.textContent='Something went wrong — please try again or email us directly at admin@eventstudio.tv.';
-}
-}).catch(function(){ btn.textContent=originalText; btn.disabled=false; var err=contactForm.querySelector('.form-error'); if(!err){ err=document.createElement('p'); err.className='form-error'; err.setAttribute('role','alert'); err.style.cssText='color:var(--paper); font-size:13px; margin-top:8px;'; contactForm.appendChild(err); } err.textContent='We could not send that — please check your connection and try again, or email us directly at admin@eventstudio.tv.'; });
-});
-}
+if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); }
 
 (function(){
   function label(el){ var img=el.querySelector('img'), h=el.querySelector('h3'); return h? ('About '+h.textContent) : ('View photo: '+(img&&img.alt?img.alt:'')); }
