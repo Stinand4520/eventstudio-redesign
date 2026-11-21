@@ -219,14 +219,14 @@
     position:relative;
     min-height:100vh;
     display:flex; flex-direction:column; justify-content:flex-end;
-    padding:160px 0 90px;
+    padding:160px 0 40px;
     overflow:hidden;
     isolation:isolate;
   }
   .hero-bg{
     position:absolute; inset:0; z-index:0;
     background-image:
-      linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.78) 55%, var(--black) 100%),
+      linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.8) 45%, var(--black) 78%),
       url('images/LIVE-EVENT-1600.webp');
     background-size:cover; background-position:center 30%;
     filter:grayscale(0.55) contrast(1.15) brightness(0.55);
@@ -308,8 +308,8 @@
   .service .num{ font-family:'Space Mono', monospace; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
   .service h3{ font-size:26px; margin:20px 0 14px; }
   .service p{ color:var(--paper-dim); font-size:14.5px; max-width:42ch; }
-  .service.stream h3{ color:var(--blue); }
-  .service.stream .num{ color:var(--blue); }
+  .service.service-wide{ grid-column:1 / -1; }
+  .service.service-wide p{ max-width:62ch; }
 
   /* ===== reel ===== */
   .reel-wrap{ position:relative; }
@@ -390,6 +390,7 @@
   }
   .reel-cap i{ display:block; font-style:normal; color:rgba(242,169,59,0.75); font-size:10px; margin-top:4px; }
   .reel-cap i.tag-vr{ color:var(--blue); }
+  .reel-item.has-baked .reel-cap{ display:none; }
 
   /* ===== approach ===== */
   .approach{ border-top:1px solid var(--line); }
@@ -606,6 +607,16 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 .form-status{ font-size:13px; margin-top:8px; color:var(--paper); }
 .reel-item[role="button"], .person[role="button"]{ cursor:pointer; }
 </style>
+<style>/* mobile header call button: shows whenever the hamburger shows */
+.hdr-call{display:none}
+@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
+@media (max-width:340px){.hdr-call span{display:none}.hdr-call{padding:0 12px}}</style>
+<style>/* hero micro line + mobile buttons */
+.hero-micro{font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.78);margin:16px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.hero-micro a{color:var(--amber);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.hero-micro .hero-reel{font-weight:600;white-space:nowrap}
+@media (max-width:640px){.hero-actions{flex-direction:column;align-items:stretch;max-width:340px}.hero-actions .btn{width:100%;justify-content:center;text-align:center;min-height:52px}}
+</style>
 </head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
@@ -618,14 +629,14 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 
   <header id="site-header">
     <nav class="wrap">
-      <a href="#top" class="logo"><span class="dot"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio"></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+      <a href="#top" class="logo"><span class="dot"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio"></a><a class="hdr-call" href="tel:+14169005137" aria-label="Call EventStudio at (416) 900-5137"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Call</span></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="mobileNav">
         <li><a href="#work">What we do</a></li><li><a href="/live-event-production">Event Production</a></li><li><a href="/award-shows">Award Shows</a></li><li><a href="/live-streaming">Streaming</a></li><li><a href="/medical-education-production">Medical</a></li><li><a href="/av-headline">AV Compare</a></li><li><a href="/case-studies">Case Studies</a></li>
         <li><a href="#reel">Reel</a></li>
         <li><a href="#studio">Studio</a></li>
-        <li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Start the show</a></li>
+        <li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Get a quote</a></li>
       <li class="nav-contact"><a href="tel:+14169005137">(416) 900-5137</a></li><li class="nav-contact"><a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a></li></ul>
-      <a href="#contact" class="btn magnet">Start the show</a>
+      <a href="#contact" class="btn magnet">Get a quote</a>
     </nav>
   </header>
 
@@ -637,27 +648,29 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
       <div class="beam b2"></div>
       <div id="spotlight"></div>
       <div class="wrap hero-content">
-        <div class="eyebrow">Producing live events since 1996 · Based in Canada. Booked everywhere else.</div>
-        <h1>Every event, run like it's<br><span class="accent-blue">live</span> <em>on air</em>.</h1>
-        <p style="font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.03em;color:var(--paper-dim);margin:14px 0 0;">Live event production in the GTA — award shows, conventions, and medical broadcasts.</p>
-        <p class="sub">EventStudio designs and directs award shows, medical education broadcasts, and live experiences for brands who don't get a second take — produced across Canada and abroad.</p>
-        <div style="margin-bottom:22px;display:flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--paper-dim);"><span style="color:var(--amber);">★</span> Canadian Music Week — winner, Best International Music Festival, The Great Escape (UK), 2013</div><div class="hero-actions">
-          <a href="#contact" class="btn magnet">Start the show</a>
-          <a href="#reel" class="btn ghost magnet">Watch the reel</a>
+        <div class="eyebrow">Based in Canada. Booked everywhere else.</div>
+        <h1>Live events, award shows and broadcasts, <span class="accent-blue">directed</span> <em>like live TV</em>.</h1>
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;letter-spacing:0;color:var(--paper);margin:14px 0 0;">Over 1,000 live shows and events since 1996.</p>
+        <p class="sub">EventStudio plans, designs and directs live events for corporate planners, associations and marketing teams across Canada, so nothing goes wrong on the day.</p>
+        <div class="hero-actions">
+<a href="#contact" class="btn magnet">Get a quote</a>
+</div>
+<p class="hero-micro"><span>We reply within one business day, or <a href="tel:+14169005137">call (416) 900-5137</a>.</span><a class="hero-reel" href="#reel">Watch the reel &rarr;</a></p>
+      </div>
+          </section>
+    <style>.hero-av{margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.85);max-width:460px}.hero-av a{color:var(--amber);font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}.av-band{padding:64px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(242,169,59,.06),rgba(242,169,59,0))}.av-band .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}.av-band h2{margin:0 0 10px;max-width:640px}.av-band p{margin:0;max-width:560px;color:rgba(245,241,232,.8)}.av-band .av-link{display:inline-block;margin-top:14px;color:var(--amber);font-weight:600;text-decoration:underline;text-underline-offset:3px}@media(max-width:640px){.av-band{padding:44px 0}.av-band .btn{width:100%;text-align:center}}.tb-logo{filter:brightness(0) invert(1);opacity:.8;max-width:42vw;object-fit:contain}.tb-logo.tb-nofilter{filter:none}@media(max-width:640px){.tb-row{gap:20px 26px!important}.tb-logo{transform:scale(.8)}}</style><section aria-label="Selected clients" style="padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap tb-row" style="display:flex;flex-wrap:wrap;gap:20px 44px;align-items:center;justify-content:center;"><span style="flex-basis:100%;text-align:center;color:var(--amber);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;">Trusted by</span><img src="images/logos/stryker.svg" alt="Stryker" loading="lazy" decoding="async" class="tb-logo" style="height:22px;width:auto;"><img src="images/logos/allergan-aesthetics.svg" alt="Allergan Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:52px;width:auto;"><img src="images/logos/toyota-mono.svg" alt="Toyota" loading="lazy" decoding="async" class="tb-logo tb-nofilter" style="height:28px;width:auto;"><img src="images/logos/bell-canada.svg" alt="Bell Canada" loading="lazy" decoding="async" class="tb-logo" style="height:28px;width:auto;"><img src="images/logos/merz-aesthetics.svg" alt="Merz Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:16px;width:auto;"><img src="images/logos/stronco.png" alt="The Stronco Group" loading="lazy" decoding="async" class="tb-logo" style="height:24px;width:auto;"><img src="images/logos/atlas-mark.png" alt="Atlas Van Lines" loading="lazy" decoding="async" class="tb-logo" style="height:56px;width:auto;"><img src="images/logos/cmw.png" alt="Canadian Music Week" loading="lazy" decoding="async" class="tb-logo" style="height:34px;width:auto;"></div></section>
+    <section class="av-band" aria-label="AV Compare">
+      <div class="wrap">
+        <div>
+          <h2>Make event AV cost-effective.</h2>
+          <p>Three quotes. One spec. Only the gear you need. We write the spec, get three supplier quotes and keep the list to what your room needs.</p>
+          <a class="av-link" href="/av-compare-case-study">See a real example: two quotes, one ballroom, 48% apart &rarr;</a>
         </div>
+        <a href="/av-headline" class="btn magnet">Request your spec</a>
       </div>
-      <div class="scroll-cue">SCROLL — CUE 01</div>
     </section>
-    <section aria-label="Selected clients" style="padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px 30px;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim);"><span style="color:var(--amber);">Trusted by</span><span>Stryker</span><span>Allergan</span><span>Toyota</span><span>Bell Canada</span><span>Merz</span><span>Atlas Van Lines</span><span>Canadian Music Week</span></div></section>
 
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>Live events <i>—</i> Event production <i>—</i> Live streaming <i>—</i> Medical education <i>—</i> Award shows <i>—</i><span class="accent-blue"> Virtually Real broadcast system</span> <i>—</i></span>
-        <span>Live events <i>—</i> Event production <i>—</i> Live streaming <i>—</i> Medical education <i>—</i> Award shows <i>—</i> <span class="accent-blue">Virtually Real broadcast system</span> <i>—</i></span>
-      </div>
-    </div>
-
-    <section id="reel" class="reel-wrap">
+        <section id="reel" class="reel-wrap">
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Frames from the show floor</h2>
@@ -677,28 +690,24 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         <div class="reel reveal" id="reel-track">
-          <div class="reel-item"><img src="images/AWARD-SHOW-640.webp" srcset="images/AWARD-SHOW-640.webp 640w, images/AWARD-SHOW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AWARD-SHOW-1280.webp" alt="Award show stage production with lighting design" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Award show<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/CONCERT-640.webp" srcset="images/CONCERT-640.webp 640w, images/CONCERT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONCERT-1280.webp" alt="Rush Neil Peart tribute concert production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Concert<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/OUTDOOR-FESTIVAL-640.webp" srcset="images/OUTDOOR-FESTIVAL-640.webp 640w, images/OUTDOOR-FESTIVAL-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOOR-FESTIVAL-1280.webp" alt="YouTube Fan Fest outdoor festival production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/VIDEO-MAPPING-640.webp" srcset="images/VIDEO-MAPPING-640.webp 640w, images/VIDEO-MAPPING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/VIDEO-MAPPING-1280.webp" alt="Video mapping projection for Toronto's New Year's Eve fireworks" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-WEB-STREAMING-640.webp" srcset="images/LIVE-WEB-STREAMING-640.webp 640w, images/LIVE-WEB-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-WEB-STREAMING-1280.webp" alt="Live web streaming broadcast setup" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live web streaming<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/CONVENTION-640.webp" srcset="images/CONVENTION-640.webp 640w, images/CONVENTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONVENTION-1280.webp" alt="Canadian Music Week convention production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Convention<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/AWARD-SHOW-640.webp" srcset="images/AWARD-SHOW-640.webp 640w, images/AWARD-SHOW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AWARD-SHOW-1280.webp" alt="Award show stage production with lighting design" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Award show<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/CONVENTION-640.webp" srcset="images/CONVENTION-640.webp 640w, images/CONVENTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONVENTION-1280.webp" alt="Canadian Music Week convention production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Convention<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/LIVE-WEB-STREAMING-640.webp" srcset="images/LIVE-WEB-STREAMING-640.webp 640w, images/LIVE-WEB-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-WEB-STREAMING-1280.webp" alt="Live web streaming broadcast setup" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live web streaming<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item has-baked"><img src="images/CORPORATE-EDUCATION-MEETING-640.webp" srcset="images/CORPORATE-EDUCATION-MEETING-640.webp 640w, images/CORPORATE-EDUCATION-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CORPORATE-EDUCATION-MEETING-1280.webp" alt="Medical aesthetics corporate education meeting" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/OUTDOO0R-AWARDS-640.webp" srcset="images/OUTDOO0R-AWARDS-640.webp 640w, images/OUTDOO0R-AWARDS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOO0R-AWARDS-1280.webp" alt="O'Cannabiz gala awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/SALES-MEETING-640.webp" srcset="images/SALES-MEETING-640.webp 640w, images/SALES-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SALES-MEETING-1280.webp" alt="Allergan medical education event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/AUDIENCE-PARTICIPATION-640.webp" srcset="images/AUDIENCE-PARTICIPATION-640.webp 640w, images/AUDIENCE-PARTICIPATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AUDIENCE-PARTICIPATION-1280.webp" alt="Live audience participation at a produced event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/LIVE-TV-PRODUCTION-640.webp" srcset="images/LIVE-TV-PRODUCTION-640.webp 640w, images/LIVE-TV-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-TV-PRODUCTION-1280.webp" alt="2022 Toronto fireworks broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live TV production<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item has-baked"><img src="images/PLANNING-TO-EXECUTION-640.webp" srcset="images/PLANNING-TO-EXECUTION-640.webp 640w, images/PLANNING-TO-EXECUTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/PLANNING-TO-EXECUTION-1280.webp" alt="Event planning and on-site execution" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/MEDICAL-EDUCATION-640.webp" srcset="images/MEDICAL-EDUCATION-640.webp 640w, images/MEDICAL-EDUCATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/MEDICAL-EDUCATION-1280.webp" alt="Medical education broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
           <div class="reel-item"><img src="images/Medical-Event-Production-1.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/SPORTS-EVENT-640.webp" srcset="images/SPORTS-EVENT-640.webp 640w, images/SPORTS-EVENT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SPORTS-EVENT-1280.webp" alt="Live sports event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sports event<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/CORPORATE-EDUCATION-MEETING-640.webp" srcset="images/CORPORATE-EDUCATION-MEETING-640.webp 640w, images/CORPORATE-EDUCATION-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CORPORATE-EDUCATION-MEETING-1280.webp" alt="Medical aesthetics corporate education meeting" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/PLANNING-TO-EXECUTION-640.webp" srcset="images/PLANNING-TO-EXECUTION-640.webp 640w, images/PLANNING-TO-EXECUTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/PLANNING-TO-EXECUTION-1280.webp" alt="Event planning and on-site execution" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/OUTDOO0R-AWARDS-640.webp" srcset="images/OUTDOO0R-AWARDS-640.webp 640w, images/OUTDOO0R-AWARDS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOO0R-AWARDS-1280.webp" alt="O'Cannabiz gala awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/SALES-MEETING-640.webp" srcset="images/SALES-MEETING-640.webp 640w, images/SALES-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SALES-MEETING-1280.webp" alt="Allergan medical education event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/AUDIENCE-PARTICIPATION-640.webp" srcset="images/AUDIENCE-PARTICIPATION-640.webp 640w, images/AUDIENCE-PARTICIPATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AUDIENCE-PARTICIPATION-1280.webp" alt="Live audience participation at a produced event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-TV-PRODUCTION-640.webp" srcset="images/LIVE-TV-PRODUCTION-640.webp 640w, images/LIVE-TV-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-TV-PRODUCTION-1280.webp" alt="2022 Toronto fireworks broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live TV production<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp" srcset="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp 640w, images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp" alt="Virtual holiday party broadcast for Lush Cosmetics" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Virtual holiday party<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/CELEBRITY-INTERVIEW-640.webp" srcset="images/CELEBRITY-INTERVIEW-640.webp 640w, images/CELEBRITY-INTERVIEW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CELEBRITY-INTERVIEW-1280.webp" alt="Celebrity interview production at the Grow Up Conference" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp" srcset="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp 640w, images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp" alt="Virtual holiday party broadcast for Lush Cosmetics" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Virtual holiday party<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item has-baked"><img src="images/CELEBRITY-INTERVIEW-640.webp" srcset="images/CELEBRITY-INTERVIEW-640.webp 640w, images/CELEBRITY-INTERVIEW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CELEBRITY-INTERVIEW-1280.webp" alt="Celebrity interview production at the Grow Up Conference" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
           <div class="reel-item"><img src="images/Medical-Event-Production-2.jpg" alt="Green screen broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
           <div class="reel-item"><img src="images/Medical-Event-Production-3.jpg" alt="Facial injection technique filmed for medical aesthetics education" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/EVENTS-640.webp" srcset="images/EVENTS-640.webp 640w, images/EVENTS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENTS-1280.webp" alt="Music and broadcast industry awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live events<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/EVENT-PRODUCTION-640.webp" srcset="images/EVENT-PRODUCTION-640.webp 640w, images/EVENT-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENT-PRODUCTION-1280.webp" alt="Director's script for live event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/LIVE-STREAMING-640.webp" srcset="images/LIVE-STREAMING-640.webp 640w, images/LIVE-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-STREAMING-1280.webp" alt="Virtually Real live broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live streaming<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/MEDICAL-EDUCATION-640.webp" srcset="images/MEDICAL-EDUCATION-640.webp 640w, images/MEDICAL-EDUCATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/MEDICAL-EDUCATION-1280.webp" alt="Medical education broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item has-baked"><img src="images/EVENTS-640.webp" srcset="images/EVENTS-640.webp 640w, images/EVENTS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENTS-1280.webp" alt="Music and broadcast industry awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live events<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/EVENT-PRODUCTION-640.webp" srcset="images/EVENT-PRODUCTION-640.webp 640w, images/EVENT-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENT-PRODUCTION-1280.webp" alt="Director's script for live event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/LIVE-STREAMING-640.webp" srcset="images/LIVE-STREAMING-640.webp 640w, images/LIVE-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-STREAMING-1280.webp" alt="Virtually Real live broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live streaming<i class="tag-vr">Virtually Real</i></div></div>
           <div class="reel-item"><img src="images/Event-Production-1.jpg" alt="Pre-show setup for a live event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
           <div class="reel-item"><img src="images/Event-Production-2.jpg" alt="Mobile broadcast production with Virtually Real" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
           <div class="reel-item"><img src="images/Event-Production-3.jpg" alt="Andy and Kim in hair and makeup for a live broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
@@ -712,6 +721,10 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
           <div class="reel-item"><img src="images/Medical-Event-Production-4.jpg" alt="Remote broadcast setup for MD Codes facial aesthetics mentee training with Dr. Maurício de Maio" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
           <div class="reel-item"><img src="images/Medical-Event-Production-5.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
           <div class="reel-item"><img src="images/Medical-Event-Production-6.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item has-baked"><img src="images/VIDEO-MAPPING-640.webp" srcset="images/VIDEO-MAPPING-640.webp 640w, images/VIDEO-MAPPING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/VIDEO-MAPPING-1280.webp" alt="Video mapping projection for Toronto's New Year's Eve fireworks" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
+          <div class="reel-item has-baked"><img src="images/SPORTS-EVENT-640.webp" srcset="images/SPORTS-EVENT-640.webp 640w, images/SPORTS-EVENT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SPORTS-EVENT-1280.webp" alt="Live sports event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sports event<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/CONCERT-640.webp" srcset="images/CONCERT-640.webp 640w, images/CONCERT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONCERT-1280.webp" alt="Rush Neil Peart tribute concert production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Concert<i>Live event</i></div></div>
+          <div class="reel-item has-baked"><img src="images/OUTDOOR-FESTIVAL-640.webp" srcset="images/OUTDOOR-FESTIVAL-640.webp 640w, images/OUTDOOR-FESTIVAL-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOOR-FESTIVAL-1280.webp" alt="YouTube Fan Fest outdoor festival production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
         </div>
         </div>
       </div>
@@ -721,7 +734,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
       <div class="wrap">
         <div class="section-head reveal">
           <h2>What we do</h2>
-          <p>Four disciplines, one crew — from the first lighting plot to the last frame of the stream.</p>
+          <p>Five services, one crew — from the first lighting plot to the last frame of the stream.</p>
         </div>
         <div class="services">
           <div class="service reveal">
@@ -744,8 +757,12 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
             <h3>Clinical &amp; confidential</h3>
             <p>Studio, broadcast, and live-procedure production across orthopedics, diabetes, aesthetics, and beyond — handled with the discretion it demands.</p><a href="/medical-education-production" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our medical work →</a>
           </div>
+          <div class="service service-wide reveal">
+            <span class="num">05 — AV Compare</span>
+            <h3>Pay less for AV.</h3>
+            <p>One spec, three AV quotes, side by side. We've seen quotes for the same ballroom come in <strong style="color:var(--amber);font-weight:700;">48% apart</strong>. From $500 CAD.</p><a href="/av-headline" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Compare your AV →</a>
+          </div>
         </div>
-        <p class="reveal" style="margin-top:32px;color:var(--paper-dim);max-width:62ch;">Planning an event and only need the AV priced fairly? <a href="/av-headline" style="color:var(--amber);text-decoration:underline;text-underline-offset:3px;">AV Compare</a> sends one spec to three AV houses so you can compare like-for-like quotes. From $500 CAD. We recommend the best fit for your meeting, whoever that is.</p>
       </div>
     </section>
 
@@ -831,7 +848,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
           </div>
 <div>
 <label for="company">Company</label>
-<input id="company" name="company" type="text" autocomplete="organization" placeholder="Your company" required>
+<input id="company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
 </div>
           <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-status" aria-live="polite"></p><p class="form-trust">We reply within one business day.</p>
         </form>
@@ -1090,15 +1107,15 @@ var photoModal = document.getElementById('photo-modal'); var photoModalImg = doc
 .es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#f2a93b;color:#141311;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
 .es-quote:hover,.es-quote:focus-visible{transform:translateY(-2px);background:#f5f1e8;outline:none}
 .es-quote.es-hide{opacity:0;visibility:hidden;pointer-events:none}
-@media (max-width:640px){.es-quote{left:12px;right:12px;bottom:12px;justify-content:center;padding:14px 18px;font-size:12px}body{padding-bottom:72px}}
+@media (max-width:640px){.es-quote{left:auto;right:12px;bottom:12px;min-height:40px;justify-content:center;padding:10px 16px;font-size:12px}body{padding-bottom:0}}
 </style>
-<a class="es-quote" id="esQuote" href="#contact">Talk to us about your event <span aria-hidden="true">&rarr;</span></a>
+<a class="es-quote" id="esQuote" href="#contact">Get a quote <span aria-hidden="true">&rarr;</span></a>
 <script>
 (function(){
 var b=document.getElementById('esQuote'),t=document.querySelector('#contact');
 if(!b)return;
 b.addEventListener('click',function(){try{if(window.avt)window.avt('click',{what:'quote_button'});}catch(e){}});
-if(t&&'IntersectionObserver' in window){new IntersectionObserver(function(e){b.classList.toggle('es-hide',e[0].isIntersecting);},{threshold:0.15}).observe(t);}
+if('IntersectionObserver' in window){var hid={c:false,h:false},hero=document.querySelector('.hero');function upd(){b.classList.toggle('es-hide',hid.c||hid.h);}if(t){new IntersectionObserver(function(e){hid.c=e[0].isIntersecting;upd();},{threshold:0.15}).observe(t);}if(hero){new IntersectionObserver(function(e){hid.h=e[0].isIntersecting;upd();},{threshold:0}).observe(hero);}}
 })();
 </script>
 </body>
