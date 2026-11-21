@@ -169,3 +169,19 @@ p,li{ text-wrap:pretty; }
 }
 /* source JPGs have a thin red edge baked in: crop it */
 .cs-card .cs-img img, .reel-item .reel-img:not(.baked) img{ transform:scale(1.04); }
+
+/* ===== quick quote forms (ad landing pages) ===== */
+.quick-quote{ padding-block:64px!important; border-top:1px solid var(--line); }
+.quick-quote .qq-line{ font-size:34px!important; max-width:18ch; margin:0 0 24px; }
+.quick-form{ display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:12px; align-items:end; max-width:1000px; }
+.quick-form label{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.quick-form input{ width:100%; min-height:52px; padding:0 14px; background:var(--bg-raised); color:var(--paper); border:1px solid var(--line); border-radius:2px; font:inherit; font-size:16px; }
+.quick-form input::placeholder{ color:var(--paper-dim); }
+.quick-form .btn{ min-height:52px; white-space:nowrap; }
+.quick-form .form-status{ grid-column:1/-1; margin:0; font-size:13px; }
+.hero .quick-form{ grid-template-columns:1fr; max-width:420px; margin-top:24px; gap:10px; }
+.hero .hero-sub{ font-size:18px; line-height:1.45; color:var(--paper-dim); max-width:36ch; margin:16px 0 0; }
+.hero .quick-form .btn{ justify-content:center; }
+@media (min-width:900px){ .hero .quick-form{ grid-template-columns:1fr 1fr; max-width:560px; } .hero .quick-form .btn, .hero .quick-form .qf-field:last-of-type{ grid-column:auto; } }
+@media (max-width:899px){ .quick-form{ grid-template-columns:1fr; } .quick-quote .qq-line{ font-size:30px!important; } }
+@media (max-width:640px){ .hero h1{ font-size:36px; } .hero .hero-sub{ font-size:16px; margin-top:12px; } .hero .quick-form{ margin-top:16px; gap:8px; } .hero .quick-form input,.hero .quick-form .btn{ min-height:48px; } .hero .quick-form .btn{ width:100%!important; } }

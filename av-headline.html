@@ -245,12 +245,18 @@ footer .legal{font-family:'Inter',system-ui,sans-serif;font-size:11.5px;letter-s
 <div class="wrap">
 
 <section class="hero">
-  <p class="eyebrow">An EventStudio service</p>
-  <h1>Make event&nbsp;AV cost&#8209;effective.</h1>
+  <h1>Meeting planners: don&rsquo;t sign the first AV quote.</h1>
+  <p class="hero-sub">Finance will ask why you only got one number. One spec. Three suppliers. You pick.</p>
+  <form id="heroForm" class="quick-form" action="/api/lead" method="POST" data-lead="av-compare" novalidate>
+<div class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label for="hero-gotcha">Leave this empty</label><input id="hero-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<div class="qf-field"><label for="hero-name">Name</label><input id="hero-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
+<div class="qf-field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" required></div>
+<div class="qf-field"><label for="hero-company">Company (optional)</label><input id="hero-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization"></div>
+<button type="submit" class="btn">Get 3 quotes</button>
+<p class="form-status" role="status" aria-live="polite"></p>
+</form>
   <p class="proof">Over 1,000 live shows and events since 1996.</p>
-  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> Leave your name and email. We’ll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
-  <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  <p class="cta-sub">Name and email is all we need to start. We’ll ask for the date, venue and headcount when we reply.</p>
+  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> We’ll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
   <p class="cta-sub"><a href="/av-compare-case-study" style="color:var(--amber);text-decoration:underline;">See a real example: two quotes, one ballroom, 48% apart &rarr;</a></p>
 </section>
 
@@ -359,11 +365,12 @@ footer .legal{font-family:'Inter',system-ui,sans-serif;font-size:11.5px;letter-s
   }
 
   // Spec request form: lead-form.js sends it to /api/lead; record the conversion here
-  var form = document.getElementById('specForm');
-  if (!form) return;
-  form.addEventListener('lead:sent', function () {
-    if (window.va) window.va('event', { name: 'spec_request' });
-    if (window.avt) window.avt('spec_request', {});
+  var forms = document.querySelectorAll('form[data-lead]');
+  Array.prototype.forEach.call(forms, function (form) {
+    form.addEventListener('lead:sent', function () {
+      if (window.va) window.va('event', { name: 'spec_request' });
+      if (window.avt) window.avt('spec_request', {});
+    });
   });
 })();
 </script>

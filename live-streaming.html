@@ -480,6 +480,20 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </div>
 </section>
 
+<section class="quick-quote" id="quick-quote">
+<div class="wrap">
+<h2 class="qq-line">Want a director on your broadcast? Get a quote.</h2>
+<form id="quickForm" class="quick-form" action="/api/lead" method="POST" data-lead="live-streaming" novalidate>
+<div class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label for="qq-gotcha">Leave this empty</label><input id="qq-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<div class="qf-field"><label for="qq-name">Name</label><input id="qq-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
+<div class="qf-field"><label for="qq-email">Email</label><input id="qq-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" required></div>
+<div class="qf-field"><label for="qq-company">Company (optional)</label><input id="qq-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization"></div>
+<button type="submit" class="btn">Get a quote</button>
+<p class="form-status" role="status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+
 <section class="faq">
 <div class="wrap">
 <div class="section-head reveal">
@@ -525,7 +539,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <label for="company">Company</label>
 <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
 </div>
-          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send enquiry</button><p class="form-trust">We reply within one business day.</p>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Get a quote</button><p class="form-trust">We reply within one business day.</p>
 </form>
 </div>
 </div>
@@ -596,7 +610,7 @@ revealEls.forEach(function(el){ el.classList.add('in'); });
 
 // contact form: lead-form.js sends it to /api/lead; record the conversion here
 var contactForm=document.getElementById('contactForm');
-if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); }
+if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); } var quickForm=document.getElementById('quickForm'); if(quickForm){ quickForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'quick'}); }); }
 
 var photoModal = document.getElementById('photo-modal');
 var photoModalImg = document.getElementById('photo-modal-img');
