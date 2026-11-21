@@ -429,6 +429,10 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 .reel-item[role="button"], .person[role="button"]{ cursor:pointer; }
 </style>
 <link rel="preload" as="image" href="/images/LIVE-EVENT-1600.webp" type="image/webp" fetchpriority="high">
+<style>/* mobile header call button: shows whenever the hamburger shows */
+.hdr-call{display:none}
+@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
+@media (max-width:340px){.hdr-call span{display:none}.hdr-call{padding:0 12px}}</style>
 </head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
@@ -439,7 +443,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 
 <header id="site-header">
 <nav class="wrap">
-<a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+<a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a><a class="hdr-call" href="tel:+14169005137" aria-label="Call EventStudio at (416) 900-5137"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Call</span></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
 <ul class="nav-links" id="mobileNav">
 <li><a href="/">Home</a></li>
 <li><a href="/live-event-production">Event Production</a></li>
