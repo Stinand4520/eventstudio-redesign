@@ -227,6 +227,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 }
 </style>
 <script>document.documentElement.classList.add('js');</script>
+<style>.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}.proof{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--paper-dim);margin:14px 0 0}@media (max-width:420px){.hdr-call span{display:none}.hdr-call{padding:0 13px}}</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -234,7 +235,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <header class="site">
   <div class="wrap">
     <a href="/" class="logo" aria-label="EventStudio home"><span class="dot" aria-hidden="true"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio" width="208" height="26"></a>
-    <div class="product-tag">AV COMPARE</div>
+    <div class="product-tag">AV COMPARE</div><a class="hdr-call" href="tel:+14169005137" aria-label="Call EventStudio at (416) 900-5137"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Call</span></a>
   </div>
 </header>
 
@@ -245,10 +246,11 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <section class="hero">
   <p class="eyebrow">An EventStudio service</p>
   <h1>Make event&nbsp;AV <em>cost&#8209;effective.</em></h1>
-  <p class="tagline">Three quotes. One spec. Only the gear you need.</p>
-  <p class="hero-copy">AV gets expensive when the package is built for a bigger show than the one you're running. <strong>EventStudio writes the spec, shops it three ways, and keeps the list to what the room actually needs</strong> — so the same meeting costs less to light, mic, and project.</p>
-  <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  <p class="cta-sub">Date, venue, room, headcount, short agenda — that's all we need to start.</p>
+  <p class="proof">Over 1,000 live shows and events since 1996.</p>
+  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> Leave your name and email. We'll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
+  <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a> <a class="btn" href="tel:+14169005137" style="background:transparent;color:var(--paper);border:1px solid var(--line);margin-left:10px;">Call (416) 900-5137</a>
+  <p class="cta-sub">Name and email is all we need to start. We'll ask for the date, venue and headcount when we reply.</p>
+  <p class="cta-sub"><a href="/av-compare-case-study" style="color:var(--amber);text-decoration:underline;">See a real example: two quotes, one ballroom, 48% apart &rarr;</a></p>
 </section>
 
 <section class="offer reveal">
@@ -322,8 +324,8 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
       </div>
     </div>
     <div>
-      <label for="avh-company">Company</label>
-      <input id="avh-company" name="company" type="text" placeholder="Your company" autocomplete="organization" required>
+      <label for="avh-company">Company (optional)</label>
+      <input id="avh-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization">
     </div>
     <p class="form-status" role="status" aria-live="polite"></p>
     <button type="submit" class="btn">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></button>
