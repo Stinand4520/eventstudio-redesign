@@ -126,3 +126,14 @@ section:not(.hero){ padding-block:var(--s8)!important; }
 h2, .section-head h2, .stream-grid h2, .contact h2, .approach h2{ font-size:48px!important; }
 @media (max-width:640px){ h2, .section-head h2, .stream-grid h2, .contact h2, .approach h2{ font-size:34px!important; } }
 .reel-item .reel-img.cap-top img{ height:120%!important; }
+
+/* ===== round 3 ===== */
+/* Virtually Real play button visible at rest */
+.signal .play-cue{ opacity:1!important; }
+/* phone tap targets */
+@media (max-width:640px){
+  footer a{ display:inline-flex; align-items:center; justify-content:center; min-height:44px; min-width:44px; }
+  footer a[aria-label*="Instagram"], footer a[aria-label*="Facebook"]{ width:44px!important; height:44px!important; }
+  .nav-toggle{ width:44px!important; height:44px!important; min-width:44px; min-height:44px; }
+  input:not([type=checkbox]):not([type=radio]):not([type=hidden]), select, textarea, form.card input, form.card select{ min-height:44px; }
+}
