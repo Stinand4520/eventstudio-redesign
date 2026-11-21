@@ -167,3 +167,5 @@ p,li{ text-wrap:pretty; }
   header .logo, header a.logo{ display:inline-flex!important; align-items:center; min-height:44px; }
   p a, li a, .sub a, .lead a, .hero-micro a, .form-trust a, blockquote a, .meta a{ padding-block:14px; }
 }
+/* source JPGs have a thin red edge baked in: crop it */
+.cs-card .cs-img img, .reel-item .reel-img:not(.baked) img{ transform:scale(1.04); }
