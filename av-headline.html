@@ -387,7 +387,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 var b=document.getElementById('esQuote'),t=document.querySelector('#spec-form');
 if(!b)return;
 b.addEventListener('click',function(){try{if(window.avt)window.avt('click',{what:'quote_button'});}catch(e){}});
-if(t&&'IntersectionObserver' in window){new IntersectionObserver(function(e){b.classList.toggle('es-hide',e[0].isIntersecting);},{threshold:0.15}).observe(t);}
+if('IntersectionObserver' in window){var hid={c:false,h:false},hero=document.querySelector('.hero');function upd(){b.classList.toggle('es-hide',hid.c||hid.h);}if(t){new IntersectionObserver(function(e){hid.c=e[0].isIntersecting;upd();},{threshold:0.15}).observe(t);}if(hero){new IntersectionObserver(function(e){hid.h=e[0].isIntersecting;upd();},{threshold:0.2}).observe(hero);}}
 })();
 </script>
 </body>
