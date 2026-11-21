@@ -125,3 +125,4 @@ section:not(.hero){ padding-block:var(--s8)!important; }
 /* h2 sizes */
 h2, .section-head h2, .stream-grid h2, .contact h2, .approach h2{ font-size:48px!important; }
 @media (max-width:640px){ h2, .section-head h2, .stream-grid h2, .contact h2, .approach h2{ font-size:34px!important; } }
+.reel-item .reel-img.cap-top img{ height:120%!important; }
