@@ -41,8 +41,8 @@
     --paper:#f5f1e8;
     --paper-dim: rgba(245,241,232,0.62);
     --paper-faint: rgba(245,241,232,0.34);
-    --amber:#f2a93b;
-    --amber-dim: rgba(242,169,59,0.5);
+    --amber:#D99A44;
+    --amber-dim: rgba(217,154,68,0.5);
     --blue:#4c8dff;
     --red:#e4392e;
     --ink:#141311;
@@ -71,7 +71,7 @@
   }
 
   .eyebrow{
-    font-family:'Space Mono', monospace;
+    font-family:'Inter',system-ui,sans-serif;
     font-size:12px;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -89,7 +89,7 @@
   }
 
   a{ color:inherit; }
-  img{ display:block; max-width:100%; } .skip-link{ position:absolute; left:-9999px; top:0; background:var(--amber); color:var(--ink); padding:12px 20px; z-index:1000; font-family:'Space Mono', monospace; font-size:13px; text-decoration:none; } .skip-link:focus{ left:12px; top:12px; } .form-trust{ font-family:'Space Mono', monospace; font-size:11px; line-height:1.6; letter-spacing:0.02em; color:var(--paper-dim); margin-top:12px; max-width:38ch; }
+  img{ display:block; max-width:100%; } .skip-link{ position:absolute; left:-9999px; top:0; background:var(--amber); color:var(--ink); padding:12px 20px; z-index:1000; font-family:'Inter',system-ui,sans-serif; font-size:13px; text-decoration:none; } .skip-link:focus{ left:12px; top:12px; } .form-trust{ font-family:'Inter',system-ui,sans-serif; font-size:11px; line-height:1.6; letter-spacing:0.02em; color:var(--paper-dim); margin-top:12px; max-width:38ch; }
 
   .wrap{
     max-width:1240px;
@@ -132,7 +132,7 @@
     50%{ transform:scale(0.7); opacity:0.55; }
   }
   #loader-label{
-    font-family:'Space Mono', monospace;
+    font-family:'Inter',system-ui,sans-serif;
     font-size:12px;
     letter-spacing:0.24em;
     color:var(--paper-dim);
@@ -194,7 +194,7 @@
   .nav-links a:hover::after{ right:0; } .nav-links .nav-cta{ display:none; } .nav-toggle{ display:none; flex-direction:column; justify-content:center; align-items:center; width:34px; height:34px; gap:6px; background:none; border:none; cursor:pointer; padding:0; z-index:101; } .nav-toggle span{ display:block; width:24px; height:2px; background:var(--paper); transition:transform .3s var(--ease), opacity .3s var(--ease); } .nav-toggle.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); } .nav-toggle.open span:nth-child(2){ opacity:0; } .nav-toggle.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
 
   .btn{
-    font-family:'Space Mono', monospace;
+    font-family:'Inter',system-ui,sans-serif;
     font-size:12px;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -231,20 +231,6 @@
     background-size:cover; background-position:center 30%;
     filter:grayscale(0.55) contrast(1.15) brightness(0.55);
   }
-  .beam{
-    position:absolute; top:-20%; width:38vw; height:160vh;
-    background:linear-gradient(180deg, rgba(242,169,59,0.16), transparent 70%);
-    transform:rotate(18deg);
-    filter:blur(10px);
-    z-index:1;
-    animation: sweep 14s ease-in-out infinite;
-  }
-  .beam.b2{ left:55%; animation-delay:-6s; opacity:0.6; background:linear-gradient(180deg, rgba(76,141,255,0.14), transparent 70%);}
-  .beam.b1{ left:5%; }
-  @keyframes sweep{
-    0%,100%{ transform:rotate(14deg) translateX(0); }
-    50%{ transform:rotate(22deg) translateX(6vw); }
-  }
   .hero-content{ position:relative; z-index:3; }
   .hero h1{
     font-size:clamp(2.6rem, 6.6vw, 6.4rem);
@@ -264,7 +250,7 @@
   .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
   .scroll-cue{
     position:absolute; right:40px; bottom:36px; z-index:3;
-    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.2em;
+    font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.2em;
     color:rgba(245,241,232,0.55);
     writing-mode:vertical-rl;
     display:flex; align-items:center; gap:12px;
@@ -282,7 +268,7 @@
   }
   .marquee-track{ display:inline-flex; gap:48px; animation: scroll-x 26s linear infinite; }
   .marquee span{
-    font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.12em;
+    font-family:'Inter',system-ui,sans-serif; font-size:13px; letter-spacing:0.12em;
     color:rgba(245,241,232,0.55); text-transform:uppercase;
     display:inline-flex; align-items:center; gap:48px;
   }
@@ -305,7 +291,7 @@
     transition: background .4s var(--ease);
   }
   .service:hover{ background:var(--charcoal); }
-  .service .num{ font-family:'Space Mono', monospace; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
+  .service .num{ font-family:'Inter',system-ui,sans-serif; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
   .service h3{ font-size:26px; margin:20px 0 14px; }
   .service p{ color:var(--paper-dim); font-size:14.5px; max-width:42ch; }
   .service.service-wide{ grid-column:1 / -1; }
@@ -319,21 +305,17 @@
   }
   .reel-hint{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.14em;
+    font-family:'Inter',system-ui,sans-serif; font-size:11.5px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--amber);
   }
-  .reel-hint svg{ width:15px; height:15px; animation:hint-nudge 1.4s ease-in-out infinite; }
-  @keyframes hint-nudge{
-    0%,100%{ transform:translateX(0); }
-    50%{ transform:translateX(6px); }
-  }
+  .reel-hint svg{ width:15px; height:15px; }
   .reel-counter{
-    font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.1em;
+    font-family:'Inter',system-ui,sans-serif; font-size:13px; letter-spacing:0.1em;
     color:var(--ink); background:var(--amber);
     padding:6px 14px; border-radius:999px;
     box-shadow:0 4px 18px -6px var(--amber-dim);
   }
-  .reel-counter b{ font-weight:700; } .reel-pause-toggle{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; background:transparent; border:1px solid var(--line); color:var(--paper-dim); padding:6px 14px; border-radius:999px; cursor:pointer; transition:border-color .3s, color .3s; } .reel-pause-toggle:hover{ border-color:var(--paper-dim); color:var(--paper); }
+  .reel-counter b{ font-weight:700; } .reel-pause-toggle{ font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; background:transparent; border:1px solid var(--line); color:var(--paper-dim); padding:6px 14px; border-radius:999px; cursor:pointer; transition:border-color .3s, color .3s; } .reel-pause-toggle:hover{ border-color:var(--paper-dim); color:var(--paper); }
   .reel-viewport{ position:relative; }
   .reel{
     display:flex; gap:20px; overflow-x:auto; padding:6px 0 24px;
@@ -353,9 +335,8 @@
     border-radius:50%; border:2px solid var(--amber);
     background:var(--amber); color:var(--ink); cursor:pointer;
     display:flex; align-items:center; justify-content:center;
-    box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(242,169,59,0.12);
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(217,154,68,0.12);
     transition:transform .25s var(--ease), box-shadow .25s var(--ease), opacity .3s, background .25s, color .25s;
-    animation:arrow-pulse 2.2s ease-in-out infinite;
   }
   .reel-arrow.prev{ left:14px; } .reel-item:hover{ filter: drop-shadow(0 20px 34px rgba(0,0,0,.55)); }
   .reel-arrow.next{ right:14px; }
@@ -363,10 +344,6 @@
   .reel-arrow:hover{ transform:scale(1.12); background:var(--paper); color:var(--ink); animation-play-state:paused; }
   .reel-arrow:active{ transform:scale(0.94); }
   .reel-arrow:disabled{ opacity:0; pointer-events:none; }
-  @keyframes arrow-pulse{
-    0%,100%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 6px rgba(242,169,59,0.12); }
-    50%{ box-shadow:0 10px 30px -8px rgba(0,0,0,0.55), 0 0 0 12px rgba(242,169,59,0.22); }
-  }
   @media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1300px){
     .reel-arrow{ width:48px; height:48px; margin-top:-28px; }
     .reel-arrow svg{ width:18px; height:18px; }
@@ -379,16 +356,16 @@
   .reel-item::after{
     content:''; position:absolute; inset:0;
     background:linear-gradient(180deg, transparent 40%, rgba(11,11,12,0.92) 100%),
-      linear-gradient(0deg, rgba(242,169,59,0.18), transparent 60%);
+      linear-gradient(0deg, rgba(217,154,68,0.18), transparent 60%);
     mix-blend-mode:normal;
   }
   .reel-item:hover img{ filter:contrast(1.08) saturate(1.2); transform:scale(1.04); }
   .reel-cap{
     position:absolute; left:20px; bottom:18px; z-index:2;
-    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    font-family:'Inter',system-ui,sans-serif; font-size:12px; letter-spacing:0.1em;
     color:var(--paper); text-transform:uppercase;
   }
-  .reel-cap i{ display:block; font-style:normal; color:rgba(242,169,59,0.75); font-size:10px; margin-top:4px; }
+  .reel-cap i{ display:block; font-style:normal; color:rgba(217,154,68,0.75); font-size:10px; margin-top:4px; }
   .reel-cap i.tag-vr{ color:var(--blue); }
   .reel-item.has-baked .reel-cap{ display:none; }
 
@@ -420,19 +397,9 @@
     aspect-ratio:4/3; border:1px solid var(--line); position:relative; overflow:hidden;
     background:var(--black);
   }
-  .signal .bars{
-    position:absolute; inset:0; display:flex; align-items:flex-end; gap:6px; padding:30px;
-  }
-  .signal .bars i{
-    flex:1; background:linear-gradient(180deg, var(--blue), rgba(76,141,255,0.15));
-    animation: bar 1.6s ease-in-out infinite;
-  }
-  .signal .bars i:nth-child(2n){ animation-delay:-0.4s; }
-  .signal .bars i:nth-child(3n){ animation-delay:-0.9s; }
-  @keyframes bar{ 0%,100%{ height:20%; } 50%{ height:85%; } }
   .signal .tag{
     position:absolute; top:20px; left:20px;
-    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.16em;
+    font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.16em;
     color:var(--paper-dim); display:flex; align-items:center; gap:8px;
   }
   .signal .tag::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 8px 2px rgba(228,57,46,0.5); animation:pulse 1.4s infinite; }
@@ -482,7 +449,7 @@
   #video-modal .modal-close{
     position:absolute; top:-46px; right:0;
     display:flex; align-items:center; gap:10px;
-    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em;
+    font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--paper-dim);
     background:none; border:none; cursor:pointer; padding:8px;
     transition:color .3s;
@@ -496,12 +463,12 @@
     #video-modal .modal-close{ top:-40px; }
   }
 
-  /* ===== photo lightbox ===== */ #photo-modal{ position:fixed; inset:0; z-index:200; background:rgba(11,11,12,0.92); display:flex; align-items:center; justify-content:center; padding:60px 24px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); } #photo-modal.open{ opacity:1; pointer-events:auto; } #photo-modal .modal-inner{ position:relative; width:100%; max-width:1040px; transform:translateY(16px) scale(0.98); transition:transform .4s var(--ease); } #photo-modal.open .modal-inner{ transform:translateY(0) scale(1); } #photo-modal img{ width:100%; display:block; background:var(--black); border:1px solid var(--line); } #photo-modal .photo-modal-caption{ margin-top:14px; font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--paper-dim); text-align:center; } #photo-modal .modal-close{ position:absolute; top:-46px; right:0; display:flex; align-items:center; gap:10px; font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper-dim); background:none; border:none; cursor:pointer; padding:8px; transition:color .3s; } #photo-modal .modal-close:hover{ color:var(--paper); } #photo-modal .modal-close .x{ width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px; } @media (max-width:560px){ #photo-modal .modal-close{ top:-40px; } } /* ===== team ===== */
+  /* ===== photo lightbox ===== */ #photo-modal{ position:fixed; inset:0; z-index:200; background:rgba(11,11,12,0.92); display:flex; align-items:center; justify-content:center; padding:60px 24px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); } #photo-modal.open{ opacity:1; pointer-events:auto; } #photo-modal .modal-inner{ position:relative; width:100%; max-width:1040px; transform:translateY(16px) scale(0.98); transition:transform .4s var(--ease); } #photo-modal.open .modal-inner{ transform:translateY(0) scale(1); } #photo-modal img{ width:100%; display:block; background:var(--black); border:1px solid var(--line); } #photo-modal .photo-modal-caption{ margin-top:14px; font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--paper-dim); text-align:center; } #photo-modal .modal-close{ position:absolute; top:-46px; right:0; display:flex; align-items:center; gap:10px; font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper-dim); background:none; border:none; cursor:pointer; padding:8px; transition:color .3s; } #photo-modal .modal-close:hover{ color:var(--paper); } #photo-modal .modal-close .x{ width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px; } @media (max-width:560px){ #photo-modal .modal-close{ top:-40px; } } /* ===== team ===== */
   .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
   .person{ border:1px solid var(--line); }
   .person .photo{ aspect-ratio:16/9; overflow:hidden; position:relative; }
   .person{ cursor:pointer; }
-  .person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.95), transparent); color:var(--amber); font-family:'Space Mono', monospace; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:12px 14px; opacity:1; }
+  .person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.95), transparent); color:var(--amber); font-family:'Inter',system-ui,sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:12px 14px; opacity:1; }
   .person .photo img{
     width:100%; height:100%; object-fit:cover;
     filter:grayscale(0.85) contrast(1.1) brightness(0.85);
@@ -510,7 +477,7 @@
   .person:hover .photo img{ filter:grayscale(0.3) contrast(1.05) brightness(0.95); }
   .person .info{ padding:20px 22px 26px; }
   .person .info .role{
-    font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.1em;
+    font-family:'Inter',system-ui,sans-serif; font-size:10.5px; letter-spacing:0.1em;
     color:var(--amber); text-transform:uppercase; display:block; margin-bottom:8px;
   }
   .person .info h3{ font-size:19px; }
@@ -543,7 +510,7 @@
     padding:32px; display:flex; flex-direction:column; gap:16px;
   }
   form.card label{
-    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.1em;
+    font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.1em;
     text-transform:uppercase; color:var(--paper-dim); display:block; margin-bottom:6px;
   }
   form.card input, form.card textarea{
@@ -559,29 +526,18 @@
   footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
   footer .logo{ color:var(--ink); }
   footer .logo .dot{ background:#a85f14; box-shadow:0 0 8px 2px rgba(168,95,20,0.3); }
-  footer .legal{ font-family:'Space Mono', monospace; font-size:12px; color:var(--paper-dim); letter-spacing:0.02em; }
-
-  /* ===== broadcast HUD (timecode) ===== */
-  #hud{
-    position:fixed; left:24px; bottom:22px; z-index:90;
-    font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.12em;
-    color:rgba(245,241,232,0.55);
-    display:flex; align-items:center; gap:10px;
-    mix-blend-mode:difference;
-  }
-  #hud .rec{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.3s infinite; }
+  footer .legal{ font-family:'Inter',system-ui,sans-serif; font-size:12px; color:var(--paper-dim); letter-spacing:0.02em; }
 
   @media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1180px){
     .wrap{ padding:0 22px; }
     .nav-toggle{ display:flex; } .nav-links{ display:flex; position:fixed; inset:0; z-index:99; padding-top:100px; flex-direction:column; align-items:center; justify-content:flex-start; gap:28px; background:var(--black); opacity:0; pointer-events:none; transform:translateY(-12px); transition:opacity .3s var(--ease), transform .3s var(--ease); } .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); } .nav-links a{ font-size:20px; } .nav-links .nav-cta{ display:list-item; margin-top:8px; } nav.wrap > .btn.magnet{ display:none; }
-.nav-links .nav-contact{ display:list-item; font-family:'Space Mono',monospace; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
+.nav-links .nav-contact{ display:list-item; font-family:'Inter',system-ui,sans-serif; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
 .nav-links{ visibility:hidden; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s; } .nav-links.open{ visibility:visible; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s; }
 }
 @media (max-width:900px){
     .services{ grid-template-columns:1fr; }
     .stream-grid, .contact-grid{ grid-template-columns:1fr; }
     .team-grid{ grid-template-columns:1fr 1fr; }
-    #hud{ display:none; }
     #spotlight{ display:none; }
   }
   @media (max-width:560px){
@@ -609,7 +565,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </style>
 <style>/* mobile header call button: shows whenever the hamburger shows */
 .hdr-call{display:none}
-@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
+@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
 @media (max-width:340px){.hdr-call span{display:none}.hdr-call{padding:0 12px}}</style>
 <style>/* hero micro line + mobile buttons */
 .hero-micro{font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.78);margin:16px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
@@ -617,15 +573,14 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 .hero-micro .hero-reel{font-weight:600;white-space:nowrap}
 @media (max-width:640px){.hero-actions{flex-direction:column;align-items:stretch;max-width:340px}.hero-actions .btn{width:100%;justify-content:center;text-align:center;min-height:52px}}
 </style>
-<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style><style>body a.es-quote{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;border-radius:8px!important;min-height:0!important;padding:10px 18px!important;background:rgba(11,11,12,.92)!important;color:var(--amber)!important;border:1px solid var(--amber)!important}body a.es-quote:hover,body a.es-quote:focus-visible{background:rgba(32,28,22,.98)!important;transform:none!important}</style></head>
+<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><link rel="stylesheet" href="/es-system.css">
+</head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
   <div id="loader">
     <div class="cue-dot"></div>
     <div id="loader-label">STANDING BY</div>
   </div>
-
-  <div id="hud"><span class="rec"></span><span id="tc">00:00:00:00</span></div>
 
   <header id="site-header">
     <nav class="wrap">
@@ -644,12 +599,10 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 
     <section class="hero">
       <div class="hero-bg"></div>
-      <div class="beam b1"></div>
-      <div class="beam b2"></div>
       <div id="spotlight"></div>
       <div class="wrap hero-content">
         <div class="eyebrow">Based in Canada. Booked everywhere else.</div>
-        <h1>Live events, award shows and broadcasts, <span class="accent-blue">directed</span> <em>like live TV</em>.</h1>
+        <h1>Live events, award shows and broadcasts, directed like live TV.</h1>
         <p style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;letter-spacing:0;color:var(--paper);margin:14px 0 0;">Over 1,000 live shows and events since 1996.</p>
         <p class="sub">EventStudio plans, designs and directs live events for corporate planners, associations and marketing teams across Canada, so nothing goes wrong on the day.</p>
         <div class="hero-actions">
@@ -658,7 +611,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <p class="hero-micro"><span>We reply within one business day, or <a href="tel:+14169005137">call (416) 900-5137</a>.</span><a class="hero-reel" href="#reel">Watch the reel &rarr;</a></p>
       </div>
           </section>
-    <style>.praise{padding:64px 0;border-bottom:1px solid var(--line)}.praise-eyebrow{text-align:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:28px}.praise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.praise-card{margin:0;padding:28px;border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}.praise-card blockquote{margin:0;font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:500;font-size:18px;line-height:1.45;color:var(--paper)}.praise-card figcaption{font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:600;color:var(--amber)}.praise-more{text-align:center;margin:28px 0 0}.praise-more a{font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:600;color:var(--amber);text-decoration:underline;text-underline-offset:3px}@media(max-width:900px){.praise-grid{grid-template-columns:1fr}.praise{padding:44px 0}}.hero-av{margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.85);max-width:460px}.hero-av a{color:var(--amber);font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}.av-band{padding:64px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(242,169,59,.06),rgba(242,169,59,0))}.av-band .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}.av-band h2{margin:0 0 10px;max-width:640px}.av-band p{margin:0;max-width:560px;color:rgba(245,241,232,.8)}.av-band .av-link{display:inline-block;margin-top:14px;color:var(--amber);font-weight:600;text-decoration:underline;text-underline-offset:3px}@media(max-width:640px){.av-band{padding:44px 0}.av-band .btn{width:100%;text-align:center}}.tb-logo{filter:brightness(0) invert(1);opacity:.8;max-width:42vw;object-fit:contain}.tb-logo.tb-nofilter{filter:none}@media(max-width:640px){.tb-row{gap:20px 26px!important}.tb-logo{transform:scale(.8)}}</style><section aria-label="Selected clients" style="padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap tb-row" style="display:flex;flex-wrap:wrap;gap:20px 44px;align-items:center;justify-content:center;"><span style="flex-basis:100%;text-align:center;color:var(--amber);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;">Trusted by</span><img src="images/logos/stryker.svg" alt="Stryker" loading="lazy" decoding="async" class="tb-logo" style="height:22px;width:auto;"><img src="images/logos/allergan-aesthetics.svg" alt="Allergan Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:52px;width:auto;"><img src="images/logos/toyota-mono.svg" alt="Toyota" loading="lazy" decoding="async" class="tb-logo tb-nofilter" style="height:28px;width:auto;"><img src="images/logos/bell-canada.svg" alt="Bell Canada" loading="lazy" decoding="async" class="tb-logo" style="height:28px;width:auto;"><img src="images/logos/merz-aesthetics.svg" alt="Merz Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:16px;width:auto;"><img src="images/logos/stronco.png" alt="The Stronco Group" loading="lazy" decoding="async" class="tb-logo" style="height:24px;width:auto;"><img src="images/logos/atlas-mark.png" alt="Atlas Van Lines" loading="lazy" decoding="async" class="tb-logo" style="height:56px;width:auto;"><img src="images/logos/cmw.png" alt="Canadian Music Week" loading="lazy" decoding="async" class="tb-logo" style="height:34px;width:auto;"></div></section>
+    <style>.praise{padding:64px 0;border-bottom:1px solid var(--line)}.praise-eyebrow{text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:28px}.praise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.praise-card{margin:0;padding:28px;border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}.praise-card blockquote{margin:0;font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:500;font-size:18px;line-height:1.45;color:var(--paper)}.praise-card figcaption{font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:600;color:var(--amber)}.praise-more{text-align:center;margin:28px 0 0}.praise-more a{font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:600;color:var(--amber);text-decoration:underline;text-underline-offset:3px}@media(max-width:900px){.praise-grid{grid-template-columns:1fr}.praise{padding:44px 0}}.hero-av{margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.85);max-width:460px}.hero-av a{color:var(--amber);font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}.av-band{padding:64px 0;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(217,154,68,.06),rgba(217,154,68,0))}.av-band .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}.av-band h2{margin:0 0 10px;max-width:640px}.av-band p{margin:0;max-width:560px;color:rgba(245,241,232,.8)}.av-band .av-link{display:inline-block;margin-top:14px;color:var(--amber);font-weight:600;text-decoration:underline;text-underline-offset:3px}@media(max-width:640px){.av-band{padding:44px 0}.av-band .btn{width:100%;text-align:center}}.tb-logo{filter:brightness(0) invert(1);opacity:.8;max-width:42vw;object-fit:contain}.tb-logo.tb-nofilter{filter:none}@media(max-width:640px){.tb-row{gap:20px 26px!important}.tb-logo{transform:scale(.8)}}</style><section aria-label="Selected clients" style="padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap tb-row" style="display:flex;flex-wrap:wrap;gap:20px 44px;align-items:center;justify-content:center;"><span style="flex-basis:100%;text-align:center;color:var(--amber);font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:.14em;">Trusted by</span><img src="images/logos/stryker.svg" alt="Stryker" loading="lazy" decoding="async" class="tb-logo" style="height:22px;width:auto;"><img src="images/logos/allergan-aesthetics.svg" alt="Allergan Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:52px;width:auto;"><img src="images/logos/toyota-mono.svg" alt="Toyota" loading="lazy" decoding="async" class="tb-logo tb-nofilter" style="height:28px;width:auto;"><img src="images/logos/bell-canada.svg" alt="Bell Canada" loading="lazy" decoding="async" class="tb-logo" style="height:28px;width:auto;"><img src="images/logos/merz-aesthetics.svg" alt="Merz Aesthetics" loading="lazy" decoding="async" class="tb-logo" style="height:16px;width:auto;"><img src="images/logos/stronco.png" alt="The Stronco Group" loading="lazy" decoding="async" class="tb-logo" style="height:24px;width:auto;"><img src="images/logos/atlas-mark.png" alt="Atlas Van Lines" loading="lazy" decoding="async" class="tb-logo" style="height:56px;width:auto;"><img src="images/logos/cmw.png" alt="Canadian Music Week" loading="lazy" decoding="async" class="tb-logo" style="height:34px;width:auto;"></div></section>
     <section class="av-band" aria-label="AV Compare">
       <div class="wrap">
         <div>
@@ -675,11 +628,10 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Frames from the show floor</h2>
-          <p>A photo record of the rooms we've lit, the shows we've directed, and the events we've produced.</p>
+          <p>A photo record of the rooms we’ve lit, the shows we’ve directed, and the events we’ve produced.</p>
         </div>
         <div class="reel-nav reveal">
-          <span class="reel-hint">Drag or click to explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <span class="reel-counter"><b id="reel-current">01</b> / <span id="reel-total">01</span></span><button class="reel-pause-toggle" id="reelPauseToggle" aria-pressed="false" aria-label="Pause automatic scrolling">Pause</button>
+          <span class="reel-counter"><b id="reel-current">01</b> / <span id="reel-total">01</span></span>
         </div>
       </div>
       <div class="wrap">
@@ -691,41 +643,20 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         <div class="reel reveal" id="reel-track">
-          <div class="reel-item has-baked"><img src="images/AWARD-SHOW-640.webp" srcset="images/AWARD-SHOW-640.webp 640w, images/AWARD-SHOW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AWARD-SHOW-1280.webp" alt="Award show stage production with lighting design" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Award show<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/CONVENTION-640.webp" srcset="images/CONVENTION-640.webp 640w, images/CONVENTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONVENTION-1280.webp" alt="Canadian Music Week convention production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Convention<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/LIVE-WEB-STREAMING-640.webp" srcset="images/LIVE-WEB-STREAMING-640.webp 640w, images/LIVE-WEB-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-WEB-STREAMING-1280.webp" alt="Live web streaming broadcast setup" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live web streaming<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item has-baked"><img src="images/CORPORATE-EDUCATION-MEETING-640.webp" srcset="images/CORPORATE-EDUCATION-MEETING-640.webp 640w, images/CORPORATE-EDUCATION-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CORPORATE-EDUCATION-MEETING-1280.webp" alt="Medical aesthetics corporate education meeting" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Corporate education<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/OUTDOO0R-AWARDS-640.webp" srcset="images/OUTDOO0R-AWARDS-640.webp 640w, images/OUTDOO0R-AWARDS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOO0R-AWARDS-1280.webp" alt="O'Cannabiz gala awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/SALES-MEETING-640.webp" srcset="images/SALES-MEETING-640.webp 640w, images/SALES-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SALES-MEETING-1280.webp" alt="Allergan medical education event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/AUDIENCE-PARTICIPATION-640.webp" srcset="images/AUDIENCE-PARTICIPATION-640.webp 640w, images/AUDIENCE-PARTICIPATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AUDIENCE-PARTICIPATION-1280.webp" alt="Live audience participation at a produced event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Audience participation<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/LIVE-TV-PRODUCTION-640.webp" srcset="images/LIVE-TV-PRODUCTION-640.webp 640w, images/LIVE-TV-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-TV-PRODUCTION-1280.webp" alt="2022 Toronto fireworks broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live TV production<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item has-baked"><img src="images/PLANNING-TO-EXECUTION-640.webp" srcset="images/PLANNING-TO-EXECUTION-640.webp 640w, images/PLANNING-TO-EXECUTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/PLANNING-TO-EXECUTION-1280.webp" alt="Event planning and on-site execution" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Planning to execution<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/MEDICAL-EDUCATION-640.webp" srcset="images/MEDICAL-EDUCATION-640.webp 640w, images/MEDICAL-EDUCATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/MEDICAL-EDUCATION-1280.webp" alt="Medical education broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-1.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item has-baked"><img src="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp" srcset="images/2021-VIRTUAL-HOLIDAY-PARTY-640.webp 640w, images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/2021-VIRTUAL-HOLIDAY-PARTY-1280.webp" alt="Virtual holiday party broadcast for Lush Cosmetics" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Virtual holiday party<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item has-baked"><img src="images/CELEBRITY-INTERVIEW-640.webp" srcset="images/CELEBRITY-INTERVIEW-640.webp 640w, images/CELEBRITY-INTERVIEW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CELEBRITY-INTERVIEW-1280.webp" alt="Celebrity interview production at the Grow Up Conference" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Celebrity interview<i>Live event</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-2.jpg" alt="Green screen broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-3.jpg" alt="Facial injection technique filmed for medical aesthetics education" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item has-baked"><img src="images/EVENTS-640.webp" srcset="images/EVENTS-640.webp 640w, images/EVENTS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENTS-1280.webp" alt="Music and broadcast industry awards production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live events<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/EVENT-PRODUCTION-640.webp" srcset="images/EVENT-PRODUCTION-640.webp 640w, images/EVENT-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/EVENT-PRODUCTION-1280.webp" alt="Director's script for live event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/LIVE-STREAMING-640.webp" srcset="images/LIVE-STREAMING-640.webp 640w, images/LIVE-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-STREAMING-1280.webp" alt="Virtually Real live broadcast production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Live streaming<i class="tag-vr">Virtually Real</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-1.jpg" alt="Pre-show setup for a live event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-2.jpg" alt="Mobile broadcast production with Virtually Real" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-3.jpg" alt="Andy and Kim in hair and makeup for a live broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-4.jpg" alt="On-site recording for a live event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-5.jpg" alt="On-site interviews for a live event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-6.jpg" alt="Production plans for a Sankofa Square broadcast" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-7.jpg" alt="El Mocambo shoot for Walk Off the Earth" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-8.jpg" alt="Merz facial aesthetics event" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-9.jpg" alt="Stage lighting design" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Event-Production-10.jpg" alt="Paul Anka and Michael Bublé at the Canadian Music Hall of Fame" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Event production<i>Event production</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-4.jpg" alt="Remote broadcast setup for MD Codes facial aesthetics mentee training with Dr. Maurício de Maio" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-5.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item"><img src="images/Medical-Event-Production-6.jpg" alt="Medical education production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
-          <div class="reel-item has-baked"><img src="images/VIDEO-MAPPING-640.webp" srcset="images/VIDEO-MAPPING-640.webp 640w, images/VIDEO-MAPPING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/VIDEO-MAPPING-1280.webp" alt="Video mapping projection for Toronto's New Year's Eve fireworks" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Video mapping<i>Event production</i></div></div>
-          <div class="reel-item has-baked"><img src="images/SPORTS-EVENT-640.webp" srcset="images/SPORTS-EVENT-640.webp 640w, images/SPORTS-EVENT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SPORTS-EVENT-1280.webp" alt="Live sports event production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Sports event<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/CONCERT-640.webp" srcset="images/CONCERT-640.webp 640w, images/CONCERT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONCERT-1280.webp" alt="Rush Neil Peart tribute concert production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Concert<i>Live event</i></div></div>
-          <div class="reel-item has-baked"><img src="images/OUTDOOR-FESTIVAL-640.webp" srcset="images/OUTDOOR-FESTIVAL-640.webp 640w, images/OUTDOOR-FESTIVAL-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOOR-FESTIVAL-1280.webp" alt="YouTube Fan Fest outdoor festival production" draggable="false" loading="lazy" decoding="async"><div class="reel-cap">Outdoor festival<i>Live event</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/AWARD-SHOW-640.webp" srcset="images/AWARD-SHOW-640.webp 640w, images/AWARD-SHOW-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AWARD-SHOW-1280.webp" alt="Award show stage production with lighting design" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Award show<i>Live event</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/CONVENTION-640.webp" srcset="images/CONVENTION-640.webp 640w, images/CONVENTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONVENTION-1280.webp" alt="Canadian Music Week convention production" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Convention<i>Event production</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/LIVE-WEB-STREAMING-640.webp" srcset="images/LIVE-WEB-STREAMING-640.webp 640w, images/LIVE-WEB-STREAMING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-WEB-STREAMING-1280.webp" alt="Live web streaming broadcast setup" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Live web streaming<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/CORPORATE-EDUCATION-MEETING-640.webp" srcset="images/CORPORATE-EDUCATION-MEETING-640.webp 640w, images/CORPORATE-EDUCATION-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CORPORATE-EDUCATION-MEETING-1280.webp" alt="Medical aesthetics corporate education meeting" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Corporate education<i>Event production</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/OUTDOOR-AWARDS-640.webp" srcset="images/OUTDOOR-AWARDS-640.webp 640w, images/OUTDOOR-AWARDS-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/OUTDOOR-AWARDS-1280.webp" alt="O'Cannabiz gala awards production" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Outdoor awards<i>Live event</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/SALES-MEETING-640.webp" srcset="images/SALES-MEETING-640.webp 640w, images/SALES-MEETING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/SALES-MEETING-1280.webp" alt="Allergan medical education event" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Sales meeting<i>Event production</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/AUDIENCE-PARTICIPATION-640.webp" srcset="images/AUDIENCE-PARTICIPATION-640.webp 640w, images/AUDIENCE-PARTICIPATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/AUDIENCE-PARTICIPATION-1280.webp" alt="Live audience participation at a produced event" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Audience participation<i>Live event</i></div></div>
+          <div class="reel-item"><div class="reel-img cap-top baked"><img src="images/LIVE-TV-PRODUCTION-640.webp" srcset="images/LIVE-TV-PRODUCTION-640.webp 640w, images/LIVE-TV-PRODUCTION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/LIVE-TV-PRODUCTION-1280.webp" alt="2022 Toronto fireworks broadcast" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Live TV production<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/MEDICAL-EDUCATION-640.webp" srcset="images/MEDICAL-EDUCATION-640.webp 640w, images/MEDICAL-EDUCATION-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/MEDICAL-EDUCATION-1280.webp" alt="Medical education broadcast production" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Medical education<i>Studio &amp; broadcast</i></div></div>
+          <div class="reel-item"><div class="reel-img"><img src="images/Event-Production-8.jpg" alt="Merz facial aesthetics event" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Merz aesthetics event<i>Medical education</i></div></div>
+          <div class="reel-item"><div class="reel-img"><img src="images/Event-Production-9.jpg" alt="Stage lighting design" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Stage lighting design<i>Event production</i></div></div>
+          <div class="reel-item"><div class="reel-img"><img src="images/Event-Production-2.jpg" alt="Mobile broadcast production with Virtually Real" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Mobile broadcast production<i class="tag-vr">Virtually Real</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/VIDEO-MAPPING-640.webp" srcset="images/VIDEO-MAPPING-640.webp 640w, images/VIDEO-MAPPING-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/VIDEO-MAPPING-1280.webp" alt="Video mapping projection for Toronto's New Year's Eve fireworks" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Video mapping<i>Event production</i></div></div>
+          <div class="reel-item"><div class="reel-img baked"><img src="images/CONCERT-640.webp" srcset="images/CONCERT-640.webp 640w, images/CONCERT-1280.webp 1280w" sizes="(max-width:560px) 85vw, 440px" data-full="images/CONCERT-1280.webp" alt="Rush Neil Peart tribute concert production" draggable="false" loading="lazy" decoding="async"></div><div class="reel-cap">Concert<i>Live event</i></div></div>
         </div>
         </div>
       </div>
@@ -741,27 +672,27 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
           <div class="service reveal">
             <span class="num">01 — Live events</span>
             <h3>Award shows &amp; galas</h3>
-            <p>Creative development, stage design, and direction for evenings that need to feel effortless — because we've already solved every cue backstage.</p><a href="/award-shows" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our award show work →</a>
+            <p>Creative development, stage design, and direction for evenings that need to feel effortless — because we’ve already solved every cue backstage.</p><a href="/award-shows" style="display:inline-block;margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our award show work →</a>
           </div>
           <div class="service reveal">
             <span class="num">02 — Event production</span>
             <h3>Planning &amp; execution</h3>
-            <p>We negotiate AV, build the run of show, and manage budgets so your event lands exactly on brief — and on cost.</p><a href="/live-event-production" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our convention work →</a>
+            <p>We negotiate AV, build the run of show, and manage budgets so your event lands exactly on brief — and on cost.</p><a href="/live-event-production" style="display:inline-block;margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our convention work →</a>
           </div>
           <div class="service stream reveal">
             <span class="num">03 — Live streaming</span>
             <h3>Broadcasts, not webcams</h3>
-            <p>Our Virtually Real platform gives every broadcast a director, a stage manager, and a look worth watching.</p><a href="/live-streaming" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See it in action →</a>
+            <p>Our Virtually Real platform gives every broadcast a director, a stage manager, and a look worth watching.</p><a href="/live-streaming" style="display:inline-block;margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See it in action →</a>
           </div>
           <div class="service reveal">
             <span class="num">04 — Medical education</span>
             <h3>Clinical &amp; confidential</h3>
-            <p>Studio, broadcast, and live-procedure production across orthopedics, diabetes, aesthetics, and beyond — handled with the discretion it demands.</p><a href="/medical-education-production" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our medical work →</a>
+            <p>Studio, broadcast, and live-procedure production across orthopedics, diabetes, aesthetics, and beyond — handled with the discretion it demands.</p><a href="/medical-education-production" style="display:inline-block;margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">See our medical work →</a>
           </div>
           <div class="service service-wide reveal">
             <span class="num">05 — AV Compare</span>
             <h3>Pay less for AV.</h3>
-            <p>One spec, three AV quotes, side by side. We've seen quotes for the same ballroom come in <strong style="color:var(--amber);font-weight:700;">48% apart</strong>. From $500 CAD.</p><a href="/av-headline" style="display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Compare your AV →</a>
+            <p>One spec, three AV quotes, side by side. We’ve seen quotes for the same ballroom come in <strong style="color:var(--amber);font-weight:700;">48% apart</strong>. From $500 CAD.</p><a href="/av-headline" style="display:inline-block;margin-top:14px;font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Compare your AV →</a>
           </div>
         </div>
       </div>
@@ -770,7 +701,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
     <section class="approach">
       <div class="wrap reveal">
         <div class="eyebrow" style="margin-bottom:24px;">The approach</div>
-        <p class="lead">At Eventstudio we don't supply lights, sound, or video — we supply judgment. We scope the room wherever it is, negotiate local vendors, write the paperwork, build the show, and direct it from the booth — on site or remotely — so your event looks <span class="accent">produced</span>, not just staffed.</p>
+        <p class="lead">At EventStudio we don’t supply lights, sound, or video — we supply judgment. We scope the room wherever it is, negotiate local vendors, write the paperwork, build the show, and direct it from the booth — on site or remotely — so your event looks <span class="accent">produced</span>, not just staffed.</p>
       </div>
     </section>
 
@@ -779,13 +710,11 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
         <div class="reveal">
           <img src="vr-logo-dark.png" alt="Virtually Real — Broadcast System" class="vr-logo">
           <div class="eyebrow" style="color:var(--blue);">Proprietary platform</div>
-          <h2>Your broadcast, <span>directed</span> — not just streamed.</h2>
+          <h2>Your broadcast, <span class="brass">directed</span> — not just streamed.</h2>
           <p>Virtually Real turns a flat video call into a broadcast: a director calling shots, a stage manager keeping the room on schedule, and graphics built for the screen your audience is actually watching.</p>
           <button type="button" class="btn magnet video-trigger">See it in action</button>
         </div>
         <div class="signal reveal playable video-trigger">
-          <div class="tag">On air — signal live</div>
-          <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="play-cue"><div class="disc"></div></div>
         </div>
       </div>
@@ -799,7 +728,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
       </div>
     </div>
 
-    <div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div> <section id="studio">
+    <div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div> <section id="studio">
       <div class="wrap">
         <div class="section-head reveal">
           <h2>The studio</h2>
@@ -826,14 +755,13 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 
   <section id="contact" class="contact"><div class="contact-bg"></div>
     <div class="wrap">
-      <div class="eyebrow">Cue it up</div>
-      <h2 class="reveal">Got a show?<br><br>Let's talk before the house lights go down.</h2>
+      <h2 class="reveal">Tell us about your event.</h2>
       <div class="contact-grid">
-        <div class="reveal contact-col"><div class="contact-brand"><img src="eventstudio-logo-white-v2.png" alt="EventStudio" class="contact-brand-logo"><p class="contact-brand-tag"><span class="accent-blue">Based in Canada.</span><br>Booked everywhere else.</p></div>
+        <div class="reveal contact-col">
           <div class="contact-links">
             <a href="tel:+14169005137">(416) 900-5137</a>
 <a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a>
-<span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
+<span style="font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
           </div>
           </div>
         <form class="card reveal" id="contactForm" action="/api/lead" method="POST" data-lead="home">
@@ -851,7 +779,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <label for="company">Company</label>
 <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
 </div>
-          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-status" aria-live="polite"></p><p class="form-trust">We reply within one business day.</p>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send enquiry</button><p class="form-status" aria-live="polite"></p><p class="form-trust">We reply within one business day.</p>
         </form>
       </div>
     </div>
@@ -860,7 +788,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
   <footer>
     <div class="wrap">
       <a href="#top" class="logo"><span class="dot"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio"></a>
-      <div class="legal"><span class="footer-contact" style="display:block;margin-bottom:8px;"><a href="tel:+14169005137" style="color:var(--paper-dim);">(416) 900-5137</a> &nbsp;·&nbsp; <a href="mailto:admin@eventstudio.tv" style="color:var(--paper-dim);">admin@eventstudio.tv</a> &nbsp;·&nbsp; Oakville, Ontario</span>© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/av-headline" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">AV Compare</a> &nbsp;·&nbsp; <a href="/love-letters" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Love Letters</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+      <div class="legal"><span class="footer-contact" style="display:block;margin-bottom:8px;"><a href="tel:+14169005137" style="color:var(--paper-dim);">(416) 900-5137</a> &nbsp;·&nbsp; <a href="mailto:admin@eventstudio.tv" style="color:var(--paper-dim);">admin@eventstudio.tv</a> &nbsp;·&nbsp; Oakville, Ontario</span>© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/av-headline" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">AV Compare</a> &nbsp;·&nbsp; <a href="/love-letters" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Love Letters</a> &nbsp;·&nbsp; <a href="/privacy" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Privacy</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
     </div>
   </footer>
 
@@ -880,24 +808,8 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
   function onScroll(){
     if(window.scrollY > 30){ header.classList.add('scrolled'); }
     else{ header.classList.remove('scrolled'); }
-    updateHUD();
   }
   window.addEventListener('scroll', onScroll, { passive:true }); var navToggle=document.getElementById('navToggle'); var mobileNav=document.getElementById('mobileNav'); function closeNav(){ navToggle.classList.remove('open'); mobileNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; } function openNav(){ navToggle.classList.add('open'); mobileNav.classList.add('open'); navToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; } navToggle.addEventListener('click', function(){ if(mobileNav.classList.contains('open')){ closeNav(); } else { openNav(); } }); mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); }); window.addEventListener('keydown', function(e){ if(e.key==='Escape' && mobileNav.classList.contains('open')){ closeNav(); } }); window.addEventListener('resize', function(){ if(window.innerWidth>1180){ closeNav(); } });
-
-  // broadcast timecode HUD
-  var tc = document.getElementById('tc');
-  function updateHUD(){
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    var frac = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-    var totalFrames = Math.floor(frac * 3600 * 30);
-    var hh = Math.floor(totalFrames / (3600*30));
-    var mm = Math.floor((totalFrames % (3600*30)) / (60*30));
-    var ss = Math.floor((totalFrames % (60*30)) / 30);
-    var ff = totalFrames % 30;
-    function pad(n){ return String(n).padStart(2,'0'); }
-    tc.textContent = pad(hh) + ':' + pad(mm) + ':' + pad(ss) + ':' + pad(ff);
-  }
-  updateHUD();
 
   // spotlight cursor (hero only, fine pointers only)
   var spotlight = document.getElementById('spotlight');
@@ -997,48 +909,8 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
   window.addEventListener('resize', function(){
     reelStep = reelItems.length ? (reelItems[0].getBoundingClientRect().width + 20) : reelStep;
   });
-  updateReelUI(); var reelUserPaused=false; var reelPauseToggle=document.getElementById('reelPauseToggle'); if(reelPauseToggle){ reelPauseToggle.addEventListener('click', function(){ reelUserPaused=!reelUserPaused; if(reelUserPaused){ stopReelAutoplay(); reelPauseToggle.textContent='Play'; reelPauseToggle.setAttribute('aria-pressed','true'); } else { reelPauseToggle.textContent='Pause'; reelPauseToggle.setAttribute('aria-pressed','false'); if(reelInView){ startReelAutoplay(); } } }); }
+  updateReelUI();
 
-  // gentle autoplay — pauses the moment someone touches the reel, resumes after a pause
-  var reelReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var reelAutoplayTimer = null, reelResumeTimer = null, reelInView = false;
-
-  function reelAutoplayTick(){
-    if(reel.scrollLeft >= (reel.scrollWidth - reel.clientWidth - 4)){
-      reel.scrollTo({ left:0, behavior:'smooth' });
-    } else {
-      reel.scrollBy({ left:reelStep, behavior:'smooth' });
-    }
-  }
-  function startReelAutoplay(){
-    if(reelReduceMotion || reelAutoplayTimer) return;
-    reelAutoplayTimer = setInterval(reelAutoplayTick, 3200);
-  }
-  function stopReelAutoplay(){
-    clearInterval(reelAutoplayTimer);
-    reelAutoplayTimer = null;
-  }
-  function pauseThenResume(){
-    stopReelAutoplay();
-    clearTimeout(reelResumeTimer);
-    reelResumeTimer = setTimeout(function(){ if(reelInView) startReelAutoplay(); }, 4000);
-  }
-
-  if('IntersectionObserver' in window){
-    var reelIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        reelInView = entry.isIntersecting;
-        if(reelInView){ startReelAutoplay(); } else { stopReelAutoplay(); }
-      });
-    }, { threshold:0.4 });
-    reelIO.observe(reel);
-  }
-
-  ['mousedown','touchstart','wheel'].forEach(function(evt){
-    reel.addEventListener(evt, pauseThenResume, { passive:true });
-  });
-  reelPrev.addEventListener('click', pauseThenResume);
-  reelNext.addEventListener('click', pauseThenResume);
 
   // video lightbox
   var videoModal = document.getElementById('video-modal');
@@ -1067,7 +939,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
   window.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && videoModal.classList.contains('open')){ closeVideoModal(); }
   });
-var photoModal = document.getElementById('photo-modal'); var photoModalImg = document.getElementById('photo-modal-img'); var photoCloseBtn = document.getElementById('photo-modal-close'); var photoModalCaption = document.getElementById('photo-modal-caption'); function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.textContent = caption || ''; window.__lastFocusedEl=document.activeElement; photoModal.classList.add('open'); setTimeout(function(){ photoCloseBtn.focus(); }, 50); document.body.style.overflow = 'hidden'; } function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.textContent = ''; } reelItems.forEach(function(item){ item.addEventListener('click', function(e){ if(maxDrag > 6) return; var img = item.querySelector('img'); if(img) openPhotoModal(img.dataset.full||img.currentSrc||img.src, img.alt); }); }); photoCloseBtn.addEventListener('click', closePhotoModal); photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } }); window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } }); 
+var photoModal = document.getElementById('photo-modal'); var photoModalImg = document.getElementById('photo-modal-img'); var photoCloseBtn = document.getElementById('photo-modal-close'); var photoModalCaption = document.getElementById('photo-modal-caption'); function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.textContent = caption || ''; window.__lastFocusedEl=document.activeElement; photoModal.classList.add('open'); setTimeout(function(){ photoCloseBtn.focus(); }, 50); document.body.style.overflow = 'hidden'; } function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.removeAttribute('src'); photoModalCaption.textContent = ''; } reelItems.forEach(function(item){ item.addEventListener('click', function(e){ if(maxDrag > 6) return; var img = item.querySelector('img'); if(img) openPhotoModal(img.dataset.full||img.currentSrc||img.src, img.alt); }); }); photoCloseBtn.addEventListener('click', closePhotoModal); photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } }); window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } }); 
     var teamBios = {
       'Andy Stinton': "Andy Stinton went from chimney sweep and grocery bagger to record-label promo, radio host, cabaret emcee — including for royalty — then brought that showbiz instinct to Canada. He now produces award-winning live events and TV, from Toronto’s New Year’s Eve fireworks to major facial aesthetic broadcasts and video production for Dr. Maurício de Maio and the MD Codes program.",
       'Denise Carr-Rollitt': "Denise Carr-Rollitt is a multimedia event producer who turns client messages into campaigns and graphics that hold an audience’s attention. She has stage-managed major shows for Allergan Canada, Imperial Oil, Canadian Music Week, and Stryker Medical across North America.",
@@ -1105,7 +977,7 @@ var photoModal = document.getElementById('photo-modal'); var photoModalImg = doc
   <script defer src="/_vercel/speed-insights/script.js"></script>
 <!-- sticky quote button -->
 <style>
-.es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#f2a93b;color:#141311;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
+.es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#D99A44;color:#141311;font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
 .es-quote:hover,.es-quote:focus-visible{transform:translateY(-2px);background:#f5f1e8;outline:none}
 .es-quote.es-hide{opacity:0;visibility:hidden;pointer-events:none}
 @media (max-width:640px){.es-quote{left:auto;right:12px;bottom:12px;min-height:40px;justify-content:center;padding:10px 16px;font-size:12px}body{padding-bottom:0}}

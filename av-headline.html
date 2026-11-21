@@ -30,8 +30,8 @@
   --paper:#f5f1e8;
   --paper-dim:rgba(245,241,232,0.62);
   --paper-faint:rgba(245,241,232,0.34);
-  --amber:#f2a93b;
-  --amber-dim:rgba(242,169,59,0.5);
+  --amber:#D99A44;
+  --amber-dim:rgba(217,154,68,0.5);
   --blue:#4c8dff;
   --red:#e4392e;
   --ink:#141311;
@@ -60,13 +60,13 @@ h1,h2,h3{
 }
 h1 em,h2 em{font-style:normal;color:var(--amber);}
 
-.skip-link{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:12px 20px;z-index:1000;font-family:'Space Mono',monospace;font-size:13px;text-decoration:none;}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:12px 20px;z-index:1000;font-family:'Inter',system-ui,sans-serif;font-size:13px;text-decoration:none;}
 .skip-link:focus{left:12px;top:12px;}
 
 .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
 
 .eyebrow{
-  font-family:'Space Mono',monospace;
+  font-family:'Inter',system-ui,sans-serif;
   font-size:12px;
   letter-spacing:0.18em;
   text-transform:uppercase;
@@ -86,7 +86,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px 2px var(--amber-dim);}
 .logo img{height:26px;width:auto;}
 .product-tag{
-  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;
+  font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:0.14em;
   color:var(--paper-dim);border:1px solid var(--line-strong);
   padding:6px 10px;border-radius:2px;white-space:nowrap;
 }
@@ -111,11 +111,11 @@ h2.section-title{font-size:clamp(28px,4.6vw,40px);margin-bottom:24px;}
 }
 .hero-copy{max-width:56ch;color:var(--paper-dim);font-size:17px;margin-bottom:32px;}
 .hero-copy strong{color:var(--paper);font-weight:600;}
-.cta-sub{margin-top:16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.02em;color:var(--paper-dim);}
+.cta-sub{margin-top:16px;font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:0.02em;color:var(--paper-dim);}
 
 /* ---------- button (main-site .btn) ---------- */
 .btn{
-  font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+  font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:700;
   letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   min-height:48px;padding:13px 24px;
@@ -134,7 +134,7 @@ button.btn{-webkit-appearance:none;appearance:none;}
 /* ---------- offer ---------- */
 .terms{list-style:none;margin:0 0 28px;border-top:1px solid var(--line);}
 .terms li{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;}
-.num{font-family:'Space Mono',monospace;font-size:12px;color:var(--amber);padding-top:3px;flex-shrink:0;width:1.8em;}
+.num{font-family:'Inter',system-ui,sans-serif;font-size:12px;color:var(--amber);padding-top:3px;flex-shrink:0;width:1.8em;}
 .keep-diff{color:var(--paper-dim);border-left:2px solid var(--amber);padding-left:16px;}
 .keep-diff strong{color:var(--paper);font-weight:600;}
 
@@ -146,12 +146,12 @@ button.btn{-webkit-appearance:none;appearance:none;}
 .step:last-child{padding-bottom:0;}
 .step::before{content:'';position:absolute;left:20px;top:44px;bottom:4px;width:1px;background:var(--line-strong);}
 .step:last-child::before{display:none;}
-.step .n{font-family:'Space Mono',monospace;font-size:14px;color:var(--amber);background:var(--charcoal);border:1px solid var(--line-strong);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
+.step .n{font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--amber);background:var(--charcoal);border:1px solid var(--line-strong);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
 .step .t{padding-top:9px;font-size:17px;}
 
 /* ---------- who ---------- */
 .who-figure{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(52px,10vw,84px);letter-spacing:-0.03em;color:var(--amber);line-height:1;margin-bottom:10px;}
-.who-figure span{font-family:'Space Mono',monospace;font-weight:400;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--paper-dim);margin-left:10px;vertical-align:middle;}
+.who-figure span{font-family:'Inter',system-ui,sans-serif;font-weight:400;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--paper-dim);margin-left:10px;vertical-align:middle;}
 .who-text{color:var(--paper-dim);font-size:17px;max-width:52ch;}
 
 /* ---------- why eventstudio ---------- */
@@ -166,11 +166,11 @@ button.btn{-webkit-appearance:none;appearance:none;}
 .svc:focus-visible{outline:2px solid var(--paper);outline-offset:3px;}
 .svc h3{font-size:21px;margin-bottom:8px;line-height:1.1;}
 .svc p{color:var(--paper-dim);font-size:15px;margin-bottom:12px;}
-.svc .go{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);}
+.svc .go{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);}
 .svc-proof{color:var(--paper-dim);font-size:15px;}
-.svc-note{font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:var(--paper-dim);max-width:56ch;margin-top:12px;}
+.svc-note{font-family:'Inter',system-ui,sans-serif;font-size:12px;line-height:1.6;color:var(--paper-dim);max-width:56ch;margin-top:12px;}
 .interest{border:none;padding:0;margin:0;}
-.interest legend{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;padding:0;}
+.interest legend{font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper-dim);margin-bottom:6px;padding:0;}
 .interest label.chk{display:flex;align-items:center;gap:12px;text-transform:none;letter-spacing:0;font-family:'Inter',sans-serif;font-size:15px;color:var(--paper);min-height:44px;margin:0;cursor:pointer;}
 .interest input[type=checkbox]{width:20px;min-height:20px;height:20px;accent-color:var(--amber);flex:none;padding:0;}
 
@@ -185,7 +185,7 @@ form.card{
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 @media (max-width:520px){ .row2{grid-template-columns:1fr;} form.card{padding:24px 20px;} }
 form.card label{
-  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;
+  font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:0.1em;
   text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;
 }
 form.card input,form.card textarea{
@@ -201,7 +201,7 @@ form.card .btn{justify-self:start;}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
 .form-status{font-size:14px;color:#ff8a80;min-height:0;}
 .form-status:empty{display:none;}
-.form-trust{font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.6;letter-spacing:0.02em;color:var(--paper-dim);max-width:44ch;}
+.form-trust{font-family:'Inter',system-ui,sans-serif;font-size:11.5px;line-height:1.6;letter-spacing:0.02em;color:var(--paper-dim);max-width:44ch;}
 .form-done{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.25;outline:none;}
 .form-done span{display:block;margin-top:10px;font-family:'Inter',sans-serif;font-weight:400;font-size:16px;color:var(--paper-dim);}
 
@@ -215,7 +215,7 @@ form.card .btn{justify-self:start;}
 /* ---------- footer (main-site style) ---------- */
 footer{border-top:1px solid var(--line);padding:40px 0 48px;}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 24px;}
-footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.02em;color:var(--paper-dim);line-height:1.6;}
+footer .legal{font-family:'Inter',system-ui,sans-serif;font-size:11.5px;letter-spacing:0.02em;color:var(--paper-dim);line-height:1.6;}
 
 /* ---------- reveal-on-scroll (main-site motion) ---------- */
 .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
@@ -227,8 +227,9 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 }
 </style>
 <script>document.documentElement.classList.add('js');</script>
-<style>.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}.proof{font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;color:var(--paper);margin:14px 0 0}@media (max-width:420px){.hdr-call span{display:none}.hdr-call{padding:0 13px}}</style>
-<style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style><style>body a.es-quote{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;border-radius:8px!important;min-height:0!important;padding:10px 18px!important;background:rgba(11,11,12,.92)!important;color:var(--amber)!important;border:1px solid var(--amber)!important}body a.es-quote:hover,body a.es-quote:focus-visible{background:rgba(32,28,22,.98)!important;transform:none!important}</style></head>
+<style>.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;background:var(--amber);color:#141311;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}.proof{font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;color:var(--paper);margin:14px 0 0}@media (max-width:420px){.hdr-call span{display:none}.hdr-call{padding:0 13px}}</style>
+<link rel="stylesheet" href="/es-system.css">
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -245,21 +246,21 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 
 <section class="hero">
   <p class="eyebrow">An EventStudio service</p>
-  <h1>Make event&nbsp;AV <em>cost&#8209;effective.</em></h1>
+  <h1>Make event&nbsp;AV cost&#8209;effective.</h1>
   <p class="proof">Over 1,000 live shows and events since 1996.</p>
-  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> Leave your name and email. We'll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
+  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> Leave your name and email. We’ll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
   <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  <p class="cta-sub">Name and email is all we need to start. We'll ask for the date, venue and headcount when we reply.</p>
+  <p class="cta-sub">Name and email is all we need to start. We’ll ask for the date, venue and headcount when we reply.</p>
   <p class="cta-sub"><a href="/av-compare-case-study" style="color:var(--amber);text-decoration:underline;">See a real example: two quotes, one ballroom, 48% apart &rarr;</a></p>
 </section>
 
 <section class="offer reveal">
   <p class="eyebrow">The offer</p>
-  <h2 class="section-title">We don't rent the gear.<br>We make the rental <em>cost&#8209;effective.</em></h2>
+  <h2 class="section-title">We don’t rent the gear.<br>We make the rental <em>cost&#8209;effective.</em></h2>
   <ul class="terms">
     <li><span class="num">01</span><span>Same spec to three reputable AV houses.</span></li>
-    <li><span class="num">02</span><span>Side-by-side quotes, so you're comparing like for like.</span></li>
-    <li><span class="num">03</span><span>Labour, screens, and add-ons the agenda doesn't require get dropped from the spec before it's quoted.</span></li>
+    <li><span class="num">02</span><span>Side-by-side quotes, so you’re comparing like for like.</span></li>
+    <li><span class="num">03</span><span>Labour, screens, and add-ons the agenda doesn’t require get dropped from the spec before it’s quoted.</span></li>
     <li><span class="num">04</span><span>You contract the winner directly.</span></li>
   </ul>
   <p class="keep-diff"><strong>Our fee starts at $500 CAD</strong>, scaled to the size of the meeting — billed separately, direct to you. We recommend the best fit for your meeting, whoever that is.</p>
@@ -268,7 +269,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <section class="why reveal">
   <p class="eyebrow">Why it costs less</p>
   <p class="pull">A single quote is a starting point, not a market.</p>
-  <p class="lede">We define what the meeting needs — and nothing more — then send that same list to three reputable AV companies. You're not paying for spare screens, extra crew, or a package built for a bigger show. Three prices on one spec. You pick.</p>
+  <p class="lede">We define what the meeting needs — and nothing more — then send that same list to three reputable AV companies. You’re not paying for spare screens, extra crew, or a package built for a bigger show. Three prices on one spec. You pick.</p>
 </section>
 
 <section class="how reveal">
@@ -291,25 +292,25 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <a class="svc" href="/live-streaming"><h3>Live streaming</h3><p>Directed broadcasts on our own Virtually Real platform.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
 <a class="svc" href="/medical-education-production"><h3>Medical education</h3><p>Broadcast-quality production for medical education.</p><span class="go">See more <span aria-hidden="true">&rarr;</span></span></a>
 </div>
-<p class="svc-proof">The same team staged the Canadian Music Week conference and produced Toronto's New Year's Eve fireworks broadcast.</p>
+<p class="svc-proof">The same team staged the Canadian Music Week conference and produced Toronto’s New Year’s Eve fireworks broadcast.</p>
 <p class="svc-note">Using AV Compare carries no obligation to hire EventStudio for anything else.</p>
 </section>
 
 <section class="who reveal">
-  <p class="eyebrow">Who it's for</p>
+  <p class="eyebrow">Who it’s for</p>
   <div class="who-figure">5&ndash;5000<span>in the room</span></div>
   <p class="who-text">Meeting planners who want AV that works and a number finance will accept.</p>
 </section>
 
 <section class="why-eventstudio reveal">
   <p class="eyebrow">Why EventStudio</p>
-  <p class="lede">AV Compare is EventStudio's cost-control service, not our whole business. The same team behind it has produced award shows, run large corporate events, directed live streams, produced medical education broadcasts, staged the Canadian Music Week conference, and produced Toronto's New Year's Eve fireworks broadcast. We recommend the best fit for your meeting, whoever that is.</p>
+  <p class="lede">AV Compare is EventStudio’s cost-control service, not our whole business. The same team behind it has produced award shows, run large corporate events, directed live streams, produced medical education broadcasts, staged the Canadian Music Week conference, and produced Toronto’s New Year’s Eve fireworks broadcast. We recommend the best fit for your meeting, whoever that is.</p>
 </section>
 
 <section class="final-cta" id="spec-form">
   <p class="eyebrow">Get started</p>
   <h2>Get your <em>spec.</em></h2>
-  <p class="lede">Tell us about the meeting — we'll come back with the spec and three quotes.</p>
+  <p class="lede">Tell us about the meeting — we’ll come back with the spec and three quotes.</p>
 
   <form id="specForm" class="card" action="/api/lead" method="POST" data-lead="av-compare" novalidate>
         <div class="hp" aria-hidden="true"><label for="avh-gotcha">Leave this empty</label><input id="avh-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
@@ -340,7 +341,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <footer>
   <div class="wrap">
     <a href="/" class="logo" aria-label="EventStudio home"><span class="dot" aria-hidden="true"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio" width="208" height="26" loading="lazy"></a>
-    <div class="legal">AV Compare is an Eventstudio Ltd service &nbsp;·&nbsp; Oakville, Ontario<br>© 2026 EventStudio — Eventstudio Ltd</div>
+    <div class="legal">AV Compare is an Eventstudio Ltd service &nbsp;·&nbsp; Oakville, Ontario<br>© 2026 EventStudio — Eventstudio Ltd &nbsp;·&nbsp; <a href="/privacy" style="color:inherit;text-decoration:underline;">Privacy</a></div>
   </div>
 </footer>
 
@@ -376,7 +377,7 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <!-- sticky quote button -->
 <style>
-.es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#f2a93b;color:#141311;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
+.es-quote{position:fixed;right:24px;bottom:22px;z-index:95;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;background:#D99A44;color:#141311;font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45);transition:transform .2s,opacity .25s,visibility .25s}
 .es-quote:hover,.es-quote:focus-visible{transform:translateY(-2px);background:#f5f1e8;outline:none}
 .es-quote.es-hide{opacity:0;visibility:hidden;pointer-events:none}
 @media (max-width:640px){.es-quote{left:12px;right:12px;bottom:12px;justify-content:center;padding:14px 18px;font-size:12px}body{padding-bottom:72px}}

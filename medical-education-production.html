@@ -41,8 +41,8 @@
 --paper:#f5f1e8;
 --paper-dim: rgba(245,241,232,0.62);
 --paper-faint: rgba(245,241,232,0.34);
---amber:#f2a93b;
---amber-dim: rgba(242,169,59,0.5);
+--amber:#D99A44;
+--amber-dim: rgba(217,154,68,0.5);
 --blue:#4c8dff;
 --red:#e4392e;
 --ink:#141311;
@@ -71,7 +71,7 @@ line-height:1.02;
 }
 
 .eyebrow{
-font-family:'Space Mono', monospace;
+font-family:'Inter',system-ui,sans-serif;
 font-size:12px;
 letter-spacing:0.18em;
 text-transform:uppercase;
@@ -89,7 +89,7 @@ box-shadow:0 0 10px 2px var(--amber-dim);
 }
 
 a{ color:inherit; }
-img{ display:block; max-width:100%; } .skip-link{ position:absolute; left:-9999px; top:0; background:var(--amber); color:var(--ink); padding:12px 20px; z-index:1000; font-family:'Space Mono', monospace; font-size:13px; text-decoration:none; } .skip-link:focus{ left:12px; top:12px; } .form-trust{ font-family:'Space Mono', monospace; font-size:11px; line-height:1.6; letter-spacing:0.02em; color:var(--paper-dim); margin-top:12px; max-width:38ch; }
+img{ display:block; max-width:100%; } .skip-link{ position:absolute; left:-9999px; top:0; background:var(--amber); color:var(--ink); padding:12px 20px; z-index:1000; font-family:'Inter',system-ui,sans-serif; font-size:13px; text-decoration:none; } .skip-link:focus{ left:12px; top:12px; } .form-trust{ font-family:'Inter',system-ui,sans-serif; font-size:11px; line-height:1.6; letter-spacing:0.02em; color:var(--paper-dim); margin-top:12px; max-width:38ch; }
 
 .wrap{
 max-width:1240px;
@@ -132,7 +132,7 @@ animation:none;
 50%{ transform:scale(0.7); opacity:0.55; }
 }
 #loader-label{
-font-family:'Space Mono', monospace;
+font-family:'Inter',system-ui,sans-serif;
 font-size:12px;
 letter-spacing:0.24em;
 color:var(--paper-dim);
@@ -185,7 +185,7 @@ transition:right .35s var(--ease);
 .nav-links a:hover::after{ right:0; } .nav-links .nav-cta{ display:none; } .nav-toggle{ display:none; flex-direction:column; justify-content:center; align-items:center; width:34px; height:34px; gap:6px; background:none; border:none; cursor:pointer; padding:0; z-index:101; } .nav-toggle span{ display:block; width:24px; height:2px; background:var(--paper); transition:transform .3s var(--ease), opacity .3s var(--ease); } .nav-toggle.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); } .nav-toggle.open span:nth-child(2){ opacity:0; } .nav-toggle.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
 
 .btn{
-font-family:'Space Mono', monospace;
+font-family:'Inter',system-ui,sans-serif;
 font-size:12px;
 letter-spacing:0.1em;
 text-transform:uppercase;
@@ -222,20 +222,6 @@ url('images/MEDICAL-EDUCATION-1600.webp');
 background-size:cover; background-position:center 30%;
 filter:grayscale(0.55) contrast(1.15) brightness(0.55);
 }
-.beam{
-position:absolute; top:-20%; width:38vw; height:160vh;
-background:linear-gradient(180deg, rgba(242,169,59,0.16), transparent 70%);
-transform:rotate(18deg);
-filter:blur(10px);
-z-index:1;
-animation: sweep 14s ease-in-out infinite;
-}
-.beam.b2{ left:55%; animation-delay:-6s; opacity:0.6; background:linear-gradient(180deg, rgba(76,141,255,0.14), transparent 70%);}
-.beam.b1{ left:5%; }
-@keyframes sweep{
-0%,100%{ transform:rotate(14deg) translateX(0); }
-50%{ transform:rotate(22deg) translateX(6vw); }
-}
 .hero-content{ position:relative; z-index:3; }
 .hero h1{
 font-size:clamp(2.4rem, 5.6vw, 5.2rem);
@@ -270,7 +256,7 @@ background:var(--black); padding:44px 40px; position:relative;
 transition: background .4s var(--ease);
 }
 .service:hover{ background:var(--charcoal); }
-.service .num{ font-family:'Space Mono', monospace; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
+.service .num{ font-family:'Inter',system-ui,sans-serif; color:var(--amber); font-size:13px; letter-spacing:0.1em; }
 .service h3{ font-size:26px; margin:20px 0 14px; }
 .service p{ color:var(--paper-dim); font-size:14.5px; max-width:42ch; }
 
@@ -279,7 +265,7 @@ transition: background .4s var(--ease);
 .client-row{ background:var(--black); padding:24px 32px; display:flex; justify-content:space-between; align-items:baseline; gap:20px; transition:background .3s var(--ease); }
 .client-row:hover{ background:var(--charcoal); }
 .client-row .name{ font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:17px; color:var(--paper); }
-.client-row .type{ font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-dim); text-align:right; white-space:nowrap; }
+.client-row .type{ font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper-dim); text-align:right; white-space:nowrap; }
 @media (max-width:700px){ .client-grid{ grid-template-columns:1fr; } .services.cols-3{ grid-template-columns:1fr; } .client-row .type{ white-space:normal; text-align:left; } .client-row{ flex-direction:column; align-items:flex-start; gap:6px; } }
 
 /* ===== approach ===== */
@@ -301,17 +287,17 @@ color:var(--paper);
 .faq-item{ border-bottom:1px solid var(--line); padding:26px 0; }
 .faq-item summary{ cursor:pointer; list-style:none; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:19px; color:var(--paper); display:flex; justify-content:space-between; align-items:center; gap:20px; }
 .faq-item summary::-webkit-details-marker{ display:none; }
-.faq-item summary::after{ content:'+'; font-family:'Space Mono',monospace; color:var(--amber); font-size:22px; flex-shrink:0; transition:transform .3s var(--ease); }
+.faq-item summary::after{ content:'+'; font-family:'Inter',system-ui,sans-serif; color:var(--amber); font-size:22px; flex-shrink:0; transition:transform .3s var(--ease); }
 .faq-item[open] summary::after{ transform:rotate(45deg); }
 .faq-item p{ color:var(--paper-dim); font-size:15px; max-width:70ch; margin-top:16px; }
 
 /* ===== team ===== */
 .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
-/* ===== photo lightbox ===== */ #photo-modal{ position:fixed; inset:0; z-index:200; background:rgba(11,11,12,0.92); display:flex; align-items:center; justify-content:center; padding:60px 24px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); } #photo-modal.open{ opacity:1; pointer-events:auto; } #photo-modal .modal-inner{ position:relative; width:100%; max-width:1040px; transform:translateY(16px) scale(0.98); transition:transform .4s var(--ease); } #photo-modal.open .modal-inner{ transform:translateY(0) scale(1); } #photo-modal img{ width:100%; display:block; background:var(--black); border:1px solid var(--line); } #photo-modal .photo-modal-caption{ margin-top:14px; font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--paper-dim); text-align:center; } #photo-modal .modal-close{ position:absolute; top:-46px; right:0; display:flex; align-items:center; gap:10px; font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper-dim); background:none; border:none; cursor:pointer; padding:8px; transition:color .3s; } #photo-modal .modal-close:hover{ color:var(--paper); } #photo-modal .modal-close .x{ width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px; } @media (max-width:560px){ #photo-modal .modal-close{ top:-40px; } }
+/* ===== photo lightbox ===== */ #photo-modal{ position:fixed; inset:0; z-index:200; background:rgba(11,11,12,0.92); display:flex; align-items:center; justify-content:center; padding:60px 24px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); } #photo-modal.open{ opacity:1; pointer-events:auto; } #photo-modal .modal-inner{ position:relative; width:100%; max-width:1040px; transform:translateY(16px) scale(0.98); transition:transform .4s var(--ease); } #photo-modal.open .modal-inner{ transform:translateY(0) scale(1); } #photo-modal img{ width:100%; display:block; background:var(--black); border:1px solid var(--line); } #photo-modal .photo-modal-caption{ margin-top:14px; font-family:'Inter',sans-serif; font-size:14px; line-height:1.5; color:var(--paper-dim); text-align:center; } #photo-modal .modal-close{ position:absolute; top:-46px; right:0; display:flex; align-items:center; gap:10px; font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--paper-dim); background:none; border:none; cursor:pointer; padding:8px; transition:color .3s; } #photo-modal .modal-close:hover{ color:var(--paper); } #photo-modal .modal-close .x{ width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:13px; } @media (max-width:560px){ #photo-modal .modal-close{ top:-40px; } }
 .person{ border:1px solid var(--line); }
 .person .photo{ aspect-ratio:16/9; overflow:hidden; position:relative; }
 .person{ cursor:pointer; }
-.person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.95), transparent); color:var(--amber); font-family:'Space Mono', monospace; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:12px 14px; opacity:1; }
+.person .photo::after{ content:'Read bio'; position:absolute; inset:auto 0 0 0; background:linear-gradient(0deg, rgba(11,11,12,0.95), transparent); color:var(--amber); font-family:'Inter',system-ui,sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:12px 14px; opacity:1; }
 .person .photo img{
 width:100%; height:100%; object-fit:cover;
 filter:grayscale(0.85) contrast(1.1) brightness(0.85);
@@ -320,7 +306,7 @@ transition: filter .5s var(--ease);
 .person:hover .photo img{ filter:grayscale(0.3) contrast(1.05) brightness(0.95); }
 .person .info{ padding:20px 22px 26px; }
 .person .info .role{
-font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:0.1em;
+font-family:'Inter',system-ui,sans-serif; font-size:10.5px; letter-spacing:0.1em;
 color:var(--amber); text-transform:uppercase; display:block; margin-bottom:8px;
 }
 .person .info h3{ font-size:19px; }
@@ -352,7 +338,7 @@ background:rgba(11,11,12,0.55); border:1px solid rgba(245,241,232,0.18);
 padding:32px; display:flex; flex-direction:column; gap:16px;
 }
 form.card label{
-font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.1em;
+font-family:'Inter',system-ui,sans-serif; font-size:11px; letter-spacing:0.1em;
 text-transform:uppercase; color:var(--paper-dim); display:block; margin-bottom:6px;
 }
 form.card input, form.card textarea{
@@ -368,12 +354,12 @@ footer{ background:var(--black); color:var(--paper); padding:50px 0 40px; }
 footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
 footer .logo{ color:var(--ink); }
 footer .logo .dot{ background:#a85f14; box-shadow:0 0 8px 2px rgba(168,95,20,0.3); }
-footer .legal{ font-family:'Space Mono', monospace; font-size:12px; color:var(--paper-dim); letter-spacing:0.02em; }
+footer .legal{ font-family:'Inter',system-ui,sans-serif; font-size:12px; color:var(--paper-dim); letter-spacing:0.02em; }
 
 @media (max-width:480px){ header .logo img{ height:22px; } header .btn{ padding:9px 14px; font-size:10px; letter-spacing:0.06em; } } @media (max-width:340px){ header .logo img{ height:18px; } header .btn{ padding:7px 10px; font-size:9px; } } @media (max-width:1180px){
 .wrap{ padding:0 22px; }
 .nav-toggle{ display:flex; } .nav-links{ display:flex; position:fixed; inset:0; z-index:99; padding-top:100px; flex-direction:column; align-items:center; justify-content:flex-start; gap:28px; background:var(--black); opacity:0; pointer-events:none; transform:translateY(-12px); transition:opacity .3s var(--ease), transform .3s var(--ease); } .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); } .nav-links a{ font-size:20px; } .nav-links .nav-cta{ display:list-item; margin-top:8px; } nav.wrap > .btn.magnet{ display:none; }
-.nav-links .nav-contact{ display:list-item; font-family:'Space Mono',monospace; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
+.nav-links .nav-contact{ display:list-item; font-family:'Inter',system-ui,sans-serif; font-size:14px; letter-spacing:.04em; } .nav-links .nav-contact a{ font-size:15px; }
 .nav-links{ visibility:hidden; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s; } .nav-links.open{ visibility:visible; transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s; }
 }
 @media (max-width:900px){
@@ -408,9 +394,10 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <link rel="preload" as="image" href="/images/MEDICAL-EDUCATION-1600.webp" type="image/webp" fetchpriority="high">
 <style>/* mobile header call button: shows whenever the hamburger shows */
 .hdr-call{display:none}
-@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
+@media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
 @media (max-width:340px){.hdr-call span{display:none}.hdr-call{padding:0 12px}}</style>
-<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style></head>
+<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><link rel="stylesheet" href="/es-system.css">
+</head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
 <div id="loader">
@@ -419,30 +406,25 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </div>
 
 <header id="site-header">
-<nav class="wrap">
-<a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a><a class="hdr-call" href="tel:+14169005137" aria-label="Call EventStudio at (416) 900-5137"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Call</span></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
-<ul class="nav-links" id="mobileNav">
-<li><a href="/">Home</a></li>
-<li><a href="/live-event-production">Event Production</a></li>
-<li><a href="/award-shows">Award Shows</a></li>
-<li><a href="/live-streaming">Streaming</a></li>
-<li><a href="/medical-education-production">Medical</a></li><li><a href="/case-studies">Case Studies</a></li>
-<li><a href="#studio">Studio</a></li>
-<li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Get a quote</a></li>
-<li class="nav-contact"><a href="tel:+14169005137">(416) 900-5137</a></li><li class="nav-contact"><a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a></li></ul>
-<a href="#contact" class="btn magnet">Get a quote</a>
-</nav>
-</header>
+    <nav class="wrap">
+      <a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white-v2.png" alt="EventStudio"></a><a class="hdr-call" href="tel:+14169005137" aria-label="Call EventStudio at (416) 900-5137"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Call</span></a><button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="mobileNav">
+        <li><a href="/#work">What we do</a></li><li><a href="/live-event-production">Event Production</a></li><li><a href="/award-shows">Award Shows</a></li><li><a href="/live-streaming">Streaming</a></li><li><a href="/medical-education-production">Medical</a></li><li><a href="/av-headline">AV Compare</a></li><li><a href="/case-studies">Case Studies</a></li>
+        <li><a href="/#reel">Reel</a></li>
+        <li><a href="/#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li><li class="nav-cta"><a href="#contact" class="btn magnet">Get a quote</a></li>
+      <li class="nav-contact"><a href="tel:+14169005137">(416) 900-5137</a></li><li class="nav-contact"><a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a></li></ul>
+      <a href="#contact" class="btn magnet">Get a quote</a>
+    </nav>
+  </header>
 
 <main id="top">
 
 <section class="hero">
 <div class="hero-bg"></div>
-<div class="beam b1"></div>
-<div class="beam b2"></div>
 <div class="wrap hero-content">
 <div class="eyebrow">Medical Education Production</div>
-<h1>Medical education, produced like a <em>broadcast</em>.</h1>
+<h1>Medical education, produced like a broadcast.</h1>
 <p class="sub">EventStudio produces studio, broadcast, and live-procedure content for medical education — orthopedics, diabetes, and aesthetics — with the discretion clinical and pharma work demands. Based in the GTA, working across Canada and abroad.</p>
 <div class="hero-actions">
 <a href="#contact" class="btn magnet">Get a quote</a>
@@ -471,7 +453,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <div class="service reveal">
 <span class="num">03 — Live procedure</span>
 <h3>Live-procedure broadcast</h3>
-<p>Camera and broadcast production for live surgical and aesthetic procedure training, coordinated tightly with the clinical team's protocol and timing.</p>
+<p>Camera and broadcast production for live surgical and aesthetic procedure training, coordinated tightly with the clinical team’s protocol and timing.</p>
 </div>
 <div class="service reveal">
 <span class="num">04 — Confidentiality</span>
@@ -485,15 +467,15 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <section class="approach">
 <div class="wrap reveal">
 <div class="eyebrow" style="margin-bottom:24px;">The approach</div>
-<p class="lead">Medical education content doesn't get a second take, and it doesn't tolerate a webcam feel. We scope the studio or venue, coordinate around the clinical schedule, and produce the session the way we'd produce any <span class="accent">broadcast</span> — with a director calling the shots.</p>
-<p class="note">A note on what we do and don't do: EventStudio is a production company, not a medical or regulatory authority. We don't review, approve, or take responsibility for clinical content — that stays with your medical and compliance teams. Our job is the studio, the broadcast, the camera, and the confidentiality protocol around all of it.</p>
+<p class="lead">Medical education content doesn’t get a second take, and it doesn’t tolerate a webcam feel. We scope the studio or venue, coordinate around the clinical schedule, and produce the session the way we’d produce any <span class="accent">broadcast</span> — with a director calling the shots.</p>
+<p class="note">A note on what we do and don’t do: EventStudio is a production company, not a medical or regulatory authority. We don’t review, approve, or take responsibility for clinical content — that stays with your medical and compliance teams. Our job is the studio, the broadcast, the camera, and the confidentiality protocol around all of it.</p>
 </div>
 </section>
 
 <section id="clients">
 <div class="wrap">
 <div class="section-head reveal">
-<h2>Who we've produced for</h2>
+<h2>Who we’ve produced for</h2>
 <p>Facial aesthetics production is one of our core specialties.</p>
 </div>
 <div class="client-grid reveal">
@@ -517,7 +499,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </details>
 <details class="faq-item reveal">
 <summary>Can you produce a live surgical or procedure broadcast?</summary>
-<p>Yes — we've produced live-procedure broadcasts for facial aesthetics training, coordinated closely with the clinical team's own protocol and timing.</p>
+<p>Yes — we’ve produced live-procedure broadcasts for facial aesthetics training, coordinated closely with the clinical team’s own protocol and timing.</p>
 </details>
 <details class="faq-item reveal">
 <summary>How is confidentiality handled?</summary>
@@ -526,42 +508,19 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </div>
 </section>
 
-<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
-<section id="studio">
-<div class="wrap">
-<div class="section-head reveal">
-<h2>The studio</h2>
-<p>A small crew who has been in the booth for every kind of show there is.</p>
-</div>
-<div class="team-grid">
-<div class="person reveal">
-<div class="photo"><img src="images/Andy-Stinon.jpg" alt="Andy Stinton" loading="lazy" decoding="async"></div>
-<div class="info"><span class="role">Producer · Director · Former Chimney Sweep</span><h3>Andy Stinton</h3></div>
-</div>
-<div class="person reveal">
-<div class="photo"><img src="images/Denise-Carr-Rollit.jpg" alt="Denise Carr-Rollitt" loading="lazy" decoding="async"></div>
-<div class="info"><span class="role">Producer · Designer · Chief Cook and Bottle Washer</span><h3>Denise Carr-Rollitt</h3></div>
-</div>
-<div class="person reveal">
-<div class="photo"><img src="images/nancy-Sinclair.jpg" alt="Nancy Sinclair" loading="lazy" decoding="async"></div>
-<div class="info"><span class="role">Production Coordinator · Stage & Show Manager · Former Spotlight Operator</span><h3>Nancy Sinclair</h3></div>
-</div>
-</div>
-</div>
-</section>
+<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
 
 </main>
 
 <section id="contact" class="contact"><div class="contact-bg"></div>
 <div class="wrap">
-<div class="eyebrow">Cue it up</div>
-<h2 class="reveal">Got a medical education program?<br><br>Let's talk before the house lights go down.</h2>
+<h2 class="reveal">Got a medical education program? Let’s talk before the house lights go down.</h2>
 <div class="contact-grid">
-<div class="reveal contact-col"><div class="contact-brand"><img src="eventstudio-logo-white.png" alt="EventStudio" class="contact-brand-logo"><p class="contact-brand-tag"><span class="accent-blue">Based in Canada.</span><br>Booked everywhere else.</p></div>
+<div class="reveal contact-col">
 <div class="contact-links">
 <a href="tel:+14169005137">(416) 900-5137</a>
 <a href="mailto:admin@eventstudio.tv">admin@eventstudio.tv</a>
-<span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
+<span style="font-family:'Inter',system-ui,sans-serif;font-size:12px;letter-spacing:.06em;color:var(--paper-dim);">Oakville, Ontario</span>
 </div>
 </div>
 <form class="card reveal" id="contactForm" action="/api/lead" method="POST" data-lead="medical-education">
@@ -579,7 +538,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <label for="company">Company</label>
 <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
 </div>
-          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day.</p>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send enquiry</button><p class="form-trust">We reply within one business day.</p>
 </form>
 </div>
 </div>
@@ -588,7 +547,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <footer>
 <div class="wrap">
 <a href="/" class="logo"><span class="dot"></span><img src="eventstudio-logo-white.png" alt="EventStudio"></a>
-<div class="legal"><span class="footer-contact" style="display:block;margin-bottom:8px;"><a href="tel:+14169005137" style="color:var(--paper-dim);">(416) 900-5137</a> &nbsp;·&nbsp; <a href="mailto:admin@eventstudio.tv" style="color:var(--paper-dim);">admin@eventstudio.tv</a> &nbsp;·&nbsp; Oakville, Ontario</span>© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/love-letters" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Love Letters</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+<div class="legal"><span class="footer-contact" style="display:block;margin-bottom:8px;"><a href="tel:+14169005137" style="color:var(--paper-dim);">(416) 900-5137</a> &nbsp;·&nbsp; <a href="mailto:admin@eventstudio.tv" style="color:var(--paper-dim);">admin@eventstudio.tv</a> &nbsp;·&nbsp; Oakville, Ontario</span>© 2026 EventStudio — Eventstudio Ltd — All rights reserved &nbsp;·&nbsp; <a href="/av-headline" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">AV Compare</a> &nbsp;·&nbsp; <a href="/love-letters" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Love Letters</a> &nbsp;·&nbsp; <a href="/privacy" style="color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;">Privacy</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/eventstudiotv/" target="_blank" rel="noopener" aria-label="EventStudio on Instagram" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a> &nbsp; <a href="https://www.facebook.com/profile.php?id=61595562592053" target="_blank" rel="noopener" aria-label="EventStudio on Facebook" style="color:var(--paper,#f5f1e8);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:38px;height:38px;border:1.5px solid currentColor;border-radius:50%;margin:0 4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
 </div>
 </footer>
 
@@ -657,7 +616,7 @@ var photoModalImg = document.getElementById('photo-modal-img');
 var photoCloseBtn = document.getElementById('photo-modal-close');
 var photoModalCaption = document.getElementById('photo-modal-caption');
 function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.innerHTML = caption || ''; window.__lastFocusedEl=document.activeElement; photoModal.classList.add('open'); setTimeout(function(){ photoCloseBtn.focus(); }, 50); document.body.style.overflow = 'hidden'; }
-function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.innerHTML = ''; }
+function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.removeAttribute('src'); photoModalCaption.innerHTML = ''; }
 photoCloseBtn.addEventListener('click', closePhotoModal);
 photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } });
 window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } });
