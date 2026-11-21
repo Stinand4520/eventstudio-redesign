@@ -185,3 +185,4 @@ p,li{ text-wrap:pretty; }
 @media (min-width:900px){ .hero .quick-form{ grid-template-columns:1fr 1fr; max-width:560px; } .hero .quick-form .btn, .hero .quick-form .qf-field:last-of-type{ grid-column:auto; } }
 @media (max-width:899px){ .quick-form{ grid-template-columns:1fr; } .quick-quote .qq-line{ font-size:30px!important; } }
 @media (max-width:640px){ .hero h1{ font-size:36px; } .hero .hero-sub{ font-size:16px; margin-top:12px; } .hero .quick-form{ margin-top:16px; gap:8px; } .hero .quick-form input,.hero .quick-form .btn{ min-height:48px; } .hero .quick-form .btn{ width:100%!important; } }
+@media (max-width:430px){ header .product-tag{ display:none; } }
