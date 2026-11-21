@@ -226,7 +226,7 @@
   .hero-bg{
     position:absolute; inset:0; z-index:0;
     background-image:
-      linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.78) 55%, var(--black) 100%),
+      linear-gradient(180deg, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0.8) 45%, var(--black) 78%),
       url('images/LIVE-EVENT-1600.webp');
     background-size:cover; background-position:center 30%;
     filter:grayscale(0.55) contrast(1.15) brightness(0.55);
@@ -610,10 +610,11 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 .hdr-call{display:none}
 @media (max-width:1180px){.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;margin-left:auto;margin-right:12px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}}
 @media (max-width:340px){.hdr-call span{display:none}.hdr-call{padding:0 12px}}</style>
-<style>/* mobile hero tidy */
-.hero-micro{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.03em;color:var(--paper-dim);margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
-.hero-micro a{color:var(--amber);text-decoration:underline;white-space:nowrap}
-@media (max-width:640px){.hero-actions{flex-direction:column;align-items:stretch;gap:12px;max-width:340px}.hero-actions .btn{width:100%;justify-content:center;text-align:center;min-height:52px}.hero-micro{flex-direction:column;align-items:flex-start;gap:10px}.hero-award{display:none !important}.scroll-cue{display:none !important}}
+<style>/* hero micro line + mobile buttons */
+.hero-micro{font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;color:rgba(245,241,232,.78);margin:16px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.hero-micro a{color:var(--amber);text-decoration:underline;text-underline-offset:3px}
+.hero-micro .hero-reel{font-weight:600;white-space:nowrap}
+@media (max-width:640px){.hero-actions{flex-direction:column;align-items:stretch;max-width:340px}.hero-actions .btn{width:100%;justify-content:center;text-align:center;min-height:52px}}
 </style>
 </head>
 <body><a href="#top" class="skip-link">Skip to content</a>
@@ -648,17 +649,15 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
       <div class="wrap hero-content">
         <div class="eyebrow">Based in Canada. Booked everywhere else.</div>
         <h1>Live events, award shows and broadcasts, <span class="accent-blue">directed</span> <em>like live TV</em>.</h1>
-        <p style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--paper);margin:14px 0 0;">Over 1,000 live shows and events since 1996.</p>
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;letter-spacing:0;color:var(--paper);margin:14px 0 0;">Over 1,000 live shows and events since 1996.</p>
         <p class="sub">EventStudio plans, designs and directs live events for corporate planners, associations and marketing teams across Canada, so nothing goes wrong on the day.</p>
-        <div class="hero-award" style="margin-bottom:22px;display:flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--paper-dim);"><span style="color:var(--amber);">★</span> Canadian Music Week — winner, Best International Music Festival, The Great Escape (UK), 2013</div><div class="hero-actions">
+        <div class="hero-actions">
 <a href="#contact" class="btn magnet">Get a quote</a>
-<a href="tel:+14169005137" class="btn ghost magnet">Call (416) 900-5137</a>
 </div>
-<p class="hero-micro"><span>We reply within one business day.</span><a href="#reel">Watch the reel &rarr;</a></p>
+<p class="hero-micro"><span>We reply within one business day, or <a href="tel:+14169005137">call (416) 900-5137</a>.</span><a class="hero-reel" href="#reel">Watch the reel &rarr;</a></p>
       </div>
-      <div class="scroll-cue">SCROLL — CUE 01</div>
-    </section>
-    <section aria-label="Selected clients" style="padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:10px 30px;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim);"><span style="color:var(--amber);">Trusted by</span><span>Stryker</span><span>Allergan</span><span>Toyota</span><span>Bell Canada</span><span>Merz</span><span>Atlas Van Lines</span><span>Canadian Music Week</span></div></section>
+          </section>
+    <section aria-label="Selected clients" style="padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:center;font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,241,232,.92);"><span style="flex-basis:100%;text-align:center;color:var(--amber);font-family:'Space Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.14em;">Trusted by</span><span>Stryker</span><span>Allergan</span><span>Toyota</span><span>Bell Canada</span><span>Merz</span><span>Atlas Van Lines</span><span>Canadian Music Week</span></div></section>
 
     <div class="marquee">
       <div class="marquee-track">
@@ -1108,7 +1107,7 @@ var photoModal = document.getElementById('photo-modal'); var photoModalImg = doc
 var b=document.getElementById('esQuote'),t=document.querySelector('#contact');
 if(!b)return;
 b.addEventListener('click',function(){try{if(window.avt)window.avt('click',{what:'quote_button'});}catch(e){}});
-if('IntersectionObserver' in window){var hid={c:false,h:false},hero=document.querySelector('.hero');function upd(){b.classList.toggle('es-hide',hid.c||hid.h);}if(t){new IntersectionObserver(function(e){hid.c=e[0].isIntersecting;upd();},{threshold:0.15}).observe(t);}if(hero){new IntersectionObserver(function(e){hid.h=e[0].isIntersecting;upd();},{threshold:0.2}).observe(hero);}}
+if('IntersectionObserver' in window){var hid={c:false,h:false},hero=document.querySelector('.hero');function upd(){b.classList.toggle('es-hide',hid.c||hid.h);}if(t){new IntersectionObserver(function(e){hid.c=e[0].isIntersecting;upd();},{threshold:0.15}).observe(t);}if(hero){new IntersectionObserver(function(e){hid.h=e[0].isIntersecting;upd();},{threshold:0}).observe(hero);}}
 })();
 </script>
 </body>
