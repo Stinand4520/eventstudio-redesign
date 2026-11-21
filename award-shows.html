@@ -415,7 +415,25 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 .hero-micro .hero-reel{font-weight:600;white-space:nowrap}
 @media (max-width:640px){.hero-actions{flex-direction:column;align-items:stretch;max-width:340px}.hero-actions .btn{width:100%;justify-content:center;text-align:center;min-height:52px}}
 </style>
-<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style></head>
+<style>@media(min-width:1181px){header nav>.logo{margin-right:28px}header nav>.btn{margin-left:28px}}</style><style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style><style>
+/* quick quote forms (ad landing pages) */
+.quick-quote{padding:64px 0;border-top:1px solid var(--line);}
+.quick-quote .qq-line{font-size:34px;line-height:1.1;max-width:18ch;margin:0 0 24px;text-wrap:balance;}
+.quick-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end;max-width:1000px;}
+.quick-form label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.quick-form input{width:100%;min-height:52px;padding:0 14px;background:rgba(245,241,232,.05);color:var(--paper);border:1px solid var(--line);border-radius:2px;font:inherit;font-size:16px;}
+.quick-form input::placeholder{color:var(--paper-dim);}
+.quick-form .btn{min-height:52px;white-space:nowrap;justify-content:center;}
+.quick-form .form-status{grid-column:1/-1;margin:0;font-size:13px;color:var(--paper);}
+.hero .quick-form{grid-template-columns:1fr;max-width:420px;margin-top:24px;gap:10px;}
+.hero .hero-sub{font-size:18px;line-height:1.45;color:var(--paper-dim);max-width:36ch;margin:16px 0 0;}
+.hero h1.ad-h1{max-width:18ch;font-size:clamp(34px,6vw,64px);line-height:1;text-wrap:balance;}
+@media(min-width:900px){.hero .quick-form{grid-template-columns:1fr 1fr;max-width:560px;}}
+@media(max-width:899px){.quick-form{grid-template-columns:1fr;}.quick-quote .qq-line{font-size:30px;}}
+@media(max-width:640px){.hero{padding-top:32px;}.hero .hero-sub{font-size:16px;margin-top:12px;}.hero .quick-form{margin-top:16px;gap:8px;}.hero .quick-form input,.hero .quick-form .btn{min-height:48px;}.hero .quick-form .btn{width:100%;}}
+@media(max-width:430px){header .product-tag{display:none;}}
+</style>
+<style>#photo-modal-img:not([src]){display:none}</style></head>
 <body><a href="#top" class="skip-link">Skip to content</a>
 
 <div id="loader">
@@ -515,6 +533,20 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </div>
 </section>
 
+<section class="quick-quote" id="quick-quote">
+<div class="wrap">
+<h2 class="qq-line">1,000+ shows produced. Get a quote for yours.</h2>
+<form id="quickForm" class="quick-form" action="/api/lead" method="POST" data-lead="award-shows" novalidate>
+<div class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label for="qq-gotcha">Leave this empty</label><input id="qq-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<div class="qf-field"><label for="qq-name">Name</label><input id="qq-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
+<div class="qf-field"><label for="qq-email">Email</label><input id="qq-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" required></div>
+<div class="qf-field"><label for="qq-company">Company (optional)</label><input id="qq-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization"></div>
+<button type="submit" class="btn">Get a quote</button>
+<p class="form-status" role="status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+
 <section id="praise" style="padding:70px 0;border-top:1px solid var(--line);"><div class="wrap"><div style="max-width:680px;margin:0 auto;text-align:left;"><div style="border-left:3px solid var(--amber);padding-left:28px;margin-bottom:36px;"><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);">"Everyone absolutely loved the energy and craziness of the show."</p><p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:14px;">Special Olympics — World Winter Games</p></div><div style="border-left:3px solid var(--amber);padding-left:28px;"><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);">"I've worked several times with EventStudio as they created unforgettable events seemingly out of thin air. The process is a pleasure, and the result is purely professional."</p><p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:14px;">Jim Slotek, Gemini Nominated Journalist</p></div><a href="/love-letters" style="display:inline-block;margin-top:28px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;">Read more love letters →</a></div></div></section><section class="faq">
 <div class="wrap">
 <div class="section-head reveal">
@@ -539,7 +571,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 </div>
 </section>
 
-<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" src="" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
+<div id="photo-modal" role="dialog" aria-modal="true" aria-label="Photo viewer"><div class="modal-inner"><button class="modal-close" id="photo-modal-close" aria-label="Close photo"><span>Close</span><span class="x">&times;</span></button><img id="photo-modal-img" alt=""><p id="photo-modal-caption" class="photo-modal-caption"></p></div></div>
 <section id="studio">
 <div class="wrap">
 <div class="section-head reveal">
@@ -591,7 +623,7 @@ form.card .opt{ font-size:.8em; opacity:.7; text-transform:none; letter-spacing:
 <label for="company">Company</label>
 <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
 </div>
-          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Send</button><p class="form-trust">We reply within one business day.</p>
+          <button type="submit" class="btn" style="align-self:flex-start; margin-top:6px; cursor:pointer;">Get a quote</button><p class="form-trust">We reply within one business day.</p>
 </form>
 </div>
 </div>
@@ -662,14 +694,14 @@ revealEls.forEach(function(el){ el.classList.add('in'); });
 
 // contact form: lead-form.js sends it to /api/lead; record the conversion here
 var contactForm=document.getElementById('contactForm');
-if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); }
+if(contactForm){ contactForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'contact'}); }); } var quickForm=document.getElementById('quickForm'); if(quickForm){ quickForm.addEventListener('lead:sent', function(){ if(window.avt)window.avt('enquiry',{form:'quick'}); }); }
 
 var photoModal = document.getElementById('photo-modal');
 var photoModalImg = document.getElementById('photo-modal-img');
 var photoCloseBtn = document.getElementById('photo-modal-close');
 var photoModalCaption = document.getElementById('photo-modal-caption');
 function openPhotoModal(src, caption){ photoModalImg.src = src; photoModalCaption.innerHTML = caption || ''; window.__lastFocusedEl=document.activeElement; photoModal.classList.add('open'); setTimeout(function(){ photoCloseBtn.focus(); }, 50); document.body.style.overflow = 'hidden'; }
-function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.src = ''; photoModalCaption.innerHTML = ''; }
+function closePhotoModal(){ photoModal.classList.remove('open'); if(window.__lastFocusedEl){ window.__lastFocusedEl.focus(); } document.body.style.overflow = ''; photoModalImg.removeAttribute('src'); photoModalCaption.innerHTML = ''; }
 photoCloseBtn.addEventListener('click', closePhotoModal);
 photoModal.addEventListener('click', function(e){ if(e.target === photoModal){ closePhotoModal(); } });
 window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && photoModal.classList.contains('open')){ closePhotoModal(); } });

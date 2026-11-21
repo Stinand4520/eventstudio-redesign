@@ -2,8 +2,7 @@
    Use on a <form data-lead="campaign-key" action="/api/lead" method="POST">. Without JavaScript the form still posts normally and the server redirects. */
 (function () {
   'use strict';
-  var form = document.querySelector('form[data-lead]');
-  if (!form) return;
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-lead]'), function (form) {
   var campaign = form.getAttribute('data-lead');
   var qs = new URLSearchParams(location.search);
 
@@ -66,5 +65,6 @@
         setTimeout(function () { location.href = r.j.redirect; }, 400);
       })
       .catch(function () { fail(); });
+  });
   });
 })();

@@ -228,7 +228,25 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 </style>
 <script>document.documentElement.classList.add('js');</script>
 <style>.hdr-call{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 16px;background:var(--amber);color:#141311;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;flex-shrink:0}.hdr-call:focus-visible{outline:2px solid var(--paper);outline-offset:3px}.proof{font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:600;color:var(--paper);margin:14px 0 0}@media (max-width:420px){.hdr-call span{display:none}.hdr-call{padding:0 13px}}</style>
-<style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style><style>body a.es-quote{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;border-radius:8px!important;min-height:0!important;padding:10px 18px!important;background:rgba(11,11,12,.92)!important;color:var(--amber)!important;border:1px solid var(--amber)!important}body a.es-quote:hover,body a.es-quote:focus-visible{background:rgba(32,28,22,.98)!important;transform:none!important}</style></head>
+<style>.btn{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;padding:10px 20px!important;border-radius:8px!important;background:transparent!important;color:var(--amber)!important;border:1px solid var(--amber)!important}.btn:hover{background:rgba(242,169,59,.12)!important;box-shadow:none!important}.hero .btn,.hero-actions .btn,button.btn,button[type=submit].btn{background:#cf9a3b!important;border-color:#cf9a3b!important;color:#141311!important;font-size:16px!important;padding:12px 24px!important}.hero .btn:hover,.hero-actions .btn:hover,button.btn:hover,button[type=submit].btn:hover{background:#dcaa4b!important;box-shadow:none!important}header .btn,header nav>.btn,.nav-links .btn{font-size:14px!important;padding:8px 16px!important}@media(max-width:640px){.btn{font-size:15px!important}}</style><style>body a.es-quote{font-family:'Bricolage Grotesque','Inter',sans-serif!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;border-radius:8px!important;min-height:0!important;padding:10px 18px!important;background:rgba(11,11,12,.92)!important;color:var(--amber)!important;border:1px solid var(--amber)!important}body a.es-quote:hover,body a.es-quote:focus-visible{background:rgba(32,28,22,.98)!important;transform:none!important}</style><style>
+/* quick quote forms (ad landing pages) */
+.quick-quote{padding:64px 0;border-top:1px solid var(--line);}
+.quick-quote .qq-line{font-size:34px;line-height:1.1;max-width:18ch;margin:0 0 24px;text-wrap:balance;}
+.quick-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end;max-width:1000px;}
+.quick-form label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.quick-form input{width:100%;min-height:52px;padding:0 14px;background:rgba(245,241,232,.05);color:var(--paper);border:1px solid var(--line);border-radius:2px;font:inherit;font-size:16px;}
+.quick-form input::placeholder{color:var(--paper-dim);}
+.quick-form .btn{min-height:52px;white-space:nowrap;justify-content:center;}
+.quick-form .form-status{grid-column:1/-1;margin:0;font-size:13px;color:var(--paper);}
+.hero .quick-form{grid-template-columns:1fr;max-width:420px;margin-top:24px;gap:10px;}
+.hero .hero-sub{font-size:18px;line-height:1.45;color:var(--paper-dim);max-width:36ch;margin:16px 0 0;}
+.hero h1.ad-h1{max-width:18ch;font-size:clamp(34px,6vw,64px);line-height:1;text-wrap:balance;}
+@media(min-width:900px){.hero .quick-form{grid-template-columns:1fr 1fr;max-width:560px;}}
+@media(max-width:899px){.quick-form{grid-template-columns:1fr;}.quick-quote .qq-line{font-size:30px;}}
+@media(max-width:640px){.hero{padding-top:32px;}.hero .hero-sub{font-size:16px;margin-top:12px;}.hero .quick-form{margin-top:16px;gap:8px;}.hero .quick-form input,.hero .quick-form .btn{min-height:48px;}.hero .quick-form .btn{width:100%;}}
+@media(max-width:430px){header .product-tag{display:none;}}
+</style>
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -244,12 +262,18 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
 <div class="wrap">
 
 <section class="hero">
-  <p class="eyebrow">An EventStudio service</p>
-  <h1>Make event&nbsp;AV <em>cost&#8209;effective.</em></h1>
+  <h1 class="ad-h1">Meeting planners: don't sign the first AV quote.</h1>
+  <p class="hero-sub">Finance will ask why you only got one number. One spec. Three suppliers. You pick.</p>
+  <form id="heroForm" class="quick-form" action="/api/lead" method="POST" data-lead="av-compare" novalidate>
+<div class="hp" aria-hidden="true" style="position:absolute;left:-9999px"><label for="hero-gotcha">Leave this empty</label><input id="hero-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<div class="qf-field"><label for="hero-name">Name</label><input id="hero-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
+<div class="qf-field"><label for="hero-email">Email</label><input id="hero-email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" required></div>
+<div class="qf-field"><label for="hero-company">Company (optional)</label><input id="hero-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization"></div>
+<button type="submit" class="btn">Get 3 quotes</button>
+<p class="form-status" role="status" aria-live="polite"></p>
+</form>
   <p class="proof">Over 1,000 live shows and events since 1996.</p>
-  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> Leave your name and email. We'll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
-  <a class="btn" href="#spec-form">Request your spec <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  <p class="cta-sub">Name and email is all we need to start. We'll ask for the date, venue and headcount when we reply.</p>
+  <p class="hero-copy" style="margin-top:22px;"><strong>Three quotes. One spec. Only the gear you need.</strong> We'll ask for your date, venue and headcount, then write the spec, get three supplier quotes and keep the list to what your room needs.</p>
   <p class="cta-sub"><a href="/av-compare-case-study" style="color:var(--amber);text-decoration:underline;">See a real example: two quotes, one ballroom, 48% apart &rarr;</a></p>
 </section>
 
@@ -358,11 +382,12 @@ footer .legal{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing
   }
 
   // Spec request form: lead-form.js sends it to /api/lead; record the conversion here
-  var form = document.getElementById('specForm');
-  if (!form) return;
-  form.addEventListener('lead:sent', function () {
-    if (window.va) window.va('event', { name: 'spec_request' });
-    if (window.avt) window.avt('spec_request', {});
+  var forms = document.querySelectorAll('form[data-lead]');
+  Array.prototype.forEach.call(forms, function (form) {
+    form.addEventListener('lead:sent', function () {
+      if (window.va) window.va('event', { name: 'spec_request' });
+      if (window.avt) window.avt('spec_request', {});
+    });
   });
 })();
 </script>
