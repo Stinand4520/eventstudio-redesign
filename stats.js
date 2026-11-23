@@ -185,6 +185,15 @@
       kpi('Avg. time reading', ft(avg(G.filter(function (s) { return s.engaged; }), function (s) { return s.engaged; })), 'per visit') +
       kpi('Started a form', n(starts), 'of social visits') +
       kpi('Leads', n(leads), fp(pct(leads, G.length)) + ' of social visits');
+    // Paid ads vs free posts, so ad results are not blended with organic posts
+    var isAd = function (s) { return / ad$/.test(s.src.label || ''); };
+    var splitRow = function (name, note, arr) {
+      var st = arr.filter(function (s) { return s.formStart || s.lead; }).length, ld = arr.filter(function (s) { return s.lead; }).length;
+      return '<tr><td><b>' + name + '</b><br><span class="note">' + note + '</span></td><td>' + n(arr.length) + '</td><td>' + n(st) + '</td><td>' + n(ld) + '</td><td>' + (arr.length ? fp(pct(ld, arr.length)) : '–') + '</td></tr>';
+    };
+    $('socSplit').innerHTML = '<tr><th></th><th>Visits</th><th>Started a form</th><th>Leads</th><th>Lead rate</th></tr>' +
+      splitRow('Paid ads', 'Facebook and Instagram ads', G.filter(isAd)) +
+      splitRow('Free posts and links', 'posts, bio links, LinkedIn, Google profile', G.filter(function (s) { return !isAd(s); }));
     bars('socSources', count(G, function (s) { return s.src.label; }), { limit: 10 });
     bars('socLanding', count(G, function (s) { return s.landing; }), { limit: 8 });
     bars('socCities', count(G, function (s) { return s.c.city ? s.c.city + (s.c.region ? ', ' + s.c.region : '') : 'Unknown'; }), { limit: 8 });
