@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   var ID = '938253306038298';
+  try { if (localStorage.getItem('es_ad_consent') === 'denied') return; } catch (e) {}   // visitor turned advertising cookies off (privacy page)
   if (window.fbq) return;
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
