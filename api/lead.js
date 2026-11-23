@@ -21,10 +21,10 @@ const CAMPAIGNS = {
   'award-shows':  { label: 'Award shows',                     thanks: '/award-shows-thank-you' },
   'live-streaming': { label: 'Live streaming',                thanks: '/live-streaming-thank-you' },
   'associations': { label: 'AV Compare (Associations email)', thanks: '/av-compare-associations-thank-you' },
+  'live-event-production': { label: 'Live event production contact form', thanks: '/live-event-production-thank-you' },
   // Contact forms that show "thanks" on the page itself (no thank-you page, so no redirect)
   'home':                 { label: 'Home page contact form',       thanks: null },
   'case-studies':         { label: 'Case studies contact form',    thanks: null },
-  'live-event-production': { label: 'Live event production contact form', thanks: null },
   'love-letters':         { label: 'Love letters contact form',    thanks: null },
   'medical-education':    { label: 'Medical education contact form', thanks: null },
   'not-an-av-company':    { label: 'Not an AV company contact form', thanks: null },
