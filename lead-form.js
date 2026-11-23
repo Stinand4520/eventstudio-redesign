@@ -56,7 +56,7 @@
       .then(function (r) {
         if (!r.ok || !r.j.ok) return fail(r.j && r.j.error && r.j.error.indexOf(' ') > 0 ? r.j.error : '');
         // Let the page record its conversion events (Vercel, av-track, GA4) before we leave
-        try { form.dispatchEvent(new CustomEvent('lead:sent', { bubbles: true, detail: { campaign: campaign } })); } catch (err) {}
+        try { form.dispatchEvent(new CustomEvent('lead:sent', { bubbles: true, detail: { campaign: campaign, redirect: !!r.j.redirect } })); } catch (err) {}
         if (!r.j.redirect) {   // no thank-you page for this form: say thanks right here
           form.innerHTML = '<p id="form-thanks" role="status" tabindex="-1" style="font-size:20px;">Thanks — we will be in touch shortly.</p>';
           var tk = document.getElementById('form-thanks'); if (tk) tk.focus();

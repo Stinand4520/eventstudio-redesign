@@ -415,5 +415,6 @@ b.addEventListener('click',function(){try{if(window.avt)window.avt('click',{what
 if('IntersectionObserver' in window){var hid={c:false,h:false},hero=document.querySelector('.hero');function upd(){b.classList.toggle('es-hide',hid.c||hid.h);}if(t){new IntersectionObserver(function(e){hid.c=e[0].isIntersecting;upd();},{threshold:0.15}).observe(t);}if(hero){new IntersectionObserver(function(e){hid.h=e[0].isIntersecting;upd();},{threshold:0}).observe(hero);}}
 })();
 </script>
+<script defer src="/meta-pixel.js"></script>
 </body>
 </html>
