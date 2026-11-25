@@ -96,6 +96,21 @@ footer{margin-top:40px;color:var(--faint);font:11.5px var(--mono);display:flex;j
 td.l{text-align:left;white-space:normal;min-width:160px}
 .muted{color:var(--faint)}
 </style>
+<style>
+.cal{position:absolute;z-index:50;top:44px;right:0;width:292px;background:var(--panel);border:1px solid var(--line2);padding:12px;box-shadow:0 12px 32px rgba(0,0,0,.55)}
+.cal .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font:600 14px var(--display)}
+.cal .hd button{min-height:30px;padding:2px 10px}
+.cal .gr{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal .dow{font:400 10px var(--mono);color:var(--faint);padding:4px 0}
+.cal .d{min-height:34px;padding:0;border:0;border-radius:3px;background:transparent;font:500 13px var(--body);color:var(--paper)}
+.cal .d:hover{background:var(--panel2);outline:1px solid var(--amber)}
+.cal .d.mid{background:rgba(242,169,59,.22);border-radius:0}
+.cal .d.end{background:var(--amber);color:#141311;font-weight:700}
+.cal .d.fut{color:var(--faint);opacity:.35;pointer-events:none}
+.cal .d.blank{visibility:hidden}
+.cal .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font:12px var(--mono);color:var(--dim)}
+@media(max-width:560px){.cal{right:auto;left:0}}
+</style>
 </head>
 <body>
 <div id="login">
@@ -120,7 +135,8 @@ td.l{text-align:left;white-space:normal;min-width:160px}
         <option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option>
         <option value="90">Last 90 days</option><option value="all">All time</option><option value="custom">Custom…</option>
       </select>
-      <input type="date" id="from" class="hide" aria-label="From"><input type="date" id="to" class="hide" aria-label="To">
+      <input type="hidden" id="from"><input type="hidden" id="to">
+      <span id="rangeWrap" class="hide" style="position:relative"><button id="rangeBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Pick dates ▾</button><div id="cal" class="cal hide" role="dialog" aria-label="Choose dates"></div></span>
       <button id="reload" type="button">Refresh</button>
       <button id="csv" type="button" class="ghost">Export CSV</button>
       <button id="signout" type="button" class="ghost">Sign out</button>
@@ -211,6 +227,7 @@ td.l{text-align:left;white-space:normal;min-width:160px}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="/stats-cal.js"></script>
 <script src="/stats.js"></script>
 </body>
 </html>
