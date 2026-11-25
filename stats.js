@@ -84,6 +84,8 @@
   $('range').addEventListener('change', function () { var c = $('range').value === 'custom'; $('rangeWrap').classList.toggle('hide', !c); if (c) { if (window.ESCal) window.ESCal.open(); } else load(); });
   $('from').addEventListener('change', load); $('to').addEventListener('change', load);
   $('reload').addEventListener('click', function () { load(); });
+  $('hideBots').checked = hideBots();
+  $('hideBots').addEventListener('change', function () { try { localStorage.setItem('es_hidebots', this.checked ? '1' : '0'); } catch (e) {} if (RAW) { build(); render(); } });
   document.querySelectorAll('.tabs button').forEach(function (b) {
     b.addEventListener('click', function () {
       TAB = b.getAttribute('data-tab');
@@ -161,7 +163,19 @@
         newV: first.newV
       };
     }).sort(function (a, b) { return b.ts - a.ts; });
+    // Likely-bot check: visits that come from cloud/data-centre locations (real people don't browse from these).
+    SESS.forEach(function (s) { s.bot = isBot(s); });
+    var nb = SESS.filter(function (s) { return s.bot; }).length;
+    $('botNote').textContent = '(' + n(nb) + ' of ' + n(SESS.length) + ' visits, ' + fp(pct(nb, SESS.length), 0) + ')';
+    if (hideBots()) {
+      var keep = {}; SESS = SESS.filter(function (s) { if (!s.bot) keep[s.ss] = 1; return !s.bot; });
+      PV = PV.filter(function (r) { return keep[r.ss]; });
+    }
   }
+  // Cities where cloud providers run data centres, plus odd "cities" that appear only as robot traffic. Edit this list to tune.
+  var BOT_CITIES = ['santa clara', 'council bluffs', 'the dalles', 'mountain view', 'ashburn', 'boardman', 'charneca', 'jeffries point', 'romulus', 'des moines', 'lenoir', 'moncks corner'];
+  function isBot(s) { return BOT_CITIES.indexOf(String((s.c && s.c.city) || '').toLowerCase()) !== -1; }
+  function hideBots() { try { return localStorage.getItem('es_hidebots') === '1'; } catch (e) { return false; } }
 
   // ---------- Impressions (keys: campaign--adcontent__impr / __clicks; old AV keys have no campaign) ----------
   function ikey(camp, cnt, f) { return (camp === 'av-compare' && /^(gif|html5|static)_/.test(cnt) ? '' : camp + '--') + cnt + '__' + f; }
