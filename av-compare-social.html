@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, follow">
 <title>AV Compare</title>
-<meta name="description" content="Send us the AV quote you were handed. We price the same equipment list from independent AV houses so you can see what the hotel's service charges are costing you.">
+<meta name="description" content="Have an AV quote, or starting from scratch? We write the spec and price it with independent AV houses so you can see what the hotel's service charges are costing you.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -179,7 +179,7 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
 <header class="top">
   <div class="wrap">
     <a class="logo" href="https://eventstudio.tv" aria-label="EventStudio home">EVENT<b>STUDIO</b></a>
-    <a class="btn small" href="#start">Compare your AV quote</a>
+    <a class="btn small" href="#start">Get my AV quotes</a>
   </div>
 </header>
 <!-- Ads say "Full story: link in bio". Add #case-study to that link to land on the story directly. -->
@@ -189,7 +189,7 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
   <div class="wrap">
     <p class="eyebrow mono"><span class="dot"></span>Case study &nbsp;&middot;&nbsp; AV Compare</p>
     <h1 id="headline">The TVs were innocent.<br>The money was hiding<br><span class="hl">in the service charges.</span></h1>
-    <p class="lede">Got an AV quote from your hotel? <strong>Send it to us.</strong> We price the same equipment list from independent AV houses, mark what your agenda actually needs, and you keep the difference.</p>
+    <p class="lede">Planning an event? <strong>Already have an AV quote, or starting from scratch?</strong> We write the spec, get three independent quotes against it, and mark what your agenda actually needs. You keep the difference.</p>
 
     <div class="compare" role="group" aria-label="Price comparison for the same equipment list">
       <div class="price-card lose">
@@ -208,7 +208,7 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
     <p class="fine">Four TVs, three wireless mics, four speakers, uplighting and a podium. Downtown Toronto. Details anonymised; prices before tax.</p>
 
     <div class="cta-row">
-      <a class="btn" href="#start">Compare your AV quote</a>
+      <a class="btn" href="#start">Get my AV quotes</a>
       <span class="note">Fees start at $500 CAD. You contract the winner directly.</span>
     </div>
   </div>
@@ -310,7 +310,11 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
       </details>
       <details>
         <summary>What do I need to send?</summary>
-        <p>Event date, venue, how many people, and a short agenda. A quote you have already received helps a lot, but you do not need one.</p>
+        <p>Just your date, venue, headcount and a short agenda. A quote you already have is a bonus, not a requirement.</p>
+      </details>
+      <details>
+        <summary>I don't have a quote yet. Can you still help?</summary>
+        <p>Yes. We write the AV spec from your agenda and get three AV houses to price the same list.</p>
       </details>
     </div>
   </div>
@@ -320,8 +324,8 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
   <div class="wrap">
     <div class="formwrap">
       <p class="eyebrow mono" style="margin-bottom:14px"><span class="dot"></span>Start here</p>
-      <h2 style="margin-bottom:8px">Send us the quote you were handed.</h2>
-      <p class="sec-intro" style="margin-bottom:0">Tell us the date, venue and room size. We reply with next steps, and you can send the hotel quote then.</p>
+      <h2 style="margin-bottom:8px">Tell us about your event.</h2>
+      <p class="sec-intro" style="margin-bottom:0">Date, venue and room size is plenty to start. Have a quote already? Send that too. No quote? We'll write the spec and price it for you.</p>
 
       <form id="lead" action="/api/lead" method="POST" data-lead="av-compare" novalidate>
                 <input type="hidden" name="source" id="f-source" value="direct">
@@ -330,7 +334,7 @@ footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
         <div><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
         <div><label for="f-company">Your company (optional)</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
         <div class="full" style="display:flex;flex-wrap:wrap;gap:18px;align-items:center">
-          <button class="btn" type="submit">Compare my AV quote</button>
+          <button class="btn" type="submit">Send my event details</button>
           <p class="form-status" id="status" role="status" aria-live="polite"></p>
         </div>
       </form>
